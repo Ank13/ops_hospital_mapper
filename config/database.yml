@@ -1,23 +1,23 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: ops_hospital_mapper
+  database: ops_hospital_mapper_development
   host: localhost
 
 staging:
   adapter: postgresql
   encoding: utf8
-  database: ops_hospital_mapper
+  database: ops_hospital_mapper_staging
   host: localhost
 
 test: 
   adapter: postgresql
   encoding: utf8
-  database: ops_hospital_mapper
+  database: ops_hospital_mapper_staging
   host: localhost
   
 production:
   adapter: postgresql
   encoding: utf8
-  database: ops_hospital_mapper
+  database: ops_hospital_mapper_staging
   host: localhost
