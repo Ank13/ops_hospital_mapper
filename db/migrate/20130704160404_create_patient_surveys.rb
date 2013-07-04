@@ -1,7 +1,7 @@
 class CreatePatientSurveys < ActiveRecord::Migration
 	def change
-		create_table :patient_surveys do |t|
-			t.integer :provider_id
+    create_table :patient_surveys do |t|
+      t.integer :provider_id
       t.float  :doc_comm_bad
       t.float  :doc_com_ok
       t.float  :doc_com_good
@@ -25,7 +25,7 @@ class CreatePatientSurveys < ActiveRecord::Migration
       t.string  :num_surveys
       t.float  :survey_response_rate
 
-			t.timestamps
+    	t.timestamps
 		end
 	end
 end
