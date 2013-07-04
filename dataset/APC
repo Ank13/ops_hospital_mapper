@@ -1,0 +1,25 @@
+APC
+Provider Id
+Provider Name
+Provider Street Address
+Provider City
+Provider State
+Provider Zip Code
+Provider HRR
+Outpatient Services1
+Average Estimated Submitted Charges1
+Average Total Payments1
+
+
+
+
+-------notes---------
+
+put all data in ruby hash - 2mb file
+
+how are we caching all the data
+memcache
+how many database calls
+
+
+
