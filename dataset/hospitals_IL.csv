@@ -1,4 +1,4 @@
-provider_id,provider_Name,provider_Street_Address,provider_City,provider_State,provider_Zip_Code,hrr,total_Discharges ,count_DRGs,average_Covered_Charges ,average_Total_Payments 
+provider_id,provider_name,provider_street_address,provider_city,provider_state,provider_zip_code,hrr,total_discharges ,count_drgs,average_covered_charges ,average_total_payments 
 140010,EVANSTON HOSPITAL,2650 RIDGE AVE,EVANSTON,IL,60201,IL - Evanston,10397,98,38780.4276066327,10879.7573247245
 140208,ADVOCATE CHRIST HOSPITAL & MEDICAL CENTER,4440 W 95TH STREET,OAK LAWN,IL,60453,IL - Blue Island,8777,98,38587.0636344898,12576.2909721735
 140281,NORTHWESTERN MEMORIAL HOSPITAL,251 E HURON ST,CHICAGO,IL,60611,IL - Chicago,8307,99,55378.3748556566,14424.9568343434
