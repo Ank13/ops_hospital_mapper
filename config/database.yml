@@ -15,9 +15,4 @@ test:
   encoding: utf8
   database: ops_hospital_mapper_staging
   host: localhost
-  
-production:
-  adapter: postgresql
-  encoding: utf8
-  database: ops_hospital_mapper_staging
-  host: localhost
+

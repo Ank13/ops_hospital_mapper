@@ -2,9 +2,9 @@ $(document).ready(function(){
   
   function initialize() {
     var mapOptions = {
-      center: new google.maps.LatLng(41.8500, -87.6500),
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      center: new google.maps.LatLng(41.8500, -87.8500),
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
