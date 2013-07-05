@@ -36,7 +36,7 @@ $(document).ready(function(){
           title: hospital["provider_name"],
           zIndex: i
         });
-         marker.html = hospital["provider_name"];
+         marker.html = hospital["infobox_html"];
 
         var infowindow = new google.maps.InfoWindow({
           maxWidth: 200 
