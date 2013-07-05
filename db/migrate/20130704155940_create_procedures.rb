@@ -1,6 +1,6 @@
 class CreateProcedures < ActiveRecord::Migration
 	def change
-		create_table :procedures do |t|
+		create_table :procedures, :id => false do |t|
       t.integer  :drg_id
       t.string   :drg_def
       t.integer  :total_discharges_IL
