@@ -39,4 +39,6 @@ group :test do
 	gem 'capybara'
 	gem 'rb-fsevent', :require => false
 	gem 'database_cleaner'
+	gem 'launchy'
+	gem 'selenium-webdriver'
 end
