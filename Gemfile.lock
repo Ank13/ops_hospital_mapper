@@ -48,9 +48,6 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-
-    geocoder (1.1.8)
-
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -58,6 +55,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.0)
     formatador (0.2.4)
+    geocoder (1.1.8)
     guard (1.8.1)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -71,7 +69,6 @@ GEM
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
-
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -183,13 +180,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coffee-rails (~> 3.2.1)
-  geocoder
   better_errors
   capybara
   childprocess
   database_cleaner
   factory_girl_rails
+  geocoder
   guard-rspec
   guard-spork
   jquery-rails
