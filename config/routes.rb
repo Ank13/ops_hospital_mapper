@@ -4,4 +4,6 @@ OpsHospitalMapper::Application.routes.draw do
 
     resources :maps, :only => [:index]
 
+    resources :hospitals
+
 end
