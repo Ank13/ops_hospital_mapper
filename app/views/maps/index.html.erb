@@ -3,6 +3,8 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false">
 </script>
 
+<%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
+<% end %>
 
 <div id="map-canvas"/>
 

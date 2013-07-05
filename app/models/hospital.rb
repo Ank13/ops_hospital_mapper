@@ -15,5 +15,9 @@ class Hospital < ActiveRecord::Base
     [provider_street_address, provider_city, provider_state, provider_zip_code].compact.join(', ')
   end
 
+  def infobox_html
+    "<div class='info-box'> #{provider_name} </div>"
+  end
+
 end
 
