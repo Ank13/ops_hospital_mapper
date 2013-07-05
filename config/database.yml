@@ -1,18 +1,27 @@
+postgresql: &postgresql
+  adapter: postgresql
+  username: postgres
+  password:
+  database: ops_hospital_mapper_test
+  min_messages: ERROR
+  # pool: 5
+  # timeout: 5000
+  # host: localhost
+  
 development:
   adapter: postgresql
-  encoding: utf8
+  encoding: utf-8
   database: ops_hospital_mapper_development
   host: localhost
 
 staging:
   adapter: postgresql
-  encoding: utf8
+  encoding: utf-8
   database: ops_hospital_mapper_staging
   host: localhost
 
-test: 
+test:
   adapter: postgresql
-  encoding: utf8
-  database: ops_hospital_mapper_staging
-  host: localhost
-
+  encoding: utf-8
+  database: ops_hospital_mapper_test
+  host: localhost  
