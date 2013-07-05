@@ -5,3 +5,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 OpsHospitalMapper::Application.load_tasks
+
+# require 'rspec/core/rake_task'
+# task :default => :spec
+# RSpec::Core::RakeTask.new

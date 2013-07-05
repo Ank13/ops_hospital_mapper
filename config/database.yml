@@ -1,18 +1,21 @@
-development:
+postgresql: &postgresql
   adapter: postgresql
-  encoding: utf8
-  database: ops_hospital_mapper_development
+  username: postgres
+  password:
+  database: ops_hospital_mapper_<%= Rails.env %>
+  min_messages: ERROR
+
+defaults: &defaults
+  pool: 5
+  timeout: 5000
   host: localhost
+  <<: *<%= "postgresql" %>
+
+development:
+  <<: *defaults
 
 staging:
-  adapter: postgresql
-  encoding: utf8
-  database: ops_hospital_mapper_staging
-  host: localhost
+  <<: *defaults
 
 test: 
-  adapter: postgresql
-  encoding: utf8
-  database: ops_hospital_mapper_staging
-  host: localhost
-
+  <<: *defaults

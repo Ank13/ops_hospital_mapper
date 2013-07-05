@@ -16,3 +16,6 @@
 
 # Ignore Maps API key file
 /config/google_maps_api.yaml
+
+# Ignore databse.yml
+/config/database.yml
