@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704170330) do
+ActiveRecord::Schema.define(:version => 20130704195241) do
 
   create_table "complications", :force => true do |t|
     t.integer  "provider_id"
@@ -29,24 +29,34 @@ ActiveRecord::Schema.define(:version => 20130704170330) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "hospitals", :force => true do |t|
-    t.string   "name"
+  create_table "hospitals", :id => false, :force => true do |t|
     t.integer  "provider_id"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
+    t.string   "provider_name"
+    t.string   "provider_street_address"
+    t.string   "provider_city"
+    t.string   "provider_state"
+    t.integer  "provider_zip_code"
     t.string   "hrr"
+    t.integer  "total_discharges"
+    t.integer  "count_drgs"
+    t.float    "average_covered_charges"
+    t.float    "average_total_payments"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   add_index "hospitals", ["provider_id"], :name => "index_hospitals_on_provider_id"
 
   create_table "hospitals_procedures", :force => true do |t|
-    t.integer "hospital_id"
-    t.integer "procedure_id"
+    t.integer "drg_id"
+    t.string  "drg_def"
+    t.integer "provider_id"
+    t.string  "provider_name"
+    t.integer "total_discharges"
+    t.float   "avg_covered_charges"
+    t.float   "avg_total_payments"
   end
 
   create_table "outcomes", :force => true do |t|
@@ -107,9 +117,19 @@ ActiveRecord::Schema.define(:version => 20130704170330) do
     t.datetime "updated_at",           :null => false
   end
 
-  create_table "procedures", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "procedures", :id => false, :force => true do |t|
+    t.integer  "drg_id"
+    t.string   "drg_def"
+    t.integer  "total_discharges_IL"
+    t.float    "avg_covered_charges_IL"
+    t.float    "avg_total_payments_IL"
+    t.integer  "natl_total_discharges"
+    t.float    "natl_avg_covered_charges"
+    t.float    "natl_avg_total_payments"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
+
+  add_index "procedures", ["drg_id"], :name => "index_procedures_on_drg_id"
 
 end

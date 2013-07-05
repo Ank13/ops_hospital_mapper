@@ -1,6 +1,6 @@
 class CreateHospitalsProcedures < ActiveRecord::Migration
 	def change 
-		create_table :hospitals_procedures do |t|
+	  create_table :hospitals_procedures do |t|
       t.integer  :drg_id
       t.string   :drg_def 
       t.integer  :provider_id
