@@ -1,7 +1,10 @@
 Project to combine US healthcare cost data, outcome & quality data, and other relevant data, and visualize with Google Maps API
 
 
-Rake tasks to setup:
+Tasks to setup:
+
+bundle install
+rake db:create && rake db:migrate
 
 ********Load the data into your database from the CSV files********
 
@@ -11,4 +14,4 @@ rake db:parse_csv_complications && rake db:parse_csv_hospital && rake db:parse_c
 
 ********Geocode all objects without coordinates********
 
-rake geocode:all sleep=0.25
+rake geocode:all class=Hospital sleep=0.25
