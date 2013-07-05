@@ -1,0 +1,19 @@
+<div class="go-back">
+ <%= link_to "All hospitals", hospitals_path %>
+</div>
+<div class="all_container">
+  <div class="single_hospital">
+    <div class="name">
+      <h1> <%= @hospital.provider_name %> </h1>
+    </div>
+    <div class="data">
+      <span class="data-label">Average covered charges: </span>
+      <span class="data-content"><%= number_to_currency(@hospital.average_covered_charges) %></span>
+    </div>
+    <div class="data">
+      <span class="data-label">% of patients who recommend: </span>
+      <span class="data-content"><%= number_to_percentage(@hospital.patient_survey.recommend_y*100, precision:0) %></span>
+    </div>
+  </div>
+</div>
+
