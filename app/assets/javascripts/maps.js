@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   google.maps.visualRefresh = true;
 
   var hospitals = $("#hospitals").data("hospitals");

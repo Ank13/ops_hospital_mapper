@@ -7,17 +7,18 @@
 <% end %>
 
 
-  <div class="panel">
-      <h3>Procedures</h3>
-      <input type="textarea" placeholder="search">
-      <select id="procdropdown">
-        <% @procedures.each do |procedure| %>
-        <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
-        <% end %>
-      </select>
-   
+<div class="panel">
+
+    <em>Procedures</em>        
+    <select id="procdropdown" data-placeholder="Choose a Procedure..." class="chzn-select" style="width:250px;" tabindex="1">
+      <option value=""></option>
+      <% @procedures.each do |procedure|  %>
+        <option value='<%=procedure.drg_def %>'><%=procedure.drg_def%></option> 
+      <% end  %>
+    </select>
+
   <div style="clear:both;"></div>
-  <div class="columns">
+  
       <h3>Patient Surveys</h3>
           <ul>
               <li><a href="#" title="home">Home</a></li>
@@ -26,15 +27,15 @@
    
           <h3>Hospital Outcomes</h3>
           <input type="textarea" placeholder="search">
-  </div>
+
   <div style="clear:both;"></div>
-   
+ 
   </div>
   <a class="trigger" href="#">Details</a>
-
   </div>
-  
-<div id="map-canvas">
-
 
 </div>
+
+<div id="map-canvas">
+</div>
+
