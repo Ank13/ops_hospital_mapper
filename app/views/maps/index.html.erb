@@ -10,6 +10,11 @@
   <div class="panel">
       <h3>Procedures</h3>
       <input type="textarea" placeholder="search">
+      <select id="procdropdown">
+        <% @procedures.each do |procedure| %>
+        <option widtvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
+        <% end %>
+      </select>
    
   <div style="clear:both;"></div>
   <div class="columns">

@@ -2,6 +2,7 @@ class MapsController < ApplicationController
 
   def index
     hospitals = Hospital.all
+    @procedures = Procedure.all
     @all_hospitals = []
     hospitals.each do |hospital|
       # @all_hospitals << hospital.as_json(only: [:provider_name, :latitude, :longitude, 
