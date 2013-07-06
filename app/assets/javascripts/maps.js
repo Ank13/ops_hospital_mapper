@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  google.maps.visualRefresh = true;
 
   var hospitals = $("#hospitals").data("hospitals");
 
@@ -6,7 +7,17 @@ $(document).ready(function(){
     var mapOptions = {
       center: new google.maps.LatLng(41.8500, -87.8500),
       zoom: 11,
-      mapTypeId: google.maps.MapTypeId.TERRAIN
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      panControl: false,
+      zoomControl: true,
+      zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL,
+      position: google.maps.ControlPosition.BOTTOM_RIGHT
+      },
+      scaleControl: true,
+      scaleControlOptions: {
+      position: google.maps.ControlPosition.BOTTOM_RIGHT
+      }
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -18,7 +29,7 @@ $(document).ready(function(){
 
     function setMarkers(map, locations){
       
-      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+      var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
 
       var shape = {
       coord: [1, 1, 1, 20, 18, 20, 18 , 1],
@@ -31,7 +42,7 @@ $(document).ready(function(){
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          icon: iconBase + 'hospitals_maps.png',
+          icon: iconBase + 'h_sign_32x32.png',
           shape: shape,
           title: hospital["provider_name"],
           zIndex: i
