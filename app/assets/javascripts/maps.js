@@ -32,7 +32,7 @@ $(document).ready(function(){
       var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
 
       var shape = {
-      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+      coord: [1, 1, 1, 32, 32, 32, 32 , 1],
       type: 'poly'
       };
 

@@ -1,26 +1,5 @@
-google.load('visualization', '1.0', {'packages':['corechart']});
 
 $(document).ready(function(){
-
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2004',  1000,      400],
-      ['2005',  1170,      460],
-      ['2006',  660,       1120],
-      ['2007',  1030,      540]
-    ]);
-
-    var options = {
-      'title': 'Company Performance',
-      'width':300,
-      'height':175,
-      vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
-    };
-
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-  }
 
   $("#map-canvas").on('click', '.info-click',function(event){
     var data = (this.id);
@@ -28,18 +7,45 @@ $(document).ready(function(){
     var that = $(this)
 
     $.get(url, data, function(response){
-       console.log(response);
        that.parent().parent().parent().attr('id', 'chart_div');
        that.parent().parent().text(" ");
-       // google.load("visualization", "1", {packages:["corechart"]});
-       drawChart();
+       drawChart(response);
     });
   });
 
-
-
 });
 
-
 // Object {hospital_charge: 32482.92857, il_charge: 32784.11936, natl_charge: 28522.4, hospital_id: 140288} 
+
+google.load('visualization', '1.0', {'packages':['corechart']});
+
+  function drawChart(data) {
+    var hospitalCharge = data["hospital_charge"]
+    var ilCharge = data["il_charge"]
+    var natlCharge = data["natl_charge"]
+    var procedure = data["procedure"]
+
+    var data = google.visualization.arrayToDataTable([
+      ['Factor', 'Here', 'Illinois', 'National'],
+      ['Cost',  hospitalCharge, ilCharge, natlCharge],
+    ]);
+
+    var formatter = new google.visualization.TableNumberFormat(
+          {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true});
+      formatter.format(data, 1); 
+      formatter.format(data, 2); 
+      formatter.format(data, 3); 
+
+    var options = {
+      'title': procedure,
+      'width':325,
+      'height':175,
+      'legend': {position: 'in'}
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+
+
 
