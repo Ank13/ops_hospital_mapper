@@ -61,4 +61,11 @@ $(document).ready(function(){
     };
   google.maps.event.addDomListener(window, 'load', initialize);
 
+// NAVBAR jQUERY by DANIEL SONG -> NEED TO PUT IN BIGGER FUNCTION 
+  $('.about').hide();
+  $('#about').click(function(event){
+    event.preventDefault();
+    $('.about').fadeToggle('slow');
+  });
+  
 });

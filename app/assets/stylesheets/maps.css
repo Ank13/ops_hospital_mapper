@@ -7,7 +7,7 @@ body {
 }
 
 #map-canvas { 
-  height: 95%; 
+  height: 100%; 
   z-index: 1;
 }
 
@@ -16,10 +16,19 @@ body {
 }
 
 .nav {
+	top: 0;
 	height: 5%;
 	width: 100%;
 	position: fixed;
 	z-index: 4;
 	background-color: peachpuff;
 	opacity: .85;
+}
+
+.about {
+	height: 100%;
+	width: 15%;
+	margin-top: 14%;
+	float: right;
+	padding: 16px;
 }

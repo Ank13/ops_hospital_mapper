@@ -6,7 +6,7 @@
 <%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
 <% end %>
 
-
+  <%= render partial: "about" %>
   <div class="panel">
       <h3>Procedures</h3>
       <input type="textarea" placeholder="search">
@@ -21,7 +21,7 @@
       <h3>Patient Surveys</h3>
           <ul>
               <li><a href="#" title="home">Home</a></li>
-              <li><a href="#/" title="about">About</a></li>
+              <li><a title="about">About</a></li>
           </ul>
    
           <h3>Hospital Outcomes</h3>
