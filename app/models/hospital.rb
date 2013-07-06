@@ -37,8 +37,12 @@ class Hospital < ActiveRecord::Base
   end
 
   def infobox_on_click
-    hospital_charge = hospitals_procedures.find_by_drg_id(39).avg_covered_charges
-    il_charge = Procedure.find_by_drg_id(39).avg_covered_charges_IL
+    unless hospitals_procedures.find_by_drg_id(39).nil?
+      hospital_charge = hospitals_procedures.find_by_drg_id(39).avg_covered_charges
+    else
+      hospital_charge = 0
+    end
+    il_charge = Procedure.find_by_drg_id(39).avg_covered_charges_IL  
     natl_charge = Procedure.find_by_drg_id(39).natl_avg_total_payments
     {hospital_charge: hospital_charge, il_charge: il_charge, natl_charge: natl_charge, hospital_id: provider_id}
   end

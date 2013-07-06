@@ -50,7 +50,7 @@ $(document).ready(function(){
          marker.html = hospital["infobox_html"];
 
         var infowindow = new google.maps.InfoWindow({
-          maxWidth: 200 
+          maxWidth: 400 
         });
    
         google.maps.event.addListener(marker, 'click', function() {
