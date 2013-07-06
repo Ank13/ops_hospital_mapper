@@ -29,7 +29,7 @@ $(document).ready(function(){
 
     function setMarkers(map, locations){
       
-      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+      var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
 
       var shape = {
       coord: [1, 1, 1, 20, 18, 20, 18 , 1],
@@ -42,7 +42,7 @@ $(document).ready(function(){
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          icon: iconBase + 'hospitals_maps.png',
+          icon: iconBase + 'h_sign_32x32.png',
           shape: shape,
           title: hospital["provider_name"],
           zIndex: i
