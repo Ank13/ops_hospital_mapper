@@ -16,8 +16,27 @@ class Hospital < ActiveRecord::Base
   end
 
   def infobox_html
-    "<div class='info-box'> #{provider_name} </div>"
+    unless self.patient_survey.nil? && self.outcome.nil?
+      return "<div class='info-box'> #{provider_name} </div>
+              <p><a href='#'>Comparison Details</a></p>
+              <ul>
+                <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital</li>
+                <li> Survey response rate: #{(patient_survey.survey_response_rate * 100).round(0)}%</li>
+                <li> Readmission rate from heart attack: #{outcome.readm_ha }</li>
+                <li> Reported discharges: #{total_discharges}</li>
+                <li> Average Covered Charges (all procedures): $#{(average_covered_charges/1000).round(0)}K</li>
+                <li> Average Total Payment (all procedures): $#{(average_total_payments/1000).round(0)}K</li>
+              </ul>"
+    else
+      return "<div class='info-box'> #{provider_name} </div>
+              <ul>
+                <li> Average Covered Charges (all procedures): $#{(average_covered_charges/1000).round(0)}K</li>
+                <li> Average Total Payment (all procedures): $#{(average_total_payments/1000).round(0)}K</li>
+              </ul>"
+    end
   end
 
 end
+
+  
 
