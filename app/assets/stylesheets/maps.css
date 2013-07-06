@@ -8,4 +8,5 @@ body {
 
 #map-canvas { 
   height: 100%; 
+  z-index: 1;
 }
