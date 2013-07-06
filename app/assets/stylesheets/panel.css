@@ -131,7 +131,7 @@ background: #9FD3DA;
 -webkit-border-bottom-right-radius: 20px;
 width: 10%;
 height: 100%;
-padding: 30px 30px 30px 130px;
+padding: 130px 110px 30px 10px;
 filter: alpha(opacity=85);
 opacity:.85;
 }
