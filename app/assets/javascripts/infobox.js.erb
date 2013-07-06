@@ -1,0 +1,65 @@
+
+$(document).ready(function(){
+
+  var drgDescription = "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC"
+  var hospitalID = 0 ;
+
+  $('#procdropdown').change(function(event){
+    drgDescription = $('#procdropdown').val();
+    var data = drgDescription;
+    var url =  '/hospitals/'+hospitalID+'/infobox';
+    var test = $("#chart_div")
+
+    if ($("#chart_div").is(':visible'))
+    {
+      $.get(url, data, function(response){
+         var that = $("#chart_div");
+         that.text(" ");
+         drawChart(response);
+      });
+    }
+  });
+
+  $("#map-canvas").on('click', '.info-click',function(event){
+    hospitalID = (this.id);
+    var that = $(this)
+    var data = drgDescription
+    var url =  '/hospitals/'+hospitalID+'/infobox'
+
+    $.get(url, data, function(response){
+       that.parent().parent().parent().attr('id', 'chart_div');
+       that.parent().parent().text(" ");
+       drawChart(response);
+    });
+  });
+});
+
+google.load('visualization', '1.0', {'packages':['corechart']});
+
+  function drawChart(data) {
+    var hospitalCharge = data["hospital_charge"]
+    var ilCharge = data["il_charge"]
+    var natlCharge = data["natl_charge"]
+    var procedure = data["procedure"]
+
+    var data = google.visualization.arrayToDataTable([
+      ['Factor', 'Here', 'Illinois', 'National'],
+      ['Cost',  hospitalCharge, ilCharge, natlCharge],
+    ]);
+
+    var formatter = new google.visualization.TableNumberFormat(
+          {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true});
+      formatter.format(data, 1); 
+      formatter.format(data, 2); 
+      formatter.format(data, 3); 
+
+    var options = {
+      'title': procedure,
+      'width':325,
+      'height':175,
+      'legend': {position: 'in'}
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }

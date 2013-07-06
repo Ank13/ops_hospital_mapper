@@ -4,6 +4,10 @@ OpsHospitalMapper::Application.routes.draw do
 
     resources :maps, :only => [:index]
 
-    resources :hospitals
+    resources :hospitals do
+      member do
+        get 'infobox'
+      end
+     end 
 
 end

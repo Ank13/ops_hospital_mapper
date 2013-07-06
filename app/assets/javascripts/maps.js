@@ -32,7 +32,7 @@ $(document).ready(function(){
       var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
 
       var shape = {
-      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+      coord: [1, 1, 1, 32, 32, 32, 32 , 1],
       type: 'poly'
       };
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
          marker.html = hospital["infobox_html"];
 
         var infowindow = new google.maps.InfoWindow({
-          maxWidth: 200 
+          maxWidth: 400 
         });
    
         google.maps.event.addListener(marker, 'click', function() {
