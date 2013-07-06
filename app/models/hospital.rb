@@ -15,10 +15,10 @@ class Hospital < ActiveRecord::Base
     [provider_street_address, provider_city, provider_state, provider_zip_code].compact.join(', ')
   end
 
-  def infobox_html
+  def infobox_html_on_load
     unless self.patient_survey.nil? && self.outcome.nil?
       return "<div class='info-box'> #{provider_name} </div>
-              <p><a href='#'>Comparison Details</a></p>
+              <p><a class='info-click' id='#{provider_id}' href='#'>Comparison Details</a></p>
               <ul>
                 <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital
                 <span class='note'>(#{(patient_survey.survey_response_rate * 100).round(0)}% response rate)</span></li>
@@ -34,6 +34,13 @@ class Hospital < ActiveRecord::Base
                 <li> Average Total Payment (all procedures), CMS: $#{(average_total_payments/1000).round(0)}K</li>
               </ul>"
     end
+  end
+
+  def infobox_on_click
+    hospital_charge = hospitals_procedures.find_by_drg_id(39).avg_covered_charges
+    il_charge = Procedure.find_by_drg_id(39).avg_covered_charges_IL
+    natl_charge = Procedure.find_by_drg_id(39).natl_avg_total_payments
+    {hospital_charge: hospital_charge, il_charge: il_charge, natl_charge: natl_charge, hospital_id: provider_id}
   end
 
 end

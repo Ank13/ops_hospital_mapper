@@ -1,0 +1,11 @@
+$(document).ready(function(){
+  
+  $("#map-canvas").on('click', '.info-click',function(event){
+    var data = (this.id);
+    var url =  '/hospitals/'+data+'/infobox'
+
+    $.get(url, data, function(response){
+       console.log(response)
+    });
+  });
+});
