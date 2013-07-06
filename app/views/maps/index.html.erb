@@ -1,10 +1,40 @@
 <title>Hospital Maps</title>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false">
-</script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false">
+</script>-->
 
 <%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
 <% end %>
 
-<div id="map-canvas"/>
 
+  <div class="panel">
+      <h3>Procedures</h3>
+      <input type="textarea" placeholder="search">
+      <select id="procdropdown">
+        <% @procedures.each do |procedure| %>
+        <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
+        <% end %>
+      </select>
+   
+  <div style="clear:both;"></div>
+  <div class="columns">
+      <h3>Patient Surveys</h3>
+          <ul>
+              <li><a href="#" title="home">Home</a></li>
+              <li><a href="#/" title="about">About</a></li>
+          </ul>
+   
+          <h3>Hospital Outcomes</h3>
+          <input type="textarea" placeholder="search">
+  </div>
+  <div style="clear:both;"></div>
+   
+  </div>
+  <a class="trigger" href="#">Details</a>
+
+  </div>
+  
+<div id="map-canvas">
+
+
+</div>
