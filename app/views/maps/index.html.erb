@@ -9,13 +9,37 @@
 
   <div class="panel">
       <h3>Procedures</h3>
-      <input type="textarea" placeholder="search">
-      <select id="procdropdown">
+      <!-- <input type="textarea" placeholder="search"> -->
+
+      <select data-placeholder="Choose:" class="chzn-select chzn-done" style="width: 120px; display:none;" tabindex="-1" id="sel1LR">
+        <option value></option>
         <% @procedures.each do |procedure| %>
-        <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
+        <option value="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
         <% end %>
       </select>
-   
+      <div id="sel1LR_chzn" class="chzn-container chzn-container-single" style="width:120px;" title>
+        <a href="javascript:void(0)" class="chzn-single chzn-default" tabindex="-1">
+          <span>Choose:</span>
+          <div>
+            <b></b>
+          </div>
+        </a>
+        <div class="chzn-drop">
+          <div class="chzn-search">
+            <input type="text" autocomplete="off" tabindex="2">
+          </div>
+          <ul class="chzn-results">
+            <% counter = 1 %>
+            <% @procedures.each do |procedure| %>
+            <li id="selLZG_chzn_o_<%= counter %>" class="active-result" style><%= procedure.drg_def %></li>
+            <% counter += 1 %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+     
+
   <div style="clear:both;"></div>
   <div class="columns">
       <h3>Patient Surveys</h3>
