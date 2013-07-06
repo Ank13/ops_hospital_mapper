@@ -20,18 +20,18 @@ class Hospital < ActiveRecord::Base
       return "<div class='info-box'> #{provider_name} </div>
               <p><a href='#'>Comparison Details</a></p>
               <ul>
-                <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital</li>
-                <li> Survey response rate: #{(patient_survey.survey_response_rate * 100).round(0)}%</li>
+                <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital
+                <span class='note'>(#{(patient_survey.survey_response_rate * 100).round(0)}% response rate)</span></li>
                 <li> Readmission rate from heart attack: #{outcome.readm_ha }</li>
-                <li> Reported discharges: #{total_discharges}</li>
-                <li> Average Covered Charges (all procedures): $#{(average_covered_charges/1000).round(0)}K</li>
-                <li> Average Total Payment (all procedures): $#{(average_total_payments/1000).round(0)}K</li>
+                <li> Reported discharges (CMS): #{total_discharges}</li>
+                <li> Average Covered Charges (all procedures, CMS): $#{(average_covered_charges/1000).round(0)}K</li>
+                <li> Average Total Payment (all procedures, CMS): $#{(average_total_payments/1000).round(0)}K</li>
               </ul>"
     else
       return "<div class='info-box'> #{provider_name} </div>
               <ul>
-                <li> Average Covered Charges (all procedures): $#{(average_covered_charges/1000).round(0)}K</li>
-                <li> Average Total Payment (all procedures): $#{(average_total_payments/1000).round(0)}K</li>
+                <li> Average Covered Charges (all procedures, CMS): $#{(average_covered_charges/1000).round(0)}K</li>
+                <li> Average Total Payment (all procedures), CMS: $#{(average_total_payments/1000).round(0)}K</li>
               </ul>"
     end
   end
