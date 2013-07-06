@@ -4,14 +4,15 @@ text-align:left;
 color:#666;
 font-size:14px;
 font-family:georgia, 'time new romans', serif;
-margin:0 <span id="IL_AD9" class="IL_AD">auto</span>;
+/*margin:0 <span id="IL_AD9" class="IL_AD">auto</span>;*/
+margin: 0;
 padding:0;
 }
 
-a:<span id="IL_AD5" class="IL_AD">focus</span> {
+/*a:<span id="IL_AD5" class="IL_AD">focus</span> {
 outline: none;
 }
-
+*/
 h1 {
 font-size: 34px;
 font-family: verdana, helvetica, arial, sans-serif;
@@ -136,7 +137,7 @@ opacity:.85;
 }
 
 .panel h3 {
-  color: #05484F;;
+  color: #05484F;
 }
 
 .panel p{
