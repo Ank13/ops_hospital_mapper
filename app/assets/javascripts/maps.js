@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  google.maps.visualRefresh = true;
 
   var hospitals = $("#hospitals").data("hospitals");
 
@@ -6,7 +7,17 @@ $(document).ready(function(){
     var mapOptions = {
       center: new google.maps.LatLng(41.8500, -87.8500),
       zoom: 11,
-      mapTypeId: google.maps.MapTypeId.TERRAIN
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      panControl: false,
+      zoomControl: true,
+      zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL,
+      position: google.maps.ControlPosition.BOTTOM_RIGHT
+      },
+      scaleControl: true,
+      scaleControlOptions: {
+      position: google.maps.ControlPosition.BOTTOM_RIGHT
+      }
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"),
