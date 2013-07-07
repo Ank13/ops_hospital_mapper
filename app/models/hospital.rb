@@ -48,6 +48,24 @@ class Hospital < ActiveRecord::Base
     {hospital_charge: hospital_charge, il_charge: il_charge, natl_charge: natl_charge, hospital_id: provider_id, procedure: procedure}
   end
 
+  def complication_cost_correlation
+        acc=[]
+        rdstc =[]
+
+        Hospital.all.each do |h|
+          unless h.complication.nil?
+            rdstc << h.complication.R_D_S_T_C
+            acc << h.average_covered_charges
+          end
+        end
+
+        R.acc = acc
+        R.rdstc = rdstc
+
+        R.eval 'costbenefit = cor(acc, rdstc)'
+        costbenefit = R.pull 'costbenefit'
+
+  end
 end
 
   
