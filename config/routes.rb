@@ -7,6 +7,7 @@ OpsHospitalMapper::Application.routes.draw do
     resources :hospitals do
       member do
         get 'infobox'
+        get 'outcomebox'
       end
     end 
 

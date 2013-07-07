@@ -19,11 +19,24 @@ $(document).ready(function(){
     }
   });
 
-  $("#map-canvas").on('click', '.info-click',function(event){
+  $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
     var that = $(this)
     var data = drgDescription
     var url =  '/hospitals/'+hospitalID+'/infobox'
+
+    $.get(url, data, function(response){
+       that.parent().parent().parent().attr('id', 'chart_div');
+       that.parent().parent().text(" ");
+       drawChart(response);
+    });
+  });
+
+  $("#map-canvas").on('click', '.info-outcomes',function(event){
+    hospitalID = (this.id);
+    var that = $(this)
+    var data = drgDescription
+    var url =  '/hospitals/'+hospitalID+'/outcomebox'
 
     $.get(url, data, function(response){
        that.parent().parent().parent().attr('id', 'chart_div');

@@ -18,7 +18,8 @@ class Hospital < ActiveRecord::Base
   def infobox_html_on_load
     unless self.patient_survey.nil? && self.outcome.nil?
       return "<div class='info-box'> #{provider_name} </div>
-              <p><a class='info-click' id='#{provider_id}' href='#'>Comparison Details</a></p>
+              <p><a class='info-comparison' id='#{provider_id}' href='#'>Comparison Details</a></p>
+              <p><a class='info-outcomes' id='#{provider_id}' href='#'>Outcomes</a></p>
               <ul>
                 <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital
                 <span class='note'>(#{(patient_survey.survey_response_rate * 100).round(0)}% response rate)</span></li>
@@ -64,8 +65,21 @@ class Hospital < ActiveRecord::Base
 
         R.eval 'costbenefit = cor(acc, rdstc)'
         costbenefit = R.pull 'costbenefit'
-
   end
+
+  def outcomebox_on_click
+    unless self.complication.R_D_S_T_C.nil?
+      hosp_complication_rate = self.complication.R_D_S_T_C
+    else
+      hospital_charge = 0
+    end
+    avg_complication_rate = Complication.average("R_D_S_T_C").to_i
+    
+    {hosp_complication_rate: hosp_complication_rate, avg_complication_rate: avg_complication_rate}
+  end
+
+
+
 end
 
   

@@ -17,4 +17,12 @@ class HospitalsController < ApplicationController
     end
   end
 
+  def outcomebox
+    hospital = Hospital.find_by_provider_id(params[:id])
+    data = hospital.outcomebox_on_click.to_json
+    respond_to do |format|
+      format.json { render :json => data }
+    end
+  end
+
 end
