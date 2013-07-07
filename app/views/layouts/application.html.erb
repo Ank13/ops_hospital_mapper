@@ -10,7 +10,7 @@
   <%= javascript_include_tag "application" %>
 
   <% if Rails.env.development? %>
-  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tzWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false' %>
+  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false' %>
   <% elsif Rails.env.staging? %>
   	  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkB4eO86DxOAR0mTq_VDj8zVkBdhhGjjQ&sensor=false' %>
   <% elsif Rails.env.production?%>
