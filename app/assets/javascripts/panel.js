@@ -1,27 +1,20 @@
 $(document).ready(function(){
-    $(".trigger").click(function(){
-        $(".panel").toggle("fast");
-        $(this).toggleClass("active");
-        return false;
-    });
+  $(".trigger").click(function(){
+    $(".panel").toggle("fast");
+    $(this).toggleClass("active");
+    if($(this).hasClass("active")) {
+    	$('.searchby').animate({
+    		left: '-=14%'
+    	}, 300);
+    	$('.analytics').hide();
+    }
+    else {
+    	$('.searchby').animate({
+    		left: '+=14%'
+    	}, 300);
+    	$('.analytics').fadeIn(500);
+  	}
+    return false;
+  });
 });
 
- // $('.details').hide();
-
- // $(".trigger").click(function(){
- //     $(this).toggleClass("active");
-
- //     if($(this).class==="active") {
- //     $(".details").toggle("fast");
- //     $(this).animate({
- //       left: '+=150'
- //     });
- //   } else {
- //     $(".details").toggle("fast");
- //     $(this).animate({
- //       left: '-=150'
- //     })
- //   }
-
- //     return false;
- // });

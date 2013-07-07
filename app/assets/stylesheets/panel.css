@@ -162,6 +162,7 @@ a.trigger, a.trigger2{
 	letter-spacing:-1px;
 	font-family: verdana, helvetica, arial, sans-serif;
 	color:#fff;
+	margin: 0;
 	padding-left: 12px;
 	padding-top: 8px;
 	width: 88px;
