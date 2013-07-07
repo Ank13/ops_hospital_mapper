@@ -1,43 +1,35 @@
 <title>Hospital Maps</title>
 
-<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false">
-</script>-->
-
 <%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
 <% end %>
 
-  <%= render partial: "about" %>
-  <%= render partial: "datasets" %>
-  <%= render partial: "wtfacts" %>
-  <div class="panel">
-      <h3>Procedures</h3>
-      <input type="textarea" placeholder="search">
-      <select id="procdropdown">
-        <% @procedures.each do |procedure| %>
-        <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
-        <% end %>
-      </select>
-   
-
+<%= render partial: "about" %>
+<%= render partial: "datasets" %>
+<%= render partial: "wtfacts" %>
 
 <div class="panel">
-
-   
-
-  <div style="clear:both;"></div>
+  <h3>Procedures</h3>
   
-      <h3>Patient Surveys</h3>
-   
+  <input type="textarea" placeholder="search">
 
-      <h3>Hospital Outcomes</h3>
-      
+  <select id="procdropdown">
+    <% @procedures.each do |procedure| %>
+      <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
+    <% end %>
+  </select>
 
-  <div style="clear:both;"></div>
- 
+  <div class="panel">
+
+    <div style="clear:both;"></div>
+
+    <h3>Patient Surveys</h3>
+
+    <h3>Hospital Outcomes</h3>
+        
+    <div style="clear:both;"></div>
+
+    <a class="trigger" href="#">Details</a>
   </div>
-  <a class="trigger" href="#">Details</a>
-  </div>
-
 </div>
 
 <div id="map-canvas">

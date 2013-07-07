@@ -115,7 +115,8 @@ padding: 15px 20px;
 }
 
 .panel {
-position: absolute;
+position: fixed;
+clear: both;
 z-index: 2;
 display: block;
 background: #9FD3DA;

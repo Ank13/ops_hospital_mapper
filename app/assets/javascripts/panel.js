@@ -5,3 +5,23 @@ $(document).ready(function(){
         return false;
     });
 });
+
+ // $('.details').hide();
+
+ // $(".trigger").click(function(){
+ //     $(this).toggleClass("active");
+
+ //     if($(this).class==="active") {
+ //     $(".details").toggle("fast");
+ //     $(this).animate({
+ //       left: '+=150'
+ //     });
+ //   } else {
+ //     $(".details").toggle("fast");
+ //     $(this).animate({
+ //       left: '-=150'
+ //     })
+ //   }
+
+ //     return false;
+ // });

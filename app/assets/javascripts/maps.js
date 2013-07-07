@@ -82,12 +82,10 @@ $(document).ready(function(){
     e.stopPropagation();
   });
 
-
   $(document).click(function(e){
     $('.about').fadeOut('400');
     $('.datasets').fadeOut('400');
     $('.wtfacts').fadeOut('400');
   });
-  
 
 });
