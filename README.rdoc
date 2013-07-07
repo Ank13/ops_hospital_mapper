@@ -13,3 +13,9 @@ Load the data into your database from the CSV files:
 
 Geocode all Hospitals without coordinates:
    $ rake geocode:all class=Hospital sleep=0.25
+
+Need to have R installed before you run rinruby:
+  brew install R
+  or
+  http://ftp.ussg.iu.edu/CRAN/
+  

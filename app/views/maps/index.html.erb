@@ -14,7 +14,7 @@
       <input type="textarea" placeholder="search">
       <select id="procdropdown">
         <% @procedures.each do |procedure| %>
-        <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
+        <option width value="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
         <% end %>
       </select>
    
@@ -30,6 +30,11 @@
    
 
       <h3>Hospital Outcomes</h3>
+
+
+      <h3>Map Visualizations</h3>
+      <a href="#" id="acc">Average Cost (all procedures)</a>
+      <a href="#" id="clear">Clear</a>
       
 
   <div style="clear:both;"></div>
