@@ -61,31 +61,5 @@ $(document).ready(function(){
       };
     };
   google.maps.event.addDomListener(window, 'load', initialize);
-
-// NAVBAR jQUERY by DANIEL SONG -> NEED TO PUT IN BIGGER FUNCTION 
-  $('.about').hide();
-  $('.datasets').hide();
-  $('.wtfacts').hide();
-
-  $('#about').click(function(e){
-    $('.about').slideToggle('400');
-    e.stopPropagation();
-  });
-
-  $('#datasets').click(function(e){
-    $('.datasets').slideToggle('400');
-    e.stopPropagation();
-  });
-
-  $('#wtfacts').click(function(e){
-    $('.wtfacts').slideToggle('400');
-    e.stopPropagation();
-  });
-
-  $(document).click(function(e){
-    $('.about').fadeOut('400');
-    $('.datasets').fadeOut('400');
-    $('.wtfacts').fadeOut('400');
-  });
-
 });
+

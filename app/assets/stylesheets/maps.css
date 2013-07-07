@@ -8,26 +8,31 @@ body {
 
 #map-canvas { 
   height: 100%; 
-  z-index: 1;
+  z-index: 2;
 }
 
 .note {
   font-style:italic;
 }
 
-.nav {
-	top: 0;
-	height: 5%;
-	width: 100%;
+.searchby {
 	position: fixed;
 	z-index: 4;
-	background-color: peachpuff;
-	opacity: .85;
+	top: 8.5%; 
+	left: 15%;
 }
 
-.about, .wtfacts, .datasets {
+.analytics {
+	position: fixed;
+	z-index: 4;
+	top: 22%; 
+	left: 15%;
+}
+
+.static {
+	z-index: 1;
 	height: 100%;
-	width: 15%;
+	width: 10%;
 	margin-top: 14%;
 	float: right;
 	padding: 16px;

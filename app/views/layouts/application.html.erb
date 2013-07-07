@@ -10,7 +10,7 @@
   <%= javascript_include_tag "application" %>
 
   <% if Rails.env.development? %>
-  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false' %>
+  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tzWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false' %>
   <% elsif Rails.env.staging? %>
   	  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkB4eO86DxOAR0mTq_VDj8zVkBdhhGjjQ&sensor=false' %>
   <% elsif Rails.env.production?%>
@@ -24,12 +24,13 @@
 
 <nav class="nav">
   <ul id="navlist">
-    <li id="logo"><%= link_to "hospiTALLY", root_path %></li>
+    <li id="logo">hospiTALLY</li>
     <li id="wtfacts"><%= link_to "WTF medicare", '#' %></li>
     <li id="datasets"><%= link_to "datasets", '#' %></li>
     <li id="about"><%= link_to "about US", '#' %></li>
   </ul>
 </nav>
+
 <%= yield %>
 
 </body>
