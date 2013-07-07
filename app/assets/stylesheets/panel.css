@@ -116,7 +116,6 @@ padding: 15px 20px;
 
 .panel {
 position: fixed;
-clear: both;
 z-index: 2;
 display: block;
 background: #9FD3DA;
@@ -127,6 +126,7 @@ background: #9FD3DA;
 width: 6%;
 height: 95%;
 padding: 130px 110px 30px 10px;
+top: 5%;
 filter: alpha(opacity=85);
 opacity:.85;
 }
@@ -141,7 +141,7 @@ padding: 0;
 color: #cccccc;
 }
 
-.panel a, .panel a:visited{
+/*.panel a, .panel a:visited{
 margin: 0;
 padding: 0;
 color: #FCFBE7;
@@ -154,19 +154,18 @@ padding: 0;
 color: #05484F;
 text-decoration: none;
 border-bottom: 1px solid #ffffff;
-}
+}*/
 
 a.trigger{
-position: absolute;
+position: fixed;
 z-index: 3;
 text-decoration: none;
-margin-top: -177px; 
-margin-left: 165px;
+top: 8.5%; 
+left: 15.5%;
 font-size: 16px;
 letter-spacing:-1px;
 font-family: verdana, helvetica, arial, sans-serif;
 color:#fff;
-/*padding: 10px 20px 10px 5px;*/
 width: 100px;
 height: 40px;
 font-weight: 400;
@@ -183,16 +182,15 @@ display: block;
 }
 
 a.trigger:hover{
-position: absolute;
+position: fixed;
 z-index: 3;
 text-decoration: none;
-margin-top: -177px; 
-margin-left: 165px;
+top: 8.5%; 
+left: 15.5%;
 font-size: 16px;
 letter-spacing:-1px;
 font-family: verdana, helvetica, arial, sans-serif;
 color:#fff;
-/*padding: 10px 20px 10px 5px;*/
 width: 100px;
 height: 40px;
 font-weight: 400;
@@ -266,10 +264,13 @@ list-style-type: none;
 }
 
 #procdropdown {
-   width: 120px;
-   height: 18px;
-   margin-top: 4px;
-   overflow: hidden;
-   border: 1px solid #ccc;
+  width: 120px;
+  height: 18px;
+  margin-top: 4px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
 
+.slidepanel {
+	
 }
