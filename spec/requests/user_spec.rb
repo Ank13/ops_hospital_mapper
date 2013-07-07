@@ -4,19 +4,33 @@ describe "A user can" do
 
 	context "on home page" do
 
+		before(:each) do
+			visit root_path
+		end
+
+		it 'is on the proper page' do
+			current_path.should == root_path
+		end
+			
 		it "displays nav bar" do
-			visit root_path
-			expect(page).to have_content("WTF medicare")
+			page.should have_content 'WTF'
 		end
 
-		it "displays correct procedure information" do
-			visit root_path
-			within '#date' do
-			  find("option[value='305 - HYPERTENSION W/O MCC']").click
-			  # dont know how to click a hospital on maps via capybara
-			end
+		it "displays details nav icon" do
+			page.should have_content "Details"
+
 		end
 
+		it "hides left side bar when details clicked" do
+			click_link 'Details'
+			page.should_not have_content 'PATIENT SURVEYS'
+
+		end
+
+		it "displays correct information when static page clicked" do
+			click_link 'datasets'
+			page.should have_content 'CMS'
+		end
 	end		
 
 end
