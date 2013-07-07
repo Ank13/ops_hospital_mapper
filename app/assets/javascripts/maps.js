@@ -70,25 +70,39 @@ $(document).ready(function(){
       return circle;
     };
 
+    var bubbles = [];
+
     function setACC(map, locations){
       for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
         var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
         var size = hospital["acc"];
 
-        var marker = new google.maps.Marker({
+        var bubble = new google.maps.Marker({
           position: myLatLng,
           map: map,
           icon: getCircle(size),
           title: hospital["provider_name"],
           zIndex: i
         });
+        bubbles.push(bubble);
       };
+    };
+
+    function clearOverlays() {
+      for (var i = 0; i < bubbles.length; i++ ) {
+        bubbles[i].setMap(null);
+      }
+      bubbles = [];
     };
 
   $("#acc").on('click', function(){
     var icon = 'ACC'
     setACC(map, hospitals);
+  });
+
+  $("#clear").on('click', function(){
+    clearOverlays();
   });
 
   google.maps.event.addDomListener(window, 'load', initialize);
