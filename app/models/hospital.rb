@@ -16,7 +16,7 @@ class Hospital < ActiveRecord::Base
   end
 
   def infobox_html_on_load
-    unless self.patient_survey.nil? && self.outcome.nil?
+    unless (self.patient_survey.nil? || self.outcome.nil? || self.patient_survey.recommend_y.nil? || self.patient_survey.survey_response_rate.nil? || self.outcome.readm_ha.nil? || self.total_discharges.nil? || self.average_covered_charges.nil? || self.average_total_payments.nil?)
       return "<div class='info-box'> #{provider_name} </div>
               <p><a class='info-click' id='#{provider_id}' href='#'>Comparison Details</a></p>
               <ul>
@@ -48,6 +48,24 @@ class Hospital < ActiveRecord::Base
     {hospital_charge: hospital_charge, il_charge: il_charge, natl_charge: natl_charge, hospital_id: provider_id, procedure: procedure}
   end
 
+  def complication_cost_correlation
+        acc=[]
+        rdstc =[]
+
+        Hospital.all.each do |h|
+          unless h.complication.nil?
+            rdstc << h.complication.R_D_S_T_C
+            acc << h.average_covered_charges
+          end
+        end
+
+        R.acc = acc
+        R.rdstc = rdstc
+
+        R.eval 'costbenefit = cor(acc, rdstc)'
+        costbenefit = R.pull 'costbenefit'
+
+  end
 end
 
   

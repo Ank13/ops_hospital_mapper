@@ -3,6 +3,7 @@
 <%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
 <% end %>
 
+
 <%= render partial: "about" %>
 <%= render partial: "datasets" %>
 <%= render partial: "wtfacts" %>
@@ -22,6 +23,12 @@
   <h3>Patient Surveys</h3>
 
   <h3>Hospital Outcomes</h3>
+
+
+  <h3>Map Visualizations</h3>
+  <a href="#" id="acc">Average Cost (all procedures)</a>
+  <a href="#" id="clear">Clear</a>
+      
       
   <div style="clear:both;"></div>
 

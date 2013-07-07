@@ -8,6 +8,6 @@ OpsHospitalMapper::Application.routes.draw do
       member do
         get 'infobox'
       end
-     end 
+    end 
 
 end

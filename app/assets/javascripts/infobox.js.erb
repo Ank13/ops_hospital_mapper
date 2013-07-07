@@ -13,8 +13,7 @@ $(document).ready(function(){
     if ($("#chart_div").is(':visible'))
     {
       $.get(url, data, function(response){
-         var that = $("#chart_div");
-         that.text(" ");
+         $("#chart_div").text(" ");
          drawChart(response);
       });
     }
