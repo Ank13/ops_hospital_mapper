@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
+
   google.maps.visualRefresh = true;
 
   var hospitals = $("#hospitals").data("hospitals");
+  var map 
 
   function initialize() {
     var mapOptions = {
@@ -21,34 +23,28 @@ $(document).ready(function(){
       }
     };
 
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
+    map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
-    setMarkers(map, hospitals)
-
+    setMarkers(map, hospitals);
   };
 
     function setMarkers(map, locations){
-      
-      var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
 
-      var shape = {
-      coord: [1, 1, 1, 32, 32, 32, 32 , 1],
-      type: 'poly'
-      };
-
-      for (var i = 0; i < locations.length; i++) {
+      for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
+        var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
         var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
+        
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           icon: iconBase + 'h_sign_32x32.png',
-          shape: shape,
           title: hospital["provider_name"],
           zIndex: i
         });
-         marker.html = hospital["infobox_html"];
+        
+        marker.html = hospital["infobox_html"];
 
         var infowindow = new google.maps.InfoWindow({
           maxWidth: 400 
@@ -58,9 +54,45 @@ $(document).ready(function(){
           infowindow.setContent(this.html);
           infowindow.open(map, this);
         });
+
       };
     };
+
+    function getCircle(size) {
+      var circle = {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: 'red',
+        fillOpacity: .4,
+        scale: size,
+        strokeColor: 'white',
+        strokeWeight: .5
+      };
+      return circle;
+    };
+
+    function setACC(map, locations){
+      for (var i = 0; i < locations.length; i++) {   
+        var hospital = locations[i];
+        var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
+        var size = hospital["acc"];
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: getCircle(size),
+          title: hospital["provider_name"],
+          zIndex: i
+        });
+      };
+    };
+
+  $("#acc").on('click', function(){
+    var icon = 'ACC'
+    setACC(map, hospitals);
+  });
+
   google.maps.event.addDomListener(window, 'load', initialize);
+
 
 // NAVBAR jQUERY by DANIEL SONG -> NEED TO PUT IN BIGGER FUNCTION 
   $('.about').hide();
