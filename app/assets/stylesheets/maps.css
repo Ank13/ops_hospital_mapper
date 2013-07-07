@@ -37,3 +37,20 @@ body {
 	float: right;
 	padding: 16px;
 }
+
+#search-box {
+  position: absolute;
+  top: 60px;
+  left: 500px;
+  z-index: 6;
+}
+
+#search-box input{
+  font-family: Arial, Helvetica, Sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+#target {
+  width: 300px;
+}

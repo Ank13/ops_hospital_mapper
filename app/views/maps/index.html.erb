@@ -9,16 +9,14 @@
 <%= render partial: "wtfacts" %>
 
 <div class="panel">
-  <em>Procedures</em>
+  <h3>Top 100 most frequently billed medical procedures</h3> 
 
-  <select id="procdropdown" data-placeholder="Choose a Procedure" class="chzn-select" style="width:150px;" tabindex="1">
+  <select id="procdropdown" data-placeholder="Choose a Procedure..." class="chzn-select" tabindex="1">
     <option value=""></option>
     <% @procedures.each do |procedure|  %>
-      <option value='<%=procedure.drg_def %>'><%=procedure.drg_def%></option>
-    <% end %>
+      <option value='<%=procedure.drg_def.titleize %>'><%=procedure.drg_def.titleize%></option> 
+    <% end  %>
   </select>
-
-  <div style="clear:both;"></div>
 
   <h3>Patient Surveys</h3>
 
@@ -47,6 +45,10 @@
 </div>
 
 <div class="static">
+</div>
+
+<div id="search-box">
+      <input id="target" type="text" placeholder="Search hospital or location">
 </div>
 
 <div id="map-canvas">
