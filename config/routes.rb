@@ -2,9 +2,8 @@ OpsHospitalMapper::Application.routes.draw do
 
     root :to => 'maps#index'
 
-    resources :maps, :only => [:index, :show]
-    match '/about', to: 'maps#show'
-
+    resources :maps, :only => [:index]
+ 
     resources :hospitals do
       member do
         get 'infobox'

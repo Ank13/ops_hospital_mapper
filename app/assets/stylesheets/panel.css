@@ -117,14 +117,13 @@ padding: 15px 20px;
 .panel {
 position: absolute;
 z-index: 2;
-margin-top: 3%;
 display: block;
 background: #9FD3DA;
 -moz-border-radius-topright: 20px;
 -webkit-border-top-right-radius: 20px;
 -moz-border-radius-bottomright: 20px;
 -webkit-border-bottom-right-radius: 20px;
-width: 10%;
+width: 6%;
 height: 95%;
 padding: 130px 110px 30px 10px;
 filter: alpha(opacity=85);
@@ -160,8 +159,8 @@ a.trigger{
 position: absolute;
 z-index: 3;
 text-decoration: none;
-margin-top: 4.7%; 
-margin-left: 14%;
+margin-top: -177px; 
+margin-left: 165px;
 font-size: 16px;
 letter-spacing:-1px;
 font-family: verdana, helvetica, arial, sans-serif;
@@ -186,8 +185,8 @@ a.trigger:hover{
 position: absolute;
 z-index: 3;
 text-decoration: none;
-margin-top: 4.7%; 
-margin-left: 14%;
+margin-top: -177px; 
+margin-left: 165px;
 font-size: 16px;
 letter-spacing:-1px;
 font-family: verdana, helvetica, arial, sans-serif;
@@ -212,13 +211,13 @@ a.active.trigger {
 background-color: #05484F;
 }
 
-.columns{
+/*.columns{
 clear: both;
 width: 330px;
 padding: 0 0 20px 0;
 line-height: 22px;
 }
-
+*/
 .colleft{
 float: left;
 width: 130px;

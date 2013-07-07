@@ -64,9 +64,30 @@ $(document).ready(function(){
 
 // NAVBAR jQUERY by DANIEL SONG -> NEED TO PUT IN BIGGER FUNCTION 
   $('.about').hide();
-  $('#about').click(function(event){
-    event.preventDefault();
-    $('.about').fadeToggle('slow');
+  $('.datasets').hide();
+  $('.wtfacts').hide();
+
+  $('#about').click(function(e){
+    $('.about').slideToggle('400');
+    e.stopPropagation();
+  });
+
+  $('#datasets').click(function(e){
+    $('.datasets').slideToggle('400');
+    e.stopPropagation();
+  });
+
+  $('#wtfacts').click(function(e){
+    $('.wtfacts').slideToggle('400');
+    e.stopPropagation();
+  });
+
+
+  $(document).click(function(e){
+    $('.about').fadeOut('400');
+    $('.datasets').fadeOut('400');
+    $('.wtfacts').fadeOut('400');
   });
   
+
 });
