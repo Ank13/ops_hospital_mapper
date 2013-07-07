@@ -1,12 +1,58 @@
 $(document).ready(function(){
-
-
   google.maps.visualRefresh = true;
 
   var hospitals = $("#hospitals").data("hospitals");
-  var map 
+  var map;
 
   function initialize() {
+    var styles = [
+        {
+          stylers: [
+            { hue: "#375D81" }
+          ]
+        },{
+          featureType: "road",
+          elementType: "geometry",
+          stylers: [
+            { lightness: 100 },
+            { visibility: "simplified" }
+          ]
+        },{
+          featureType: "road",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+        },{
+          featureType: "administrative.neighborhood",
+          elementType: "labels",
+          stylers: [
+            {visibility: "simplified"}
+          ]
+        },{
+          featureType: "landscape",
+          elementType: "all",
+          stylers: [
+            { visibility: "simplified" }
+          ]
+        },{
+          featureType: "poi",
+          elementType: "all",
+          stylers: [
+            { visibility: "off" }
+          ]
+        },{
+          featureType: "transit",
+          elementType: "all",
+          stylers: [
+            { visibility: "simplified" }
+          ]
+        }
+      ];
+
+      var styledMap = new google.maps.StyledMapType(styles,
+        {name: "Styled Map"});
+
     var mapOptions = {
       center: new google.maps.LatLng(41.8500, -87.8500),
       zoom: 11,
@@ -27,7 +73,57 @@ $(document).ready(function(){
         mapOptions);
 
     setMarkers(map, hospitals);
-  };
+
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(41.7700, -87.9000),
+        new google.maps.LatLng(41.9900, -87.5500));
+    map.fitBounds(defaultBounds);
+
+    var input = /** @type {HTMLInputElement} */(document.getElementById('target'));
+    var searchBox = new google.maps.places.SearchBox(input);
+    var markers = [];
+
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+      var places = searchBox.getPlaces();
+
+      for (var i = 0, marker; marker = markers[i]; i++) {
+        marker.setMap(null);
+      }
+
+      markers = [];
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0, place; place = places[i]; i++) {
+        var image = {
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25)
+        };
+
+        var gMarker = new google.maps.Marker({
+          map: map,
+          icon: image,
+          title: place.name,
+          position: place.geometry.location
+        });
+
+        markers.push(gMarker);
+
+        bounds.extend(place.geometry.location);
+      }
+
+      map.fitBounds(bounds);
+    });
+
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+      var bounds = map.getBounds();
+      searchBox.setBounds(bounds);
+    });
+  }
 
     function setMarkers(map, locations){
 
