@@ -6,27 +6,31 @@
 <%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
 <% end %>
 
+  <%= render partial: "about" %>
+  <%= render partial: "datasets" %>
+  <%= render partial: "wtfacts" %>
+  <div class="panel">
+      <h3>Procedures</h3>
+      <input type="textarea" placeholder="search">
+      <select id="procdropdown">
+        <% @procedures.each do |procedure| %>
+        <option widthvalue="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
+        <% end %>
+      </select>
+   
+
 
 <div class="panel">
 
-    <em>Procedures</em>        
-    <select id="procdropdown" data-placeholder="Choose a Procedure..." class="chzn-select" style="width:250px;" tabindex="1">
-      <option value=""></option>
-      <% @procedures.each do |procedure|  %>
-        <option value='<%=procedure.drg_def %>'><%=procedure.drg_def%></option> 
-      <% end  %>
-    </select>
+   
 
   <div style="clear:both;"></div>
   
       <h3>Patient Surveys</h3>
-          <ul>
-              <li><a href="#" title="home">Home</a></li>
-              <li><a href="#/" title="about">About</a></li>
-          </ul>
    
-          <h3>Hospital Outcomes</h3>
-          <input type="textarea" placeholder="search">
+
+      <h3>Hospital Outcomes</h3>
+      
 
   <div style="clear:both;"></div>
  
