@@ -48,6 +48,21 @@ $(document).ready(function(){
        drawChart(response, axisLabels);
     });
   });
+
+  $("#map-canvas").on('click', '.info-complications',function(event){
+    hospitalID = (this.id);
+    var that = $(this)
+    var data = drgDescription
+    var url =  '/hospitals/'+hospitalID+'/complicationbox'
+
+    $.get(url, data, function(response){
+       that.parent().parent().parent().attr('id', 'chart_div');
+       that.parent().parent().text(" ");
+       var axisLabels = {colOne: "Hospital", colTwo: "National"}
+       console.log(response);
+       drawChart(response, axisLabels);
+    });
+  });
 });
 
 google.load('visualization', '1.0', {'packages':['corechart']});

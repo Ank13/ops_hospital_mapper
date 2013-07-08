@@ -18,9 +18,10 @@ class Hospital < ActiveRecord::Base
   def infobox_html_on_load
     unless (self.patient_survey.nil? || self.outcome.nil? || self.patient_survey.recommend_y.nil? || self.patient_survey.survey_response_rate.nil? || self.outcome.readm_ha.nil? || self.total_discharges.nil? || self.average_covered_charges.nil? || self.average_total_payments.nil?)
       return "<div class='info-box'> #{provider_name} </div>
-
+              
               <p><a class='info-comparison' id='#{provider_id}' href='#'>Comparison Details</a></p>
               <p><a class='info-outcomes' id='#{provider_id}' href='#'>Outcomes</a></p>
+              <p><a class='info-complications' id='#{provider_id}' href='#'>Complications</a></p>
               <ul>
                 <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital
                 <span class='note'>(#{(patient_survey.survey_response_rate * 100).round(0)}% response rate)</span></li>
@@ -69,6 +70,25 @@ class Hospital < ActiveRecord::Base
   end
 
   def outcomebox_on_click
+    unless self.outcome.nil?
+      p hosp_outcome_rate_p = self.outcome.mr_p.to_i
+      p hosp_outcome_rate_h_a = self.outcome.mr_h_a.to_i
+      p hosp_outcome_rate_hf = self.outcome.mr_hf.to_i
+    else
+      hospital_charge = 0
+    end
+    hosp_outcome_rate = hosp_outcome_rate_p + hosp_outcome_rate_h_a + hosp_outcome_rate_hf
+
+    p avg_outcome_rate_p = Outcome.average("mr_p").to_i
+    p avg_outcome_rate_h_a = Outcome.average("mr_h_a").to_i
+    p avg_outcome_rate_hf = Outcome.average("mr_hf").to_i
+
+    avg_outcome_rate = avg_outcome_rate_p + avg_outcome_rate_h_a + avg_outcome_rate_hf
+
+    {first_col: hosp_outcome_rate, second_col: avg_outcome_rate, third_col: 0}
+  end
+
+  def complicationbox_on_click
     unless self.complication.R_D_S_T_C.nil?
       hosp_complication_rate = self.complication.R_D_S_T_C.to_i
     else
@@ -76,7 +96,7 @@ class Hospital < ActiveRecord::Base
     end
     avg_complication_rate = Complication.average("R_D_S_T_C").to_i
     
-    {first_col: hosp_complication_rate, second_col: avg_complication_rate}
+    {first_col: hosp_complication_rate, second_col: avg_complication_rate, third_col: 0}
   end
 
 

@@ -8,6 +8,7 @@ OpsHospitalMapper::Application.routes.draw do
       member do
         get 'infobox'
         get 'outcomebox'
+        get 'complicationbox'
       end
     end 
 
