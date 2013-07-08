@@ -82,7 +82,7 @@ $(document).ready(function(){
         new google.maps.LatLng(41.9900, -87.5500));
     map.fitBounds(defaultBounds);
 
-    var input = /** @type {HTMLInputElement} */(document.getElementById('target'));
+    var input = (document.getElementById('target'));
     var searchBox = new google.maps.places.SearchBox(input);
     var markers = [];
 
@@ -91,7 +91,7 @@ $(document).ready(function(){
 
       for (var i = 0, marker; marker = markers[i]; i++) {
         marker.setMap(null);
-      }
+      };
 
       markers = [];
       var bounds = new google.maps.LatLngBounds();
@@ -127,9 +127,10 @@ $(document).ready(function(){
 
     function setMarkers(map, locations){
 
+        var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
+        
       for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
-        var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
         var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
         
         var marker = new google.maps.Marker({
