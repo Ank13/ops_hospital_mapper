@@ -3,7 +3,7 @@ class MapsController < ApplicationController
   def index
     lat ||= 41.7700
     long ||= -87.9000
-    distance ||= 20
+    distance ||= 5
     box = Geocoder::Calculations.bounding_box([lat, long], distance)
 
     hospitals = Hospital.geocoded.within_bounding_box(box)
@@ -33,8 +33,6 @@ class MapsController < ApplicationController
     respond_to do |format|
       format.json { render :json => data }
     end
-
   end
-
-
+  
 end

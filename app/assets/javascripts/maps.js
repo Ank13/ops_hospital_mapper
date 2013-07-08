@@ -1,7 +1,7 @@
 $(document).ready(function(){
   google.maps.visualRefresh = true;
 
-  var hospitals = $("#hospitals").data("hospitals");
+  // var hospitals = $("#hospitals").data("hospitals");
   var map;
 
   function initialize() {
@@ -54,7 +54,7 @@ $(document).ready(function(){
         {name: "Styled Map"});
 
     var mapOptions = {
-      center: new google.maps.LatLng(41.8500, -87.8500),
+      // center: new google.maps.LatLng(41.8500, -87.8500),
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       panControl: false,
@@ -72,7 +72,7 @@ $(document).ready(function(){
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
-    setMarkers(map, hospitals);
+    // setMarkers(map, hospitals);
 
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
@@ -84,7 +84,7 @@ $(document).ready(function(){
 
     var input = (document.getElementById('target'));
     var searchBox = new google.maps.places.SearchBox(input);
-    var markers = [];
+    // var markers = [];
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
@@ -122,26 +122,42 @@ $(document).ready(function(){
     google.maps.event.addListener(map, 'bounds_changed', function() {
       var bounds = map.getBounds();
       searchBox.setBounds(bounds);
-      // var latitude = map.getCenter().lat;
       var lng = map.getCenter().lng();
       var lat = map.getCenter().lat();
       loadMoreMarkers(lat, lng);
     });
   };
-
+  
+  requestcount = 0;
+  responsecount = 0;
+   
     function loadMoreMarkers(lat, lng){
-      var data = {'lat' : lat, 'lng' : lng, 'distance' : 20};
+      var data = {'lat' : lat, 'lng' : lng, 'distance' : 5};
       var url =  '/maps/more_markers';
-      var dataHolder = $("#hospitals");
-      
       var moreHospitals = [];
-      
+
       $.get(url, data, function(response){
         for (var i = 0; i < response.length; i++) {
           moreHospitals.push(response[i]);
         };
-      console.log(moreHospitals.length)
-      setMarkers(map, moreHospitals)
+        setMarkers(map, moreHospitals);
+
+        var existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
+        var hospital_hash_table = {};
+        var allHospitals = existingHospitals;
+
+        for (var i = 0; i < existingHospitals.length; i++) {
+          hospital_hash_table[existingHospitals[i].provider_id] = true;
+        }
+
+        for (var i = 0; i < moreHospitals.length; i++) {
+          var h = moreHospitals[i];
+
+          if ( ! (h.provider_id in hospital_hash_table)) {
+            allHospitals.push(h);
+          }
+        }
+        $("#hospitals").attr('data-hospitals', JSON.stringify(allHospitals));
       });
     };
 
