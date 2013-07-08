@@ -40,8 +40,8 @@ body {
 
 #search-box {
   position: absolute;
-  top: 60px;
-  left: 500px;
+  top: 40px;
+  left: 520px;
   z-index: 6;
 }
 
