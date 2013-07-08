@@ -122,12 +122,32 @@ $(document).ready(function(){
     google.maps.event.addListener(map, 'bounds_changed', function() {
       var bounds = map.getBounds();
       searchBox.setBounds(bounds);
+      // var latitude = map.getCenter().lat;
+      var lng = map.getCenter().lng();
+      var lat = map.getCenter().lat();
+      loadMoreMarkers(lat, lng);
     });
-  }
+  };
+
+    function loadMoreMarkers(lat, lng){
+      var data = {'lat' : lat, 'lng' : lng, 'distance' : 20};
+      var url =  '/maps/more_markers';
+      var dataHolder = $("#hospitals");
+      
+      var moreHospitals = [];
+      
+      $.get(url, data, function(response){
+        for (var i = 0; i < response.length; i++) {
+          moreHospitals.push(response[i]);
+        };
+      console.log(moreHospitals.length)
+      setMarkers(map, moreHospitals)
+      });
+    };
 
     function setMarkers(map, locations){
 
-        var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
+      var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
         
       for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
