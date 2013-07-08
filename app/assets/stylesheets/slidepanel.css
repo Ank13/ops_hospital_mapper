@@ -1,16 +1,17 @@
 .slidepanel {
-	position: absolute;
+	position: fixed;
 	z-index: 1;
 	display: block;
-	width: 6%;
-	height: 95%;
+	width: 10%;
+	height: 100%;
 	-moz-border-radius-topright: 20px;
 	-webkit-border-top-right-radius: 20px;
 	-moz-border-radius-bottomright: 20px;
 	-webkit-border-bottom-right-radius: 20px;
-	padding: 130px 110px 30px 10px;
-	left: 14%;
+	padding: 12% 2.5% 1.5% 1.5%;
+	left: 15%;
 	top: 0;
 	opacity:.85;
 	background-color: #FAFFE4;
 }
+
