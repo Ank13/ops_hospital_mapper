@@ -15,14 +15,21 @@ body {
   font-style:italic;
 }
 
-.searchby {
+#searchby {
 	position: fixed;
 	z-index: 4;
 	top: 8.5%; 
 	left: 12.1%;
 }
 
-.analytics {
+#searchby2 {
+  position: fixed;
+  z-index: 1;
+  top: 8.5%; 
+  left: 2.1%;
+}
+
+#analytics {
 	position: fixed;
 	z-index: 4;
 	top: 21.3%; 
