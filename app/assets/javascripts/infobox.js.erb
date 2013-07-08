@@ -1,3 +1,4 @@
+// all of this javascript can be modularied to make it more readable, maintanable, and organized!
 
 $(document).ready(function(){
 
@@ -35,6 +36,7 @@ $(document).ready(function(){
 
 google.load('visualization', '1.0', {'packages':['corechart']});
 
+  // indentation is messed up
   function drawChart(data) {
     var hospitalCharge = data["hospital_charge"]
     var ilCharge = data["il_charge"]
@@ -48,9 +50,9 @@ google.load('visualization', '1.0', {'packages':['corechart']});
 
     var formatter = new google.visualization.TableNumberFormat(
           {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true});
-      formatter.format(data, 1); 
-      formatter.format(data, 2); 
-      formatter.format(data, 3); 
+      formatter.format(data, 1);
+      formatter.format(data, 2);
+      formatter.format(data, 3);
 
     var options = {
       'title': procedure,
