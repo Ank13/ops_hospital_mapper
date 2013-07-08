@@ -1,8 +1,8 @@
 class Hospital < ActiveRecord::Base
   attr_accessible :provider_id, :provider_name, :provider_street_address, :provider_city, :provider_state, :provider_zip_code, :hrr, :total_discharges, :count_drgs, :average_covered_charges, :average_total_payments, :latitude, :longitude
-  
+
   geocoded_by :full_address
-  # after_validation :geocode 
+  # after_validation :geocode
 
   set_primary_key"provider_id"
   has_many :hospitals_procedures, :foreign_key => 'provider_id'
@@ -11,10 +11,13 @@ class Hospital < ActiveRecord::Base
   has_one  :outcome, :foreign_key => :provider_id, :primary_key => :provider_id
   has_one  :complication, :foreign_key => :provider_id, :primary_key => :provider_id
 
+  # any validations?
+
   def full_address
     [provider_street_address, provider_city, provider_state, provider_zip_code].compact.join(', ')
   end
 
+  # YIKES, this should NOT be in the model! move it to a helper
   def infobox_html_on_load
     unless (self.patient_survey.nil? || self.outcome.nil? || self.patient_survey.recommend_y.nil? || self.patient_survey.survey_response_rate.nil? || self.outcome.readm_ha.nil? || self.total_discharges.nil? || self.average_covered_charges.nil? || self.average_total_payments.nil?)
       return "<div class='info-box'> #{provider_name} </div>
@@ -49,24 +52,24 @@ class Hospital < ActiveRecord::Base
   end
 
   def complication_cost_correlation
-        acc=[]
-        rdstc =[]
+    # fixing indentation
+    acc=[]
+    rdstc =[]
 
-        Hospital.all.each do |h|
-          unless h.complication.nil?
-            rdstc << h.complication.R_D_S_T_C
-            acc << h.average_covered_charges
-          end
-        end
+    Hospital.all.each do |h|
+      unless h.complication.nil?
+        rdstc << h.complication.R_D_S_T_C
+        acc << h.average_covered_charges
+      end
+    end
 
-        R.acc = acc
-        R.rdstc = rdstc
+    R.acc = acc
+    R.rdstc = rdstc
 
-        R.eval 'costbenefit = cor(acc, rdstc)'
-        costbenefit = R.pull 'costbenefit'
-
+    R.eval 'costbenefit = cor(acc, rdstc)'
+    costbenefit = R.pull 'costbenefit'
   end
 end
 
-  
+
 

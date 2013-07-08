@@ -4,7 +4,5 @@ class Procedure < ActiveRecord::Base
 	set_primary_key"drg_id"
   has_many :hospitals_procedures, :foreign_key => :drg_id
 	has_many :hospitals, :through => :hospitals_procedures, :primary_key => :drg_id
-
 end
-
-
+# dont leave random whitespace and newlines
