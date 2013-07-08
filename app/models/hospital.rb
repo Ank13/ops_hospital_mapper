@@ -17,11 +17,12 @@ class Hospital < ActiveRecord::Base
 
   def infobox_html_on_load
     unless (self.patient_survey.nil? || self.outcome.nil? || self.patient_survey.recommend_y.nil? || self.patient_survey.survey_response_rate.nil? || self.outcome.readm_ha.nil? || self.total_discharges.nil? || self.average_covered_charges.nil? || self.average_total_payments.nil?)
-      return "<div class='info-box'> #{provider_name} </div>
+      return "
               
-              <p><a class='info-comparison' id='#{provider_id}' href='#'>Comparison Details</a></p>
-              <p><a class='info-outcomes' id='#{provider_id}' href='#'>Outcomes</a></p>
-              <p><a class='info-complications' id='#{provider_id}' href='#'>Complications</a></p>
+              <div class='inbox-tab'><a class='info-comparison' id='#{provider_id}' href='#'>Comparison Details</a></div>
+              <div class='inbox-tab'><a class='info-outcomes' id='#{provider_id}' href='#'>Outcomes</a></div>
+              <div class='inbox-tab'><a class='info-complications' id='#{provider_id}' href='#'>Complications</a></div>
+              <div class='info-box'> #{provider_name} </div>
               <ul>
                 <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital
                 <span class='note'>(#{(patient_survey.survey_response_rate * 100).round(0)}% response rate)</span></li>
@@ -48,7 +49,7 @@ class Hospital < ActiveRecord::Base
     procedure = Procedure.find_by_drg_id(drg).drg_def
     il_charge = (Procedure.find_by_drg_id(drg).avg_covered_charges_IL/1000)
     natl_charge = (Procedure.find_by_drg_id(drg).natl_avg_total_payments/1000)
-    {first_col: hospital_charge, second_col: il_charge, third_col: natl_charge, hospital_id: provider_id, procedure: procedure}
+    {y_axis:'Cost',first_col: hospital_charge, second_col: il_charge, third_col: natl_charge, hospital_id: provider_id, title: procedure}
   end
 
   def complication_cost_correlation
@@ -85,7 +86,7 @@ class Hospital < ActiveRecord::Base
 
     avg_outcome_rate = avg_outcome_rate_p + avg_outcome_rate_h_a + avg_outcome_rate_hf
 
-    {first_col: hosp_outcome_rate, second_col: avg_outcome_rate, third_col: 0}
+    {y_axis:'Mortality',first_col: hosp_outcome_rate, second_col: avg_outcome_rate, third_col: 0, title: "30 Day Mortality from Heart Failure, Heart Attack or Pneumonia Admission"}
   end
 
   def complicationbox_on_click
@@ -96,7 +97,7 @@ class Hospital < ActiveRecord::Base
     end
     avg_complication_rate = Complication.average("R_D_S_T_C").to_i
     
-    {first_col: hosp_complication_rate, second_col: avg_complication_rate, third_col: 0}
+    {y_axis:'Mortality',first_col: hosp_complication_rate, second_col: avg_complication_rate, third_col: 0, title: '30 Day Mortality from Serious Treatable Complications (per 1000 admissions)'}
   end
 
 

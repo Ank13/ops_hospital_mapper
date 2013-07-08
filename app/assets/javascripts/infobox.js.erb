@@ -71,21 +71,23 @@ google.load('visualization', '1.0', {'packages':['corechart']});
     var firstCol = data["first_col"]
     var secondCol = data["second_col"]
     var thirdCol = data["third_col"]
-    var procedure = data["procedure"]
+    var title = data["title"]
+    var yAxis = data["y_axis"]
 
     var data = google.visualization.arrayToDataTable([
       ['Factor', axisLabels.colOne, axisLabels.colTwo, axisLabels.colThree],
-      ['Cost',  firstCol, secondCol, thirdCol],
+      [yAxis,  firstCol, secondCol, thirdCol],
     ]);
 
     var formatter = new google.visualization.TableNumberFormat(
-          {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true});
+          // {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true}
+          );
       formatter.format(data, 1); 
       formatter.format(data, 2); 
       formatter.format(data, 3); 
 
     var options = {
-      'title': procedure,
+      'title': title,
       'width':325,
       'height':175,
       'legend': {position: 'in'}
