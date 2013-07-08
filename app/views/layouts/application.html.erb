@@ -6,9 +6,12 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <%= stylesheet_link_tag    "application", :media => "all" %>		
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
 
+<!-- This can be refactored big time. Store the api keys in a YAML file nested under an environment. It could look something like:
+    ../api/js?key=#{API_KEY}
+-->
   <% if Rails.env.development? %>
   	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&libraries=places&sensor=false' %>
   <% elsif Rails.env.staging? %>
@@ -16,7 +19,7 @@
   <% elsif Rails.env.production?%>
   	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB4oIpNJi8mImqM1dhkpD8mx6D_xCTWR9Y&libraries=places&sensor=false' %>
   <% end %>
-  
+
   <%= csrf_meta_tags %>
 
 </head>
