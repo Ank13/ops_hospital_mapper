@@ -1,7 +1,6 @@
 $(document).ready(function(){
   google.maps.visualRefresh = true;
 
-  // var hospitals = $("#hospitals").data("hospitals");
   var map;
 
   function initialize() {
@@ -54,7 +53,6 @@ $(document).ready(function(){
         {name: "Styled Map"});
 
     var mapOptions = {
-      // center: new google.maps.LatLng(41.8500, -87.8500),
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       panControl: false,
@@ -72,8 +70,6 @@ $(document).ready(function(){
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
-    // setMarkers(map, hospitals);
-
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
@@ -84,7 +80,7 @@ $(document).ready(function(){
 
     var input = (document.getElementById('target'));
     var searchBox = new google.maps.places.SearchBox(input);
-    // var markers = [];
+    var markers = [];
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
@@ -119,20 +115,31 @@ $(document).ready(function(){
       map.fitBounds(bounds);
     });
 
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-      var bounds = map.getBounds();
-      searchBox.setBounds(bounds);
-      var lng = map.getCenter().lng();
-      var lat = map.getCenter().lat();
-      loadMoreMarkers(lat, lng);
-    });
+
+    google.maps.event.addListener(map, 'bounds_changed', scheduleDelayedCallback);
+
+    function fireIfLastEvent()
+     {
+      if (lastEvent.getTime() + 500 <= new Date().getTime())
+        {
+          var bounds = map.getBounds();
+          // TODO: Length of a degree of longitude = cos(latitude) * 111.325 kilometers
+          var width = (bounds.getNorthEast().kb - bounds.getSouthWest().kb) * 50;
+          searchBox.setBounds(bounds);
+          var lng = map.getCenter().lng();
+          var lat = map.getCenter().lat();
+          loadMoreMarkers(lat, lng, width);
+        }
+    };
+    function scheduleDelayedCallback()
+      {
+        lastEvent = new Date();
+        setTimeout(fireIfLastEvent, 500);
+      };    
   };
-  
-  requestcount = 0;
-  responsecount = 0;
    
-    function loadMoreMarkers(lat, lng){
-      var data = {'lat' : lat, 'lng' : lng, 'distance' : 5};
+    function loadMoreMarkers(lat, lng, width){
+      var data = {'lat' : lat, 'lng' : lng, 'distance' : width};
       var url =  '/maps/more_markers';
       var moreHospitals = [];
 
