@@ -18,10 +18,11 @@ class Hospital < ActiveRecord::Base
   def infobox_html_on_load
     unless (self.patient_survey.nil? || self.outcome.nil? || self.patient_survey.recommend_y.nil? || self.patient_survey.survey_response_rate.nil? || self.outcome.readm_ha.nil? || self.total_discharges.nil? || self.average_covered_charges.nil? || self.average_total_payments.nil?)
       return "
-              
-              <div class='inbox-tab'><a class='info-comparison' id='#{provider_id}' href='#'>Comparison Details</a></div>
-              <div class='inbox-tab'><a class='info-outcomes' id='#{provider_id}' href='#'>Outcomes</a></div>
-              <div class='inbox-tab'><a class='info-complications' id='#{provider_id}' href='#'>Complications</a></div>
+              <div>
+              <span class='inbox-tab'><a class='info-comparison' id='#{provider_id}' href='#'>Procedure Cost Comparison</a></span>
+              <span class='inbox-tab'><a class='info-outcomes' id='#{provider_id}' href='#'>Outcomes</a></span>
+              <span class='inbox-tab'><a class='info-complications' id='#{provider_id}' href='#'>Complications</a></span>
+              </div>
               <div class='info-box'> #{provider_name} </div>
               <ul>
                 <li> #{(patient_survey.recommend_y * 100).round(0)}% of patients recommend this hospital
