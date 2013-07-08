@@ -1,48 +1,52 @@
 <title>Hospital Maps</title>
 
-<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&sensor=false">
-</script>-->
-
 <%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
 <% end %>
 
-  <%= render partial: "about" %>
-  <%= render partial: "datasets" %>
-  <%= render partial: "wtfacts" %>
-  <div class="panel">
-      <h3>Procedures</h3>
-      <input type="textarea" placeholder="search">
-      <select id="procdropdown">
-        <% @procedures.each do |procedure| %>
-        <option width value="<%= procedure.drg_def %>"><%= procedure.drg_def %></option>
-        <% end %>
-      </select>
-   
 
+<%= render partial: "about" %>
+<%= render partial: "datasets" %>
+<%= render partial: "wtfacts" %>
 
 <div class="panel">
+  <h2>Top 100 most frequently billed medical procedures</h2> 
 
-   
+  <select id="procdropdown" data-placeholder="Choose a Procedure..." class="chzn-select" tabindex="1">
+    <option value=""></option>
+    <% @procedures.each do |procedure|  %>
+      <option value='<%=procedure.drg_def.titleize %>'><%=procedure.drg_def.titleize%></option> 
+    <% end  %>
+  </select>
 
-  <div style="clear:both;"></div>
-  
-      <h3>Patient Surveys</h3>
-   
+  <h3>Patient Surveys</h3>
 
-      <h3>Hospital Outcomes</h3>
+  <h3>Hospital Outcomes</h3>
 
 
-      <h3>Map Visualizations</h3>
-      <a href="#" id="acc">Average Cost (all procedures)</a>
-      <a href="#" id="clear">Clear</a>
-      
+  <h3>Map Visualizations</h3>
+  <div class="visualize"><a href="#" id="acc">Average Cost (all procedures)</a></div>
+  <div class="visualize"><a href="#" id="clear">Clear</a></div>
+    
 
-  <div style="clear:both;"></div>
- 
-  </div>
-  <a class="trigger" href="#">Details</a>
-  </div>
+</div>
 
+<div class="searchby">
+  <a class="trigger" href="#">search by</a>
+</div>
+
+<div class="analytics">
+  <a class="trigger2" href="#">analytics</a>
+</div>
+
+<div class="slidepanel">
+  <em>Good detailed info</em>
+</div>
+
+<div class="static">
+</div>
+
+<div id="search-box">
+      <input id="target" type="text" placeholder="Search hospital or location">
 </div>
 
 <div id="map-canvas">
