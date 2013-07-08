@@ -16,7 +16,7 @@ class Hospital < ActiveRecord::Base
   end
 
   def infobox_html_on_load
-    unless self.patient_survey.nil? && self.outcome.nil?
+    unless (self.patient_survey.nil? || self.outcome.nil? || self.patient_survey.recommend_y.nil? || self.patient_survey.survey_response_rate.nil? || self.outcome.readm_ha.nil? || self.total_discharges.nil? || self.average_covered_charges.nil? || self.average_total_payments.nil?)
       return "<div class='info-box'> #{provider_name} </div>
               <p><a class='info-click' id='#{provider_id}' href='#'>Comparison Details</a></p>
               <ul>
