@@ -10,6 +10,7 @@ gem 'rails', '3.2.13'
 gem 'pg', '~> 0.14.1'
 
 gem 'jquery-rails'
+gem 'rinruby'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Gems used only for assets and not required
@@ -31,6 +32,7 @@ group :development, :test do
 	gem 'guard-spork'
 	gem 'childprocess'
 	gem 'spork'
+	gem 'jasmine'
 end
 
 

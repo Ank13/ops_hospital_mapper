@@ -8,9 +8,49 @@ body {
 
 #map-canvas { 
   height: 100%; 
-  z-index: 1;
+  z-index: 2;
 }
 
 .note {
   font-style:italic;
+}
+
+.searchby {
+	position: fixed;
+	z-index: 4;
+	top: 8.5%; 
+	left: 12.1%;
+}
+
+.analytics {
+	position: fixed;
+	z-index: 4;
+	top: 21.3%; 
+	left: 12.1%;
+}
+
+.static {
+	z-index: 1;
+	height: 100%;
+	width: 10%;
+	margin-top: 14%;
+	float: right;
+	padding: 16px;
+}
+
+#search-box {
+  position: absolute;
+  top: 40px;
+  left: 520px;
+  z-index: 6;
+}
+
+#search-box input{
+  font-family: Arial, Helvetica, Sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+#target {
+  width: 300px;
 }
