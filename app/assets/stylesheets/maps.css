@@ -47,17 +47,18 @@ body {
 
 #search-box {
   position: absolute;
-  top: 40px;
-  left: 520px;
+  width: 10%;
+  bottom: 5%;
+  right: 50%;
   z-index: 6;
 }
 
 #search-box input{
   font-family: Arial, Helvetica, Sans-serif;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 16px;
 }
 
 #target {
-  width: 300px;
+  width: 250px;
 }
