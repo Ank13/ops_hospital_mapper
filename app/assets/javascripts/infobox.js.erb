@@ -28,7 +28,9 @@ $(document).ready(function(){
     $.get(url, data, function(response){
        that.parent().parent().parent().attr('id', 'chart_div');
        that.parent().parent().text(" ");
-       drawChart(response);
+       var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
+       console.log(response)
+       drawChart(response, axisLabels);
     });
   });
 
@@ -41,22 +43,24 @@ $(document).ready(function(){
     $.get(url, data, function(response){
        that.parent().parent().parent().attr('id', 'chart_div');
        that.parent().parent().text(" ");
-       drawChart(response);
+       var axisLabels = {colOne: "Hospital", colTwo: "National"}
+       console.log(response);
+       drawChart(response, axisLabels);
     });
   });
 });
 
 google.load('visualization', '1.0', {'packages':['corechart']});
 
-  function drawChart(data) {
-    var hospitalCharge = data["hospital_charge"]
-    var ilCharge = data["il_charge"]
-    var natlCharge = data["natl_charge"]
+  function drawChart(data, axisLabels) {
+    var firstCol = data["first_col"]
+    var secondCol = data["second_col"]
+    var thirdCol = data["third_col"]
     var procedure = data["procedure"]
 
     var data = google.visualization.arrayToDataTable([
-      ['Factor', 'Here', 'Illinois', 'National'],
-      ['Cost',  hospitalCharge, ilCharge, natlCharge],
+      ['Factor', axisLabels.colOne, axisLabels.colTwo, axisLabels.colThree],
+      ['Cost',  firstCol, secondCol, thirdCol],
     ]);
 
     var formatter = new google.visualization.TableNumberFormat(
