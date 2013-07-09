@@ -125,9 +125,8 @@ class Hospital < ActiveRecord::Base
                 <li> Average Total Payment (all procedures), CMS: $#{(average_total_payments/1000).round(0)}K</li>
               </ul>"
     end
+    return all_hospitals  
   end
-
-
 end
 
 

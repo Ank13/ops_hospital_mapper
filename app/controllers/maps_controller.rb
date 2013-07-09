@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  @@loaded = {} 
+  @@loaded = {foo: 'bar'} 
 
   def index
     @@loaded.clear 
