@@ -9,33 +9,92 @@ margin-left: 8px;
 padding:8px 8px 8px 0;
 }
 
-p {
+/*p {
   color:#cccccc;
   line-height:22px;
   padding: 0 0 10px;
   margin: 20px 0 20px 0;
-}
+}*/
 
-.visualize a {
-  color: #8C0800;
+.visualize {
+  color: #183152;
   text-decoration: none;
   margin-left: 12px;
   font-family: helvetica, arial, sans-serif;
   font-size: 12px;
   width: 100%;
+  line-height:20px;
+  margin-top: 15px;
+}
+
+
+.visualize .icon-usd {
+  font-size: 20px;
+  color: #236905;
+}
+
+.visualize .icon-usd:hover {
+  color: white;
+}
+
+
+.visualize .icon-thumbs-up {
+  font-size: 20px;
+  color: #EEF000;
+}
+
+.visualize .icon-thumbs-up:hover {
+  color: white;
+}
+
+.visualize .icon-thumbs-down {
+  font-size: 20px;
+  color: #F04400;
+}
+
+.visualize .icon-thumbs-down:hover {
+  color: white;
+}
+
+.visualize .icon-ambulance {
+  font-size: 20px;
+  color: #70070A;
+}
+
+.visualize .icon-ambulance:hover {
+  color: white;
+}
+
+.visualize .icon-frown {
+  font-size: 20px;
+  color: #515151;
+}
+
+.visualize .icon-frown:hover {
+  color: white;
+}
+
+.visualize a {
+  color: #375D81;
+}
+
+.viz-label {
+  float: right;
+  margin-left:20px;
 }
 
 .panel {
-position: absolute;
+position: fixed;
 z-index: 3;
 left: 0;
 display: block;
 background: #ABC8E2;
-width: 10%;
+width: 12%;
 height: 100%;
-padding: 130px 110px 30px 10px;
-filter: alpha(opacity=85);
-opacity:.85;
+min-width: 175px;
+padding: 2% 2.5% 1.5% 1.5%;
+filter: alpha(opacity=95);
+opacity:.95;
 }
 
 .panel h2 {
@@ -54,16 +113,16 @@ opacity:.85;
   margin-top: 20px;
 }
 
-.panel p{
+/*.panel p{
 margin: 0 0 15px 0;
 padding: 0;
 color: #cccccc;
-}
+}*/
 
 a.trigger2{
-  position:absolute;
-  left:50px;
-  top: 0;
+  position:fixed;
+  left: 12.35%;
+  top: 16%;
   text-decoration: none;
   font-size: 16px;
   letter-spacing:-1px;
@@ -89,11 +148,11 @@ a.trigger2{
 
 
 a.trigger{
-position: absolute;
+position: fixed;
 z-index: 3;
 text-decoration: none;
-left: 50px;
-top: 0;
+left: 12.35%;
+top: 5%;
 font-size: 16px;
 letter-spacing:-1px;
 font-family: verdana, helvetica, arial, sans-serif;
@@ -124,9 +183,24 @@ a.active.trigger {
   background-color: #05484F;
 }
 
+.static_links a{
+  color: #375D81;
+  text-decoration: none;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 15px;
+  width: 100%;
+}
+
+.static_links a:hover{
+  color: #8C0800;
+  text-decoration: none;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 15px;
+  width: 100%;
+}
 
 #procdropdown {
-   width: 250px;
+   width: 100%;
    height: 18px;
    margin-top: 4px;
    border: 1px solid #ccc;
