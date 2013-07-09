@@ -32,7 +32,7 @@ $(document).ready(function(){
   $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
     var that = $(this)
-    var data = drgDescription
+    var data = {'drg' : drgDescription }
     var url =  '/hospitals/'+hospitalID+'/infobox'
 
     $.get(url, data, function(response){
