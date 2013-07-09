@@ -84,6 +84,14 @@ $(document).ready(function(){
       $('.slidepanel').css('z-index', '3').show("fast");
       e.stopPropagation();
     }
+    $(document).click(function() {
+      if($('.trigger2').hasClass('active')) {
+        $('.trigger2').removeClass('active').animate({
+          left: "-=13%"
+        });
+        $('.slidepanel').empty().hide();
+      }
+    });
   });
 });
 
