@@ -226,16 +226,18 @@ $(document).ready(function(){
       }
 
       for (var i = 0; i < locations.length; i++) { 
-         var hospital = $.parseJSON(locations[i]);
 
+        // chst='d_text_outline'
+        // chld='FFCC33|16|h|FF0000|b|Mad+Scientist|Boo'
+
+         var hospital = $.parseJSON(locations[i]);
          var latLng = new google.maps.LatLng(hospital.latitude, hospital.longitude);
          var price = hospital.avg_cost
          var marker = new google.maps.Marker({
             position: latLng,
-            draggable: true,
             map: map,
             icon: new google.maps.MarkerImage(
-              "http://chart.googleapis.com/chart?chst=d_bubble_text_small&chld=bb|"+price+"|FF8080|000000",
+              "http://chart.googleapis.com/chart?chst=d_text_outline&chld=46E01B|14|h|000000|b|$"+price+" k",
               null, null, new google.maps.Point(0, 42))
           });
        priceTags.push(marker);

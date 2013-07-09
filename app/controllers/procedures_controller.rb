@@ -12,7 +12,7 @@ class ProceduresController < ApplicationController
     data = []
     procedures.each do |procedure|
       data << { latitude: procedure.hospital.latitude, longitude: procedure.hospital.longitude,
-               avg_cost: procedure.avg_covered_charges}.to_json
+               avg_cost: (procedure.avg_covered_charges/1000).round(1)}.to_json
     end
 
     respond_to do |format|
