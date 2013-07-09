@@ -49,11 +49,15 @@ class Hospital < ActiveRecord::Base
     else
       hospital_charge = 0
     end
-    procedure = Procedure.find_by_drg_id(drg).drg_def
-    # TODO: ADD average charge for the state
-    il_charge = 0  #(Procedure.find_by_drg_id(drg).avg_covered_charges_IL/1000)
+    state = self.provider_state
+
+    procedure = Procedure.find_by_drg_id(drg)
+    drg_def = procedure.drg_def
+
+    state_charge = (StatesProcedure.where({"provider_state" => state, "drg_id" => procedure.drg_id }).first.avg_covered_charges)/1000
     natl_charge = (Procedure.find_by_drg_id(drg).natl_avg_total_payments/1000)
-    {y_axis:'Cost',first_col: hospital_charge, second_col: il_charge, third_col: natl_charge, hospital_id: provider_id, title: procedure}
+    {y_axis:'Cost',first_col: hospital_charge, second_col: state_charge, third_col: natl_charge, 
+      state: state, hospital_id: provider_id, title: drg_def}
   end
 
   def complication_cost_correlation
