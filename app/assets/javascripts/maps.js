@@ -115,7 +115,6 @@ $(document).ready(function(){
       map.fitBounds(bounds);
     });
 
-
     google.maps.event.addListener(map, 'bounds_changed', scheduleDelayedCallback);
 
     function fireIfLastEvent()
