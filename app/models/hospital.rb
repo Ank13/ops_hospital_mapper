@@ -117,14 +117,16 @@ class Hospital < ActiveRecord::Base
         thumbs_down = hospital.patient_survey.recommend_no*50
         mortality = (hospital.outcome.mr_h_a + hospital.outcome.mr_hf + hospital.outcome.mr_p)/2
         all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
-        provider_id: hospital.provider_id, infobox_html: hospital.infobox_html_on_load, acc: acc, thumbs_up: thumbs_up, thumbs_down: thumbs_down, mortality: mortality}
+        provider_id: hospital.provider_id, infobox_html: hospital.infobox_html_on_load, acc: acc, thumbs_up: thumbs_up, 
+        thumbs_down: thumbs_down, mortality: mortality}
       else
         all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
         provider_id: hospital.provider_id, infobox_html: hospital.infobox_html_on_load, acc: acc}
       end
-      return all_hospitals  
     end
+    return all_hospitals  
   end
+  
 end
 
 
