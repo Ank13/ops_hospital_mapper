@@ -23,6 +23,21 @@ namespace :db do
 end
 
 namespace :db do
+  desc "parse csv files for procedure database"
+  task :parse_csv_stateprocedure  => :environment do
+    csv_state_procedure_path = Rails.root.join("dataset", "procedures_state_avg_usa.csv")
+    CSV.foreach(csv_state_procedure_path, :headers => true) do |row|
+      StatesProcedure.create!(row.to_hash)
+    end
+  end
+end
+
+
+csv_hospital_procedure_path = Rails.root.join("dataset", "cms_chargemaster_inpatient_2011.csv")
+CSV.foreach(csv_hospital_procedure_path, :headers => true) do |row|
+HospitalsProcedure.new(row.to_hash)
+
+namespace :db do
   desc "parse csv files for hospitals_procedures database"
   task :parse_csv_hospitals_procedures  => :environment do
     csv_hospital_procedure = File.open(File.join(Rails.root, "dataset", "cms_chargemaster_inpatient_2011.csv"),"r")
