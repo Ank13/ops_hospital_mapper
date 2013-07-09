@@ -15,9 +15,9 @@ $(document).ready(function(){
 
   $('#procdropdown').change(function(event){
     drgDescription = $('#procdropdown').val();
-    var data = drgDescription;
+    var data = {'drg' : drgDescription };
     var url =  '/hospitals/'+hospitalID+'/infobox';
-    var test = $("#chart_div")
+    var test = $("#chart_div");
 
     if ($("#chart_div").is(':visible'))
     {
@@ -32,8 +32,8 @@ $(document).ready(function(){
   $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
     var that = $(this)
-    var data = {'drg' : drgDescription }
-    var url =  '/hospitals/'+hospitalID+'/infobox'
+    var data = {'drg' : drgDescription };
+    var url =  '/hospitals/'+hospitalID+'/infobox' ; 
 
     $.get(url, data, function(response){
        that.parent().parent().parent().attr('id', 'chart_div');
