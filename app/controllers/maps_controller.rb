@@ -3,9 +3,11 @@ class MapsController < ApplicationController
   @@loaded = {} 
 
   def index
+    box = Geocoder::Calculations.bounding_box([41.8899109, -87.6376566], 10)
+    @all_hospitals = Hospital.geocoded.within_bounding_box(box)
+    @all_hospitals.each { |hospital| @@loaded[hospital.provider_id] = true }
     @procedures = Procedure.all
   end
-
 
   def more_markers
     lat = params[:lat]
@@ -17,12 +19,6 @@ class MapsController < ApplicationController
     data = []
     hospitals.each do |hospital|
       acc = hospital.average_covered_charges/1600
-    #   if !@@loaded.has_key?(hospital.provider_id)
-    #     data << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
-    #       provider_id: hospital.provider_id, infobox_html: hospital.infobox_html_on_load, acc: acc}
-    #     @@loaded[hospital.provider_id] = true
-    #   end
-    # end
   
         if !@@loaded.has_key?(hospital.provider_id)
           unless hospital.patient_survey.nil? || hospital.patient_survey.recommend_no.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil?
