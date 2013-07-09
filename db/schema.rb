@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130709153256) do
 
-
   create_table "complications", :force => true do |t|
     t.integer  "provider_id"
     t.integer  "N_P_D_S_T_C"
