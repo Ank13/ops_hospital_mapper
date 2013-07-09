@@ -1,5 +1,7 @@
 class Hospital < ActiveRecord::Base
   attr_accessible :provider_id, :provider_name, :provider_street_address, :provider_city, :provider_state, :provider_zip_code, :hrr, :total_discharges, :count_drgs, :average_covered_charges, :average_total_payments, :latitude, :longitude
+
+  validates_presence_of :provider_id
   
   geocoded_by :full_address
   # after_validation :geocode 
@@ -61,21 +63,21 @@ class Hospital < ActiveRecord::Base
   end
 
   def complication_cost_correlation
-        acc=[]
-        rdstc =[]
+    acc=[]
+    rdstc =[]
+    R.acc = acc
+    R.rdstc = rdstc
 
-        Hospital.all.each do |h|
-          unless h.complication.nil?
-            rdstc << h.complication.R_D_S_T_C
-            acc << h.average_covered_charges
-          end
-        end
+    Hospital.all.each do |h|
+      unless h.complication.nil?
+        rdstc << h.complication.R_D_S_T_C
+        acc << h.average_covered_charges
+      end
+    end
 
-        R.acc = acc
-        R.rdstc = rdstc
-
-        R.eval 'costbenefit = cor(acc, rdstc)'
-        costbenefit = R.pull 'costbenefit'
+    R.eval 'costbenefit = cor(acc, rdstc)'
+    costbenefit = R.pull 'costbenefit'
+    
   end
 
   def outcomebox_on_click
