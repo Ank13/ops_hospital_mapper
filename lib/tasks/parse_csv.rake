@@ -11,6 +11,16 @@ namespace :db do
   end
 end
 
+# lib/tasks/reset_unimportant_models_task.rake
+namespace :db do
+  desc "Sequentially clears out a model"
+  task :reset_unimportant_models => :environment do
+    puts "Clearing out the StatesProcedureModel model"
+    StatesProcedure.destroy_all
+    puts "Finished."
+  end
+end
+
 namespace :db do
   desc "parse csv files for procedure database"
   task :parse_csv_procedure  => :environment do
@@ -25,17 +35,13 @@ end
 namespace :db do
   desc "parse csv files for procedure database"
   task :parse_csv_stateprocedure  => :environment do
-    csv_state_procedure_path = Rails.root.join("dataset", "procedures_state_avg_usa.csv")
-    CSV.foreach(csv_state_procedure_path, :headers => true) do |row|
+    csv_state_procedure = File.open(File.join(Rails.root, "dataset", "procedures_state_avg_usa.csv"),"r")
+    csv = CSV.parse(csv_state_procedure, :headers => true)
+    csv.each do |row|
       StatesProcedure.create!(row.to_hash)
     end
   end
 end
-
-
-csv_hospital_procedure_path = Rails.root.join("dataset", "cms_chargemaster_inpatient_2011.csv")
-CSV.foreach(csv_hospital_procedure_path, :headers => true) do |row|
-HospitalsProcedure.new(row.to_hash)
 
 namespace :db do
   desc "parse csv files for hospitals_procedures database"
