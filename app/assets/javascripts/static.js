@@ -38,61 +38,37 @@ $(document).ready(function(){
     return false;
   });
 
-  $('#about').click(function(e){
-    if($(".trigger2").hasClass("active")) {
-      $('.slidepanel').empty();
-      $($('.about').html()).appendTo('.slidepanel');
-      $('.slidepanel').css('z-index', '3').show("fast");
-      e.stopPropagation();
-    }
-    else {
-      $($('.about').html()).appendTo('.slidepanel');
-      $('#analytics').animate({left: '+=250'}, 300);
-      $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
-      $('.slidepanel').css('z-index', '3').show("fast");
-      e.stopPropagation();
-    }
-  });
-
-  $('#datasets').click(function(e){
-    if($(".trigger2").hasClass("active")) {
-      $('.slidepanel').empty();
-      $($('.datasets').html()).appendTo('.slidepanel');
-      $('.slidepanel').css('z-index', '3').show("fast");
-      e.stopPropagation();
-    }  
-    else {
-      $($('.datasets').html()).appendTo('.slidepanel');
-      $('#analytics').animate({left: '+=250'}, 300);
-      $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
-      $('.slidepanel').css('z-index', '3').show("fast");
-      e.stopPropagation();
-    }
-  });
-
-  $('#wtfacts').click(function(e){
-    if($(".trigger2").hasClass("active")) {
-      $('.slidepanel').empty();
-      $($('.wtfacts').html()).appendTo('.slidepanel');
-      $('.slidepanel').css('z-index', '3').show("fast)");
-      e.stopPropagation();
-    }  
-    else {
-      $($('.wtfacts').html()).appendTo('.slidepanel');
-      $('#analytics').animate({left: '+=250'}, 300);
-      $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
-      $('.slidepanel').css('z-index', '3').show("fast");
-      e.stopPropagation();
-    }
-    $(document).click(function() {
-      if($('.trigger2').hasClass('active')) {
-        $('.trigger2').removeClass('active').animate({
-          left: "-=250"
-        });
-        $('.slidepanel').empty().hide();
+  function triggerStaticPages(link, page) {
+    $(link).click(function(e) {
+      if($(".trigger2").hasClass("active")) {
+        $('.slidepanel').empty();
+        $($(page).html()).appendTo('.slidepanel');
+        $('.slidepanel').css('z-index', '3').show("fast");
+        e.stopPropagation();
+      }
+      else {
+        $($(page).html()).appendTo('.slidepanel');
+        $('#analytics').animate({left: '+=250'}, 300);
+        $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
+        $('.slidepanel').css('z-index', '3').show("fast");
+        e.stopPropagation();
       }
     });
+  }
+
+  triggerStaticPages('#wtfacts', '.wtfacts');
+  triggerStaticPages('#datasets', '.datasets');
+  triggerStaticPages('#about', '.about');
+
+  $(document).click(function() {
+    if($('.trigger2').hasClass('active')) {
+      $('.trigger2').removeClass('active').animate({
+        left: "-=250"
+      });
+      $('.slidepanel').empty().hide();
+    }
   });
+
 });
 
 
