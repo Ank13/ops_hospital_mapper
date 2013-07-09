@@ -2,6 +2,7 @@ $(document).ready(function(){
   google.maps.visualRefresh = true;
 
   var map;
+  var existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
 
   function initialize() {
     var styles = [
@@ -148,7 +149,7 @@ $(document).ready(function(){
         };
         setMarkers(map, moreHospitals);
 
-        var existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
+        existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
         var hospital_hash_table = {};
         var allHospitals = existingHospitals;
 
@@ -213,12 +214,13 @@ $(document).ready(function(){
     var bubbles = [];
 
     function setACC(map, locations){
+
       for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
         var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
         var size = hospital["acc"];
         var color = '#236905';
-        var stroke_color = '#236905'
+        var stroke_color = '#236905';
 
         var bubble = new google.maps.Marker({
           position: myLatLng,
@@ -295,28 +297,28 @@ $(document).ready(function(){
       bubbles = [];
     };
 
-  $("#acc").on('click', function(){
+  $("a#acc i").on('click', function(){
     var icon = 'ACC'
-    setACC(map, hospitals);
+    setACC(map, existingHospitals);
   });
 
-  $("#clear").on('click', function(){
+  $("a#clear").on('click', function(){
     clearOverlays();
   });
 
-  $("#thumbs_up").on('click', function(){
+  $("a#thumbs_up i").on('click', function(){
     var icon = 'TH'
-    setThumbsUp(map, hospitals);
+    setThumbsUp(map, existingHospitals);
   });
 
-  $("#thumbs_down").on('click', function(){
+  $("a#thumbs_down i").on('click', function(){
     var icon = 'th-down'
-    setThumbsDown(map, hospitals);
+    setThumbsDown(map, existingHospitals);
   });
 
-  $("#mortality").on('click', function(){
+  $("a#mortality i").on('click', function(){
     var icon = 'frown'
-    setMortality(map, hospitals);
+    setMortality(map, existingHospitals);
   });
 
   google.maps.event.addDomListener(window, 'load', initialize);
