@@ -20,7 +20,6 @@ class MapsController < ApplicationController
     more_hospitals = []
     hospitals.each {|hospital| more_hospitals << hospital if !@@loaded.has_key?(hospital.provider_id)}
     data = Hospital.find_hospitals_for_map(more_hospitals)
-
     data.each{|hospital| @@loaded[hospital[:provider_id]] = 'true' }
 
     respond_to do |format|
