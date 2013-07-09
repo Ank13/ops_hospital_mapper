@@ -11,6 +11,16 @@ namespace :db do
   end
 end
 
+# lib/tasks/reset_unimportant_models_task.rake
+namespace :db do
+  desc "Sequentially clears out a model"
+  task :reset_unimportant_models => :environment do
+    puts "Clearing out the StatesProcedureModel model"
+    StatesProcedure.destroy_all
+    puts "Finished."
+  end
+end
+
 namespace :db do
   desc "parse csv files for procedure database"
   task :parse_csv_procedure  => :environment do
@@ -18,6 +28,17 @@ namespace :db do
     csv = CSV.parse(csv_procedure, :headers => true)
     csv.each do |row|
       Procedure.create!(row.to_hash)
+    end
+  end
+end
+
+namespace :db do
+  desc "parse csv files for procedure database"
+  task :parse_csv_stateprocedure  => :environment do
+    csv_state_procedure = File.open(File.join(Rails.root, "dataset", "procedures_state_avg_usa.csv"),"r")
+    csv = CSV.parse(csv_state_procedure, :headers => true)
+    csv.each do |row|
+      StatesProcedure.create!(row.to_hash)
     end
   end
 end
@@ -65,3 +86,22 @@ namespace :db do
     end
   end
 end
+
+namespace :db do
+  desc "parse csv files for procedures database new fields: description and clinical_category" 
+  task :parse_csv_procedure_description => :environment do
+    csv_procedure = File.open(File.join(Rails.root, "dataset", "procedure_definitions.csv"),"r")
+    csv = CSV.parse(csv_procedure, :headers => true)
+    csv.each do |row|
+      drg_id = row[0]
+      clinical_category = row[1]
+      description = row[2]
+      procedure = Procedure.find_by_drg_id(drg_id)
+      procedure.update_attributes({:description => description, :clinical_category => clinical_category})
+    end
+  end
+end
+
+
+
+
