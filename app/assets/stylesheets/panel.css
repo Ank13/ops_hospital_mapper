@@ -121,8 +121,8 @@ color: #cccccc;
 
 a.trigger2{
   position:fixed;
-  left: 12.35%;
-  top: 16%;
+  left: 14%;
+  top: 18%;
   text-decoration: none;
   font-size: 16px;
   letter-spacing:-1px;
@@ -130,8 +130,8 @@ a.trigger2{
   color:#fff;
   padding-left: 12px;
   padding-top: 8px;
-  width: 88px;
-  height: 32px;
+  width: 6.5%;
+  height: 3.5%;
   font-weight: 400;
   background-color: #183152;
   -webkit-transform: rotate(90deg); 
@@ -151,7 +151,7 @@ a.trigger{
 position: fixed;
 z-index: 3;
 text-decoration: none;
-left: 12.35%;
+left: 14%;
 top: 5%;
 font-size: 16px;
 letter-spacing:-1px;
@@ -159,8 +159,8 @@ font-family: verdana, helvetica, arial, sans-serif;
 color:#fff;
 padding-left: 12px;
 padding-top: 8px;
-width: 90px;
-height: 35px;
+width: 6.5%;
+height: 3.5%;
 font-weight: 400;
 background-color:#375D81;
 -webkit-transform: rotate(90deg); 

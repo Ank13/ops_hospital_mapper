@@ -22,27 +22,9 @@ body {
 	left: 12.1%;
 }
 
-#searchby2 {
-  position: fixed;
-  z-index: 1;
-  top: 8.5%; 
-  left: 2.1%;
-}
-
 #analytics {
 	position: fixed;
 	z-index: 4;
-	top: 21.3%; 
-	left: 12.1%;
-}
-
-.static {
-	z-index: 1;
-	height: 100%;
-	width: 10%;
-	margin-top: 14%;
-	float: right;
-	padding: 16px;
 }
 
 #search-box {
