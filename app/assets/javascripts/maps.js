@@ -226,10 +226,6 @@ $(document).ready(function(){
       }
 
       for (var i = 0; i < locations.length; i++) { 
-
-        // chst='d_text_outline'
-        // chld='FFCC33|16|h|FF0000|b|Mad+Scientist|Boo'
-
          var hospital = $.parseJSON(locations[i]);
          var latLng = new google.maps.LatLng(hospital.latitude, hospital.longitude);
          var price = hospital.avg_cost
