@@ -216,6 +216,42 @@ $(document).ready(function(){
     var thumbsUp = [];
     var thumbsDown = [];
     var mortality = [];
+    var priceTags = [];
+
+
+    function setPriceTags(map, locations){
+
+      for (var i=0; i< priceTags.length; i++ ) {
+        priceTags[i].setMap(null);
+      }
+
+      for (var i = 0; i < locations.length; i++) { 
+         var hospital = $.parseJSON(locations[i]);
+
+         var latLng = new google.maps.LatLng(hospital.latitude, hospital.longitude);
+         var price = hospital.avg_cost
+         var marker = new google.maps.Marker({
+            position: latLng,
+            draggable: true,
+            map: map,
+            icon: new google.maps.MarkerImage(
+              "http://chart.googleapis.com/chart?chst=d_bubble_text_small&chld=bb|"+price+"|FF8080|000000",
+              null, null, new google.maps.Point(0, 42))
+          });
+       priceTags.push(marker);
+       bubbles.push(marker);
+      }
+    };
+
+    $('#procdropdown').change(function(event){
+      drgDescription = $('#procdropdown').val();
+      var data = {'drg' : drgDescription };
+      var urlPricing = 'procedures/prices'
+
+      $.get(urlPricing, data, function(response){
+        setPriceTags(map, response);
+      });
+    });
 
     function setACC(map, locations){
 

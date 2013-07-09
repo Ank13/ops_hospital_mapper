@@ -16,12 +16,11 @@ $(document).ready(function(){
   $('#procdropdown').change(function(event){
     drgDescription = $('#procdropdown').val();
     var data = {'drg' : drgDescription };
-    var url =  '/hospitals/'+hospitalID+'/infobox';
-    var test = $("#chart_div");
+    var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
 
     if ($("#chart_div").is(':visible'))
     {
-      $.get(url, data, function(response){
+      $.get(urlInfobox, data, function(response){
          $("#chart_div").text(" ");
          var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
          drawChart(response, axisLabels);
