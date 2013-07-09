@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+
 # require 'capybara/rspec'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
@@ -13,15 +14,20 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  # Capybara.register_driver :selenium do |app|
+  #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  # end
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+  Capybara.server_port = 9394
+  
   RSpec.configure do |config|
     config.include Capybara::DSL
     Capybara.ignore_hidden_elements = false
-
+    # Capybara.current_driver = :selenium
     # config.include LoginHelper, :type => :request
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -59,6 +65,7 @@ Spork.prefork do
     config.order = "random"
   end
 end
+
 
 Spork.each_run do
   FactoryGirl.reload

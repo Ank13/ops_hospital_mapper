@@ -11,13 +11,16 @@
   <%= javascript_include_tag "application" %>
 
   <% if Rails.env.development? %>
-  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&libraries=places&sensor=false' %>
+  	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_DEV']}&libraries=places&sensor=false" %>
+  <% elsif Rails.env.test? %>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_TEST']}&libraries=places&sensor=false" %>
+
   <% elsif Rails.env.staging? %>
-  	  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkB4eO86DxOAR0mTq_VDj8zVkBdhhGjjQ&libraries=places&sensor=false' %>
+  	  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_STAGING']}&libraries=places&sensor=false" %>
   <% elsif Rails.env.production?%>
-  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB4oIpNJi8mImqM1dhkpD8mx6D_xCTWR9Y&libraries=places&sensor=false' %>
+  	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_PRODUCTION']}&libraries=places&sensor=false" %>
   <% end %>
-  
+
   <%= csrf_meta_tags %>
 
 </head>
