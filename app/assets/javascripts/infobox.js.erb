@@ -4,6 +4,15 @@ $(document).ready(function(){
   var drgDescription = "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC"
   var hospitalID = 0 ;
 
+  function getChart(that, data, url){
+    $.get(url, data, function(response){
+       that.parent().parent().parent().attr('id', 'chart_div');
+       that.parent().parent().text(" ");
+       var axisLabels = {colOne: "Hospital", colTwo: "National"}
+       drawChart(response, axisLabels);
+    });
+  };
+
   $('#procdropdown').change(function(event){
     drgDescription = $('#procdropdown').val();
     var data = drgDescription;
@@ -39,14 +48,7 @@ $(document).ready(function(){
     var that = $(this)
     var data = drgDescription
     var url =  '/hospitals/'+hospitalID+'/outcomebox'
-
-    $.get(url, data, function(response){
-       that.parent().parent().parent().attr('id', 'chart_div');
-       that.parent().parent().text(" ");
-       var axisLabels = {colOne: "Hospital", colTwo: "National"}
-       console.log(response);
-       drawChart(response, axisLabels);
-    });
+    getChart(that, data, url);
   });
 
   $("#map-canvas").on('click', '.info-complications',function(event){
@@ -54,14 +56,7 @@ $(document).ready(function(){
     var that = $(this)
     var data = drgDescription
     var url =  '/hospitals/'+hospitalID+'/complicationbox'
-
-    $.get(url, data, function(response){
-       that.parent().parent().parent().attr('id', 'chart_div');
-       that.parent().parent().text(" ");
-       var axisLabels = {colOne: "Hospital", colTwo: "National"}
-       console.log(response);
-       drawChart(response, axisLabels);
-    });
+    getChart(that, data, url);
   });
 });
 
