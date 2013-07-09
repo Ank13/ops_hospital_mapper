@@ -7,6 +7,7 @@
 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= stylesheet_link_tag    "application", :media => "all" %>		
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
 
   <% if Rails.env.development? %>
@@ -21,15 +22,6 @@
 
 </head>
 <body>
-
-<nav class="nav">
-  <ul id="navlist">
-    <li id="logo">hospiTALLY</li>
-    <li id="wtfacts"><%= link_to "WTF medicare", '#' %></li>
-    <li id="datasets"><%= link_to "datasets", '#' %></li>
-    <li id="about"><%= link_to "about US", '#' %></li>
-  </ul>
-</nav>
 
 <%= yield %>
 
