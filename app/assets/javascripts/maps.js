@@ -187,7 +187,8 @@ $(document).ready(function(){
         marker.html = hospital["infobox_html"];
 
         var infowindow = new google.maps.InfoWindow({
-          maxWidth: 400 
+          maxWidth: 500,
+          Height: 600
         });
    
         google.maps.event.addListener(marker, 'click', function() {

@@ -31,6 +31,11 @@ describe "A user can" do
 			click_link 'datasets'
 			page.should have_content 'CMS'
 		end
-	end		
+
+		it 'clicks on a map icon', :js => true do
+			sleep(5)
+
+		end
+	end		 
 
 end
