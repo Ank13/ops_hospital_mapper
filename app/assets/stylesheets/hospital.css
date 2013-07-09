@@ -19,19 +19,29 @@ a:hover {
 
 }
  
-#wrapper{
+.wrapper{
  margin: 0;
- padding: 0;
+ margin-bottom: 20px;
+ padding-bottom: 15px;
+ /*background-color: red;*/
  
 }
+
+#description{
+  /*background-color: green;*/
+  margin-bottom: 30px;
+  min-height: 200px;
+
+}
 .inbox-tab {
-  background-color: grey;
+  /*background-color: grey;*/
   margin: 0;
   margin-bottom: 10px;
   padding: 0;
-  /*clear: both;*/
   display: inline;
+  padding-right: 10px;
   width: 32%;
+  border-bottom: solid 2px;
 }
 
 .inbox-tab a{
