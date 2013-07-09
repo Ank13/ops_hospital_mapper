@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg', '~> 0.14.1'
+gem 'figaro'
 
 gem 'jquery-rails'
 # gem 'rinruby'
@@ -33,6 +34,7 @@ group :development, :test do
 	gem 'childprocess'
 	gem 'spork'
 	gem 'jasmine'
+  gem 'binding_of_caller'
 end
 
 

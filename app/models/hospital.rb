@@ -121,5 +121,7 @@ class Hospital < ActiveRecord::Base
   end
 end
 
+
+
   
 
