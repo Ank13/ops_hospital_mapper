@@ -8,7 +8,7 @@ $(document).ready(function(){
     $.get(url, data, function(response){
        $('#description').attr('id', 'chart_div');
        // that.parent().parent().text(" ");
-       var axisLabels = {colOne: "Hospital", colTwo: "National"}
+       var axisLabels = {colOne: "Hospital", colTwo: "National"};
        drawChart(response, axisLabels);
     });
   };
@@ -22,7 +22,8 @@ $(document).ready(function(){
     {
       $.get(urlInfobox, data, function(response){
          $("#chart_div").text(" ");
-         var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
+         var state = response.state;
+         var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
          drawChart(response, axisLabels);
       });
     }
@@ -36,8 +37,9 @@ $(document).ready(function(){
 
     $.get(url, data, function(response){
        $('#description').attr('id', 'chart_div');
+       var state = response.state;
        // that.parent().parent().text(" ");
-       var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
+       var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"}
        drawChart(response, axisLabels);
     });
   });
