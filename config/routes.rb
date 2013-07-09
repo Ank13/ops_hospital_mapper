@@ -4,6 +4,7 @@ OpsHospitalMapper::Application.routes.draw do
 
     resources :maps, :only => [:index]
 
+    post 'procedures/prices', to: 'procedures#prices', as: :prices
     get 'maps/more_markers', to: 'maps#more_markers', as: :more_markers
  
     resources :hospitals do

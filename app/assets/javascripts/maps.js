@@ -185,18 +185,10 @@ $(document).ready(function(){
         });
         
         clickMarker(hospital, marker);
-        // marker.html = hospital["infobox_html"];
 
-        // var infowindow = new google.maps.InfoWindow({
-        //   maxWidth: 500,
-        //   Height: 600
-        // });
-   
-        // google.maps.event.addListener(marker, 'click', function() {
-        //   infowindow.setContent(this.html);
-        //   infowindow.open(map, this);
-        // });
-
+        var infowindow = new google.maps.InfoWindow({
+          maxWidth: 500,
+        });
       };
     };
 
@@ -232,6 +224,46 @@ function clickMarker(hospital, marker){
     var thumbsUp = [];
     var thumbsDown = [];
     var mortality = [];
+    var priceTags = [];
+
+
+    function setPriceTags(map, locations){
+
+      for (var i=0; i< priceTags.length; i++ ) {
+        priceTags[i].setMap(null);
+      }
+
+      for (var i = 0; i < locations.length; i++) { 
+         var hospital = $.parseJSON(locations[i]);
+         var latLng = new google.maps.LatLng(hospital.latitude, hospital.longitude);
+         var price = hospital.avg_cost
+         var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: new google.maps.MarkerImage(
+              "http://chart.googleapis.com/chart?chst=d_text_outline&chld=46E01B|14|h|000000|b|$"+price+" k",
+              null, null, new google.maps.Point(0, 42))
+          });
+       priceTags.push(marker);
+       bubbles.push(marker);
+      }
+    };
+
+    $('#procdropdown').change(function(event){
+      drgDescription = $('#procdropdown').val();
+      
+      var loadedIDs = []
+      for (var i = 0; i < existingHospitals.length; i++) {
+        loadedIDs.push(existingHospitals[i].provider_id)
+      };
+
+      var data = {'drg' : drgDescription, 'loadedIDs' : loadedIDs };
+      var urlPricing = 'procedures/prices'
+
+      $.post(urlPricing, data, function(response){
+        setPriceTags(map, response);
+      });
+    });
 
     function setACC(map, locations){
 
