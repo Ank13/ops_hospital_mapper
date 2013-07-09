@@ -38,6 +38,13 @@ describe "A user can" do
 			page.should have_content 'CMS'
 		end
 
+
+		it 'clicks on a map icon', :js => true do
+			sleep(5)
+
+		end
+	end		 
+
 		it "should display google location search box" do
 			page.should have_content "hospital or location"
 		end

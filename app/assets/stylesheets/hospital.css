@@ -18,7 +18,26 @@ a:hover {
   color: #C0272D;
 
 }
+ 
+#wrapper{
+ margin: 0;
+ padding: 0;
+ 
+}
+.inbox-tab {
+  background-color: grey;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  /*clear: both;*/
+  display: inline;
+  width: 32%;
+}
 
+.inbox-tab a{
+  width: 32%;
+  display: inline;
+}
 
 /* single hospital show page  */
 

@@ -1,8 +1,8 @@
 $(document).ready(function(){
   google.maps.visualRefresh = true;
 
-  var hospitals = $("#hospitals").data("hospitals");
   var map;
+  var existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
 
   function initialize() {
     var styles = [
@@ -54,7 +54,6 @@ $(document).ready(function(){
         {name: "Styled Map"});
 
     var mapOptions = {
-      center: new google.maps.LatLng(41.8500, -87.8500),
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       panControl: false,
@@ -71,8 +70,6 @@ $(document).ready(function(){
 
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
-
-    setMarkers(map, hospitals);
 
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
@@ -119,15 +116,61 @@ $(document).ready(function(){
       map.fitBounds(bounds);
     });
 
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-      var bounds = map.getBounds();
-      searchBox.setBounds(bounds);
-    });
-  }
+    google.maps.event.addListener(map, 'bounds_changed', scheduleDelayedCallback);
+
+    function fireIfLastEvent()
+     {
+      if (lastEvent.getTime() + 300 <= new Date().getTime())
+        {
+          var bounds = map.getBounds();
+          // TODO: Length of a degree of longitude = cos(latitude) * 111.325 kilometers
+          var width = (bounds.getNorthEast().kb - bounds.getSouthWest().kb) * 50;
+          searchBox.setBounds(bounds);
+          var lng = map.getCenter().lng();
+          var lat = map.getCenter().lat();
+          loadMoreMarkers(lat, lng, width);
+        }
+    };
+    function scheduleDelayedCallback()
+      {
+        lastEvent = new Date();
+        setTimeout(fireIfLastEvent, 500);
+      };    
+  };
+   
+    function loadMoreMarkers(lat, lng, width){
+      var data = {'lat' : lat, 'lng' : lng, 'distance' : width};
+      var url =  '/maps/more_markers';
+      var moreHospitals = [];
+
+      $.get(url, data, function(response){
+        for (var i = 0; i < response.length; i++) {
+          moreHospitals.push(response[i]);
+        };
+        setMarkers(map, moreHospitals);
+
+        existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
+        var hospital_hash_table = {};
+        var allHospitals = existingHospitals;
+
+        for (var i = 0; i < existingHospitals.length; i++) {
+          hospital_hash_table[existingHospitals[i].provider_id] = true;
+        }
+
+        for (var i = 0; i < moreHospitals.length; i++) {
+          var h = moreHospitals[i];
+
+          if ( ! (h.provider_id in hospital_hash_table)) {
+            allHospitals.push(h);
+          }
+        }
+        $("#hospitals").attr('data-hospitals', JSON.stringify(allHospitals));
+      });
+    };
 
     function setMarkers(map, locations){
 
-        var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
+      var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
         
       for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
@@ -138,13 +181,14 @@ $(document).ready(function(){
           map: map,
           icon: iconBase + 'h_sign_32x32.png',
           title: hospital["provider_name"],
-          zIndex: i
+          zIndex: 9
         });
         
         marker.html = hospital["infobox_html"];
 
         var infowindow = new google.maps.InfoWindow({
-          maxWidth: 400 
+          maxWidth: 500,
+          Height: 600
         });
    
         google.maps.event.addListener(marker, 'click', function() {
@@ -155,35 +199,131 @@ $(document).ready(function(){
       };
     };
 
-    function getCircle(size) {
+    function getCircle(size, color, stroke_color) {
       var circle = {
         path: google.maps.SymbolPath.CIRCLE,
-        fillColor: 'red',
+        fillColor: color,
         fillOpacity: .4,
         scale: size,
-        strokeColor: 'white',
-        strokeWeight: .5
+        strokeColor: stroke_color,
+        strokeWeight: 1
       };
       return circle;
     };
 
     var bubbles = [];
+    var acc = [];
+    var thumbsUp = [];
+    var thumbsDown = [];
+    var mortality = [];
 
     function setACC(map, locations){
+
       for (var i = 0; i < locations.length; i++) {   
         var hospital = locations[i];
         var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
         var size = hospital["acc"];
+        var color = '#236905';
+        var stroke_color = '#236905';
 
         var bubble = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          icon: getCircle(size),
+          icon: getCircle(size, color, stroke_color),
           title: hospital["provider_name"],
-          zIndex: i
+          zIndex: 3
         });
         bubbles.push(bubble);
+        acc.push(bubble);
       };
+    };
+
+    function setThumbsUp(map, locations){
+      for (var i = 0; i < locations.length; i++) {   
+        var hospital = locations[i];
+        var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
+        var size = hospital["thumbs_up"];
+        var color = '#EEF000';
+        var stroke_color = '#EEF000'
+
+        var bubble = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: getCircle(size, color, stroke_color),
+          title: hospital["provider_name"],
+          zIndex: 2
+        });
+        bubbles.push(bubble);
+        thumbsUp.push(bubble);
+      };
+    };
+
+    function setThumbsDown(map, locations){
+      for (var i = 0; i < locations.length; i++) {   
+        var hospital = locations[i];
+        var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
+        var size = hospital["thumbs_down"];
+        var color = '#F04400';
+        var stroke_color = '#F04400'
+
+        var bubble = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: getCircle(size, color, stroke_color),
+          title: hospital["provider_name"],
+          zIndex: 4
+        });
+        bubbles.push(bubble);
+        thumbsDown.push(bubble);
+      };
+    };
+
+    function setMortality(map, locations){
+      for (var i = 0; i < locations.length; i++) {   
+        var hospital = locations[i];
+        var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
+        var size = hospital["mortality"];
+        var color = '#515151';
+        var stroke_color = '#515151'
+
+        var bubble = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: getCircle(size, color, stroke_color),
+          title: hospital["provider_name"],
+          zIndex: 5
+        });
+        bubbles.push(bubble);
+        mortality.push(bubble);
+      };
+    };
+
+    function clearACC() {
+      for (var i=0; i< acc.length; i++ ) {
+        acc[i].setMap(null);
+      }
+      acc = [];
+    };
+
+    function clearThumbsUp() {
+      for (var i=0; i< thumbsUp.length; i++ ) {
+        thumbsUp[i].setMap(null);
+      }
+      thumbsUp = [];
+    };
+
+    function clearThumbsDown() {
+      for (var i=0; i< thumbsDown.length; i++ ) {
+        thumbsDown[i].setMap(null);
+      }
+      thumbsDown = [];
+    };
+
+    function clearMortality() {
+      for (var i=0; i< mortality.length; i++ ) {
+        mortality[i].setMap(null);
+      }
+      mortality = [];
     };
 
     function clearOverlays() {
@@ -193,12 +333,55 @@ $(document).ready(function(){
       bubbles = [];
     };
 
-  $("#acc").on('click', function(){
-    var icon = 'ACC'
-    setACC(map, hospitals);
+  $("a#acc i").on('click', function(){
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'ACC';
+      setACC(map, existingHospitals);
+    }
+    else {
+      clearACC();
+    }
   });
 
-  $("#clear").on('click', function(){
+  $("a#thumbs_up i").on('click', function(){
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'TH';
+      setThumbsUp(map, existingHospitals);
+    }
+    else {
+      clearThumbsUp();
+    }
+  });
+
+  $("a#thumbs_down i").on('click', function(){
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'th-down';
+      setThumbsDown(map, existingHospitals);
+    }
+    else {
+      clearThumbsDown();
+    }
+  });
+
+  $("a#mortality i").on('click', function(){
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'frown';
+      setMortality(map, existingHospitals);
+    }
+    else {
+      clearMortality();
+    }
+  });
+
+  $("a#clear").on('click', function(){
+    $('a#acc i').removeClass('active');
+    $('a#thumbs_up i').removeClass('active');
+    $('a#thumbs_down i').removeClass('active');
+    $('a#mortality i').removeClass('active');
     clearOverlays();
   });
 
