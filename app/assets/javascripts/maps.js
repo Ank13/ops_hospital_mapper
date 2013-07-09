@@ -185,18 +185,10 @@ $(document).ready(function(){
         });
         
         clickMarker(hospital, marker);
-        // marker.html = hospital["infobox_html"];
 
-        // var infowindow = new google.maps.InfoWindow({
-        //   maxWidth: 500,
-        //   Height: 600
-        // });
-   
-        // google.maps.event.addListener(marker, 'click', function() {
-        //   infowindow.setContent(this.html);
-        //   infowindow.open(map, this);
-        // });
-
+        var infowindow = new google.maps.InfoWindow({
+          maxWidth: 500,
+        });
       };
     };
 

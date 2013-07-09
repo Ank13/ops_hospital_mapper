@@ -6,8 +6,8 @@ $(document).ready(function(){
 
   function getChart(that, data, url){
     $.get(url, data, function(response){
-       that.parent().parent().parent().attr('id', 'chart_div');
-       that.parent().parent().text(" ");
+       $('#description').attr('id', 'chart_div');
+       // that.parent().parent().text(" ");
        var axisLabels = {colOne: "Hospital", colTwo: "National"}
        drawChart(response, axisLabels);
     });
@@ -36,8 +36,8 @@ $(document).ready(function(){
     var url =  '/hospitals/'+hospitalID+'/infobox' ; 
 
     $.get(url, data, function(response){
-       that.parent().parent().parent().attr('id', 'chart_div');
-       that.parent().parent().text(" ");
+       $('#description').attr('id', 'chart_div');
+       // that.parent().parent().text(" ");
        var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
        drawChart(response, axisLabels);
     });
@@ -83,8 +83,8 @@ google.load('visualization', '1.0', {'packages':['corechart']});
 
     var options = {
       'title': title,
-      'width':325,
-      'height':150,
+      'width':350,
+      'height':175,
       'legend': {position: 'in'}
     };
 
