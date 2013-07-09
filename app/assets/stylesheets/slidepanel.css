@@ -2,14 +2,14 @@
 	position: fixed;
 	z-index: 1;
 	display: block;
-	width: 10%;
+	width: 200px;
 	height: 100%;
 	-moz-border-radius-topright: 20px;
 	-webkit-border-top-right-radius: 20px;
 	-moz-border-radius-bottomright: 20px;
 	-webkit-border-bottom-right-radius: 20px;
-	padding: 12% 2.5% 1.5% 1.5%;
-	left: 15%;
+	padding: 120px 25px 15px 15px;
+	left: 300px;
 	top: 0;
 	opacity:.85;
 	background-color: #FAFFE4;
