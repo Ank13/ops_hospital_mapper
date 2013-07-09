@@ -18,4 +18,8 @@ Need to have R installed before you run rinruby:
   brew install R
   or
   http://ftp.ussg.iu.edu/CRAN/
+
+To push environment files to Heroku:
+
+  rake figaro:heroku
   
