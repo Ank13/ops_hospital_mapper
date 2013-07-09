@@ -245,10 +245,16 @@ $(document).ready(function(){
 
     $('#procdropdown').change(function(event){
       drgDescription = $('#procdropdown').val();
-      var data = {'drg' : drgDescription };
+      
+      var loadedIDs = []
+      for (var i = 0; i < existingHospitals.length; i++) {
+        loadedIDs.push(existingHospitals[i].provider_id)
+      };
+
+      var data = {'drg' : drgDescription, 'loadedIDs' : loadedIDs };
       var urlPricing = 'procedures/prices'
 
-      $.get(urlPricing, data, function(response){
+      $.post(urlPricing, data, function(response){
         setPriceTags(map, response);
       });
     });
