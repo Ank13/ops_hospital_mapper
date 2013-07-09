@@ -24,7 +24,9 @@ padding:8px 8px 8px 0;
   font-size: 12px;
   width: 100%;
   line-height:20px;
+  margin-top: 15px;
 }
+
 
 .visualize .icon-usd {
   font-size: 20px;
@@ -47,15 +49,38 @@ padding:8px 8px 8px 0;
 
 .visualize .icon-thumbs-down {
   font-size: 20px;
-  color: #002BA3;
+  color: #F04400;
 }
 
 .visualize .icon-thumbs-down:hover {
   color: white;
 }
 
+.visualize .icon-ambulance {
+  font-size: 20px;
+  color: #70070A;
+}
+
+.visualize .icon-ambulance:hover {
+  color: white;
+}
+
+.visualize .icon-frown {
+  font-size: 20px;
+  color: #515151;
+}
+
+.visualize .icon-frown:hover {
+  color: white;
+}
+
 .visualize a {
   color: #375D81;
+}
+
+.viz-label {
+  float: right;
+  margin-left:20px;
 }
 
 .panel {
@@ -64,12 +89,12 @@ z-index: 3;
 left: 0;
 display: block;
 background: #ABC8E2;
-width: 10%;
+width: 12%;
 height: 100%;
 min-width: 175px;
 padding: 2% 2.5% 1.5% 1.5%;
-filter: alpha(opacity=85);
-opacity:.85;
+filter: alpha(opacity=95);
+opacity:.95;
 }
 
 .panel h2 {
