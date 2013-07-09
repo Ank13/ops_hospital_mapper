@@ -8,15 +8,15 @@ $(document).ready(function(){
     $(".panel").slideToggle("fast"); 
     $(this).toggleClass("active");
     if($(this).hasClass("active")) {
-      $(this).animate({left: '-=14%'}, 300);
+      $(this).animate({left: '-=290'}, 300);
       if($('.trigger2').hasClass('active')) {
-        $('.trigger2').animate({left: '-=13%'}, 300).removeClass('active');
+        $('.trigger2').animate({left: '-=250'}, 300).removeClass('active');
       }
       $('#analytics').hide();
       $('.slidepanel').empty().hide();
     }
     else {
-      $(this).animate({left: '+=14%'}, 300);
+      $(this).animate({left: '+=290'}, 300);
       $('#analytics').fadeIn(500);
       $('.slidepanel').css('z-index', '1');
     }
@@ -26,13 +26,13 @@ $(document).ready(function(){
   $(".trigger2").click(function(){
     $(this).toggleClass("active");
     if($(this).hasClass("active")) {
-      $('#analytics').animate({left: '+=14%'}, 300);
-      $(this).animate({left: '+=13%'}, 300);
+      $('#analytics').animate({left: '+=250'}, 300);
+      $(this).animate({left: '+=250'}, 300);
       $(".slidepanel").css('z-index', '3').show("fast");
     } 
     else {
-      $('#analytics').animate({left: '-=14%'}, 300);
-      $(this).animate({left: '-=13%'}, 300);
+      $('#analytics').animate({left: '-=250'}, 300);
+      $(this).animate({left: '-=250'}, 300);
       $(".slidepanel").hide("fast");
     }
     return false;
@@ -47,8 +47,8 @@ $(document).ready(function(){
     }
     else {
       $($('.about').html()).appendTo('.slidepanel');
-      $('.analytics').animate({left: '+=14%'}, 300);
-      $('.trigger2').addClass('active').animate({left: '+=13%'}, 300);
+      $('#analytics').animate({left: '+=250'}, 300);
+      $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
       $('.slidepanel').css('z-index', '3').show("fast");
       e.stopPropagation();
     }
@@ -63,8 +63,8 @@ $(document).ready(function(){
     }  
     else {
       $($('.datasets').html()).appendTo('.slidepanel');
-      $('.analytics').animate({left: '+=14%'}, 300);
-      $('.trigger2').addClass('active').animate({left: '+=13%'}, 300);
+      $('#analytics').animate({left: '+=250'}, 300);
+      $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
       $('.slidepanel').css('z-index', '3').show("fast");
       e.stopPropagation();
     }
@@ -79,15 +79,15 @@ $(document).ready(function(){
     }  
     else {
       $($('.wtfacts').html()).appendTo('.slidepanel');
-      $('.analytics').animate({left: '+=14%'}, 300);
-      $('.trigger2').addClass('active').animate({left: '+=13%'}, 300);
+      $('#analytics').animate({left: '+=250'}, 300);
+      $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
       $('.slidepanel').css('z-index', '3').show("fast");
       e.stopPropagation();
     }
     $(document).click(function() {
       if($('.trigger2').hasClass('active')) {
         $('.trigger2').removeClass('active').animate({
-          left: "-=13%"
+          left: "-=250"
         });
         $('.slidepanel').empty().hide();
       }

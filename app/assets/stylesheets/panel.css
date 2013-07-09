@@ -84,15 +84,15 @@ padding:8px 8px 8px 0;
 }
 
 .panel {
-position: fixed;
+position: absolute;
 z-index: 3;
 left: 0;
 display: block;
 background: #ABC8E2;
-width: 12%;
+width: 250px;
 height: 100%;
 min-width: 175px;
-padding: 2% 2.5% 1.5% 1.5%;
+padding: 20px 25px 15px 15px;
 filter: alpha(opacity=95);
 opacity:.95;
 }
@@ -121,8 +121,8 @@ color: #cccccc;
 
 a.trigger2{
   position:fixed;
-  left: 14%;
-  top: 18%;
+  left: 255px;
+  top: 160px;
   text-decoration: none;
   font-size: 16px;
   letter-spacing:-1px;
@@ -130,8 +130,8 @@ a.trigger2{
   color:#fff;
   padding-left: 12px;
   padding-top: 8px;
-  width: 6.5%;
-  height: 3.5%;
+  width: 100px;
+  height: 35px;
   font-weight: 400;
   background-color: #183152;
   -webkit-transform: rotate(90deg); 
@@ -151,16 +151,16 @@ a.trigger{
 position: fixed;
 z-index: 3;
 text-decoration: none;
-left: 14%;
-top: 5%;
+left: 255px;
+top: 40px;
 font-size: 16px;
 letter-spacing:-1px;
 font-family: verdana, helvetica, arial, sans-serif;
 color:#fff;
 padding-left: 12px;
 padding-top: 8px;
-width: 6.5%;
-height: 3.5%;
+width: 100px;
+height: 35px;
 font-weight: 400;
 background-color:#375D81;
 -webkit-transform: rotate(90deg); 
@@ -200,7 +200,7 @@ a.active.trigger {
 }
 
 #procdropdown {
-   width: 100%;
+   width: 225px;
    height: 18px;
    margin-top: 4px;
    border: 1px solid #ccc;
