@@ -212,6 +212,10 @@ $(document).ready(function(){
     };
 
     var bubbles = [];
+    var acc = [];
+    var thumbsUp = [];
+    var thumbsDown = [];
+    var mortality = [];
 
     function setACC(map, locations){
 
@@ -230,6 +234,7 @@ $(document).ready(function(){
           zIndex: 3
         });
         bubbles.push(bubble);
+        acc.push(bubble);
       };
     };
 
@@ -249,6 +254,7 @@ $(document).ready(function(){
           zIndex: 2
         });
         bubbles.push(bubble);
+        thumbsUp.push(bubble);
       };
     };
 
@@ -268,6 +274,7 @@ $(document).ready(function(){
           zIndex: 4
         });
         bubbles.push(bubble);
+        thumbsDown.push(bubble);
       };
     };
 
@@ -287,7 +294,36 @@ $(document).ready(function(){
           zIndex: 5
         });
         bubbles.push(bubble);
+        mortality.push(bubble);
       };
+    };
+
+    function clearACC() {
+      for (var i=0; i< acc.length; i++ ) {
+        acc[i].setMap(null);
+      }
+      acc = [];
+    };
+
+    function clearThumbsUp() {
+      for (var i=0; i< thumbsUp.length; i++ ) {
+        thumbsUp[i].setMap(null);
+      }
+      thumbsUp = [];
+    };
+
+    function clearThumbsDown() {
+      for (var i=0; i< thumbsDown.length; i++ ) {
+        thumbsDown[i].setMap(null);
+      }
+      thumbsDown = [];
+    };
+
+    function clearMortality() {
+      for (var i=0; i< mortality.length; i++ ) {
+        mortality[i].setMap(null);
+      }
+      mortality = [];
     };
 
     function clearOverlays() {
@@ -298,27 +334,55 @@ $(document).ready(function(){
     };
 
   $("a#acc i").on('click', function(){
-    var icon = 'ACC'
-    setACC(map, existingHospitals);
-  });
-
-  $("a#clear").on('click', function(){
-    clearOverlays();
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'ACC';
+      setACC(map, existingHospitals);
+    }
+    else {
+      clearACC();
+    }
   });
 
   $("a#thumbs_up i").on('click', function(){
-    var icon = 'TH'
-    setThumbsUp(map, existingHospitals);
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'TH';
+      setThumbsUp(map, existingHospitals);
+    }
+    else {
+      clearThumbsUp();
+    }
   });
 
   $("a#thumbs_down i").on('click', function(){
-    var icon = 'th-down'
-    setThumbsDown(map, existingHospitals);
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'th-down';
+      setThumbsDown(map, existingHospitals);
+    }
+    else {
+      clearThumbsDown();
+    }
   });
 
   $("a#mortality i").on('click', function(){
-    var icon = 'frown'
-    setMortality(map, existingHospitals);
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'frown';
+      setMortality(map, existingHospitals);
+    }
+    else {
+      clearMortality();
+    }
+  });
+
+  $("a#clear").on('click', function(){
+    $('a#acc i').removeClass('active');
+    $('a#thumbs_up i').removeClass('active');
+    $('a#thumbs_down i').removeClass('active');
+    $('a#mortality i').removeClass('active');
+    clearOverlays();
   });
 
   google.maps.event.addDomListener(window, 'load', initialize);
