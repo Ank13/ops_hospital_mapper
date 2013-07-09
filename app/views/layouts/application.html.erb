@@ -2,34 +2,26 @@
 <html>
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <title>OpsHospitalMapper</title>
+  <title>hospiTally</title>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= stylesheet_link_tag    "application", :media => "all" %>		
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
 
   <% if Rails.env.development? %>
   	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO9Z0tWf75CNdw0ADDoB6MrnX4dm5sRKM&libraries=places&sensor=false' %>
   <% elsif Rails.env.staging? %>
-  	  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkB4eO86DxOAR0mTq_VDj8zVkBdhhGjjQ&sensor=false' %>
+  	  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkB4eO86DxOAR0mTq_VDj8zVkBdhhGjjQ&libraries=places&sensor=false' %>
   <% elsif Rails.env.production?%>
-  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB4oIpNJi8mImqM1dhkpD8mx6D_xCTWR9Y&sensor=false' %>
+  	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB4oIpNJi8mImqM1dhkpD8mx6D_xCTWR9Y&libraries=places&sensor=false' %>
   <% end %>
   
   <%= csrf_meta_tags %>
 
 </head>
 <body>
-
-<nav class="nav">
-  <ul id="navlist">
-    <li id="logo">hospiTALLY</li>
-    <li id="wtfacts"><%= link_to "WTF medicare", '#' %></li>
-    <li id="datasets"><%= link_to "datasets", '#' %></li>
-    <li id="about"><%= link_to "about US", '#' %></li>
-  </ul>
-</nav>
 
 <%= yield %>
 

@@ -4,6 +4,15 @@ $(document).ready(function(){
   var drgDescription = "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC"
   var hospitalID = 0 ;
 
+  function getChart(that, data, url){
+    $.get(url, data, function(response){
+       that.parent().parent().parent().attr('id', 'chart_div');
+       that.parent().parent().text(" ");
+       var axisLabels = {colOne: "Hospital", colTwo: "National"}
+       drawChart(response, axisLabels);
+    });
+  };
+
   $('#procdropdown').change(function(event){
     drgDescription = $('#procdropdown').val();
     var data = drgDescription;
@@ -14,48 +23,68 @@ $(document).ready(function(){
     {
       $.get(url, data, function(response){
          $("#chart_div").text(" ");
-         drawChart(response);
+         var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
+         drawChart(response, axisLabels);
       });
     }
   });
 
-  $("#map-canvas").on('click', '.info-click',function(event){
+  $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
     var that = $(this)
-    var data = drgDescription
+    var data = {'drg' : drgDescription }
     var url =  '/hospitals/'+hospitalID+'/infobox'
 
     $.get(url, data, function(response){
        that.parent().parent().parent().attr('id', 'chart_div');
        that.parent().parent().text(" ");
-       drawChart(response);
+       var axisLabels = {colOne: "Here", colTwo: "Illinois", colThree: "National"}
+       drawChart(response, axisLabels);
     });
+  });
+
+  $("#map-canvas").on('click', '.info-outcomes',function(event){
+    hospitalID = (this.id);
+    var that = $(this)
+    var data = drgDescription
+    var url =  '/hospitals/'+hospitalID+'/outcomebox'
+    getChart(that, data, url);
+  });
+
+  $("#map-canvas").on('click', '.info-complications',function(event){
+    hospitalID = (this.id);
+    var that = $(this)
+    var data = drgDescription
+    var url =  '/hospitals/'+hospitalID+'/complicationbox'
+    getChart(that, data, url);
   });
 });
 
 google.load('visualization', '1.0', {'packages':['corechart']});
 
-  function drawChart(data) {
-    var hospitalCharge = data["hospital_charge"]
-    var ilCharge = data["il_charge"]
-    var natlCharge = data["natl_charge"]
-    var procedure = data["procedure"]
+  function drawChart(data, axisLabels) {
+    var firstCol = data["first_col"]
+    var secondCol = data["second_col"]
+    var thirdCol = data["third_col"]
+    var title = data["title"]
+    var yAxis = data["y_axis"]
 
     var data = google.visualization.arrayToDataTable([
-      ['Factor', 'Here', 'Illinois', 'National'],
-      ['Cost',  hospitalCharge, ilCharge, natlCharge],
+      ['Factor', axisLabels.colOne, axisLabels.colTwo, axisLabels.colThree],
+      [yAxis,  firstCol, secondCol, thirdCol],
     ]);
 
     var formatter = new google.visualization.TableNumberFormat(
-          {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true});
+          // {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true}
+          );
       formatter.format(data, 1); 
       formatter.format(data, 2); 
       formatter.format(data, 3); 
 
     var options = {
-      'title': procedure,
+      'title': title,
       'width':325,
-      'height':175,
+      'height':150,
       'legend': {position: 'in'}
     };
 
