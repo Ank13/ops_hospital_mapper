@@ -65,3 +65,22 @@ namespace :db do
     end
   end
 end
+
+namespace :db do
+  desc "parse csv files for procedures database new fields: description and clinical_category" 
+  task :parse_csv_procedure_description => :environment do
+    csv_procedure = File.open(File.join(Rails.root), "dataset", "procedure_definitions.csv"),"r")
+    csv = CSV.parse(csv_procedure, :headers => true)
+    csv.each do |row|
+      drg_id = row[0]
+      clinical_category = row[1]
+      description = row[2]
+      procedure = Procedure.find_by_drg_id(drg_id)
+      procedure.update_attributes({:description => description, :clinical_category => clinical_category})
+  end
+end
+
+
+
+
+

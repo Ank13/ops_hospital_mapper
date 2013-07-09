@@ -1,0 +1,101 @@
+drg_id,clinical_category,description
+039,Vascular Surgery,Extracranial Procedures without Complication or Major Complication
+057,Neurological Care,Degenerative Nervous System Disorders without Major Complication
+064,Neurological Care,Intracranial Hemorrhage or Cerebral Infarction with Major Complication 
+065,Neurological Care,Intracranial Hemorrhage or Cerebral Infarction with Complication
+066,Neurological Care,Intracranial Hemorrhage or Cerebral Infarction without Complication or Major Complication
+069,Neurological Care,Transient Ischemia
+074,Neurological Care,Cranial & Peripheral Nerve Disorders without Major Complication
+101,Neurological Care,Seizures without Major Complication
+149,,Dysequilibrium
+176,Pulmonary Care,Pulmonary Embolism without Major Complication
+177,Pulmonary Care,Respiratory Infections & Inflammations with Major Complication
+178,Pulmonary Care,Respiratory Infections & Inflammations with Complication
+189,Pulmonary Care,Pulmonary Edema & Respiratory Failure
+190,Pulmonary Care,Chronic Obstructive Pulmonary Disease with Major Complication
+191,Pulmonary Care,Chronic Obstructive Pulmonary Disease with Complication
+192,Pulmonary Care,Chronic Obstructive Pulmonary Disease without Complication or Major Complication
+193,Pulmonary Care,Simple Pneumonia & Pleurisy with Major Complication
+194,Pulmonary Care,Simple Pneumonia & Pleurisy with Complication
+195,Pulmonary Care,Simple Pneumonia & Pleurisy without Complication or Major Complication
+202,Pulmonary Care,Bronchitis & Asthma with Complication or Major Complication
+203,Pulmonary Care,Bronchitis & Asthma without Complication or Major Complication
+207,Pulmonary Care,Respiratory System Dx with Ventilator Support (96+ Hours)
+208,Pulmonary Care,Respiratory System Dx with Ventilator Support (<96 Hours)
+238,Cardiovascular Surgery,Major Cardiovascular Procedures without Major Complication
+243,Cardial Care,Permanent Cardiac Pacemaker Implant with Complication 
+244,Cardial Care,Permanent Cardiac Pacemaker Implant without Complication or Major Complication
+246,Cardial Care,Perc Cardiovascular Procedure with Drug-Eluting Stent with Major Complication or 4+ Vessels/Stents
+247,Cardial Care,Perc Cardiovascular Procedure with Drug-Eluting Stent without Major Complication
+249,Cardial Care,Perc Cardiovascular Procedure with Non-Drug-Eluting Stent without Major Complication
+251,Cardial Care,Perc Cardiovascular Procedure without Coronary Artery Stent without Major Complication
+252,Vascular Surgery,Other Vascular Procedures with Major Complication
+253,Vascular Surgery,Other Vascular Procedures with Complication
+254,Vascular Surgery,Other Vascular Procedures without Complication or Major Complication
+280,Cardiac Care,Acute Myocardial Infarction & Disch Alive with Major Complication
+281,Cardiac Care,Acute Myocardial Infarction & Disch Alive with Complication
+282,Cardiac Care,Acute Myocardial Infarction & Disch Alive without Complication or Major Complication
+286,Cardiac Care,Circulatory Disorders Except AMI with Card Cath with Major Complication
+287,Cardiac Care,Circulatory Disorders Except AMI with Card Cath without Major Complication
+291,Cardiac Care,Acute & Subacute Endocarditis with Major Complication
+292,Cardiac Care,Acute & Subacute Endocarditis with Complication
+293,Cardiac Care,Acute & Subacute Endocarditis without Complication or Major Complication
+300,,Peripheral Vascular Disorders with Complication
+301,,Peripheral Vascular Disorders without Complication or Major Complication
+303,Cardiac Care,Atherosclerosis without Major Complication
+305,Cardiac Care,Hypertension without Major Complication
+308,Cardiac Care,Cardiac Arrhythmia & Conduction Disorders with Major Complication
+309,Cardiac Care,Cardiac Arrhythmia & Conduction Disorders with Complication
+310,Cardiac Care,Cardiac Arrhythmia & Conduction Disorders without Complication or Major Complication
+312,Cardiac Care,Syncope & Collapse
+313,Cardiac Care,Chest Pain
+314,Cardiac Care,Other Circulatory System Diagnoses with Major Complication
+315,Cardiac Care,Other Circulatory System Diagnoses with Complication
+329,Gastrointestinal Care,Major Small & Large Bowel Procedures with Major Complication 
+330,Gastrointestinal Care,Major Small & Large Bowel Procedures with Complication
+372,Gastrointestinal Care,Major Gastrointestinal Disorders & Peritoneal Infections with Complication
+377,Gastrointestinal Care,G.I. Hemorrhage with Major Complication
+378,Gastrointestinal Care,G.I. Hemorrhage with Complication
+379,Gastrointestinal Care,G.I. Hemorrhage without Complication or Major Complication
+389,Gastrointestinal Care,G.I. Obstruction with Complication
+390,Gastrointestinal Care,G.I. Obstruction without Complication or Major Complication
+391,Gastrointestinal Care,Esophagitis or Gastroent & Misc Digest Disorders with Major Complication
+392,Gastrointestinal Care,Esophagitis or Gastroent & Misc Digest Disorders without Major Complication
+394,Gastrointestinal Care,Other Digestive System Diagnoses with Complication
+418,Gastrointestinal Care,Laparoscopic Cholecystectomy without C.D.E. with Complication
+419,Gastrointestinal Care,Laparoscopic Cholecystectomy without C.D.E. without Complication or Major Complication
+439,Gastrointestinal Care,Disorders of Pancreas except Malignancy with Complication
+460,Spinal Surgery,Spinal Fusion Except Cervical without Major Complication
+469,Joint Replacement,Major Joint Replacement or Reattachment of Lower Extremity with Major Complication
+470,Joint Replacement,Major Joint Replacement or Reattachment of Lower Extremity without Major Complication
+473,Spinal Surgery,Cervical Spinal Fusion without Complication or Major Complication
+480,Orthopedic Care,Hip & Femur Procedures Except Major Joint with Major Complication
+481,Orthopedic Care,Hip & Femur Procedures Except Major Joint with Complication
+482,Orthopedic Care,Hip & Femur Procedures Except Major Joint without Complication or Major Complication
+491,Spinal Surgery,Back & Neck Procedures Except Spinal Fusion without Complication or Major Complication
+536,Orthopedic Care,Fractures of Hip & Pelvis without Major Complication
+552,Neurological Care,Medical Back Problems without Major Complication
+563,Orthopedic Care,Fx or Sprn or Strn or Disl Except Femur & Hip & Pelvis & Thigh without Major Complication
+602,,Cellulitis with Major Complication
+603,,Cellulitis without Major Complication
+638,,Diabetes with complication
+640,,Misc Disorders of Nutrition or Metabolism or Fluids/Electrolytes with Major Complication
+641,,Misc Disorders of Nutrition or Metabolism or Fluids/Eletrolytes without Major Complication
+682,,Renal Failure with Major Complication
+683,,Renal Failure with Complication
+684,,Renal Failure without Complication or Major Complication
+689,,Kidney & Urinary Tract Infections with Major Complication 
+690,,Kidney & Urinary Tract Infections without Major Complication
+698,,Other Kidney & Urinary Tract Diagnoses with Major Complication
+699,,Other Kidney & Urinary Tract Diagnoses with Complication
+811,,Red Blood Cell Disorders with Major Complication
+812,,Red Blood Cell Disorders without Major Complication
+853,General Surgery,Infectious & Parasitic Diseases with O.R. Procedure with Major Complication
+870,,Septicemia or Severe Sepsis with MV 96+ Hours 
+871,,Septicemia or Severe Sepsis without MV 96+ Hours with Major Complication
+872,,Septicemia or Severe Sepsis without MV 96+ Hours without Major Complication
+885,,Psychoses
+897,,Alcohol/Drug Abuse or Dependence without Rehabilitation Therapy without Major Complication
+917,,Poisoning & Toxic Effects of Drugs with Major Complication
+918,,Poisoning & Toxic Effects of Drugs without Major Complication
+948,,Signs & Symptoms without Major Complication
