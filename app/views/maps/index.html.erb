@@ -1,5 +1,7 @@
 
-<div id="hospitals"></div>
+<!-- <div id="hospitals"></div> -->
+<%= content_tag "div", id: "hospitals", data: {hospitals: @all_hospitals} do %>
+<% end %>
 
 <%= render partial: "about" %>
 <%= render partial: "datasets" %>
