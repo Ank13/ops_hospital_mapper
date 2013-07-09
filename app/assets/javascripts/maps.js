@@ -298,27 +298,47 @@ $(document).ready(function(){
     };
 
   $("a#acc i").on('click', function(){
-    var icon = 'ACC'
-    setACC(map, existingHospitals);
-  });
-
-  $("a#clear").on('click', function(){
-    clearOverlays();
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'ACC';
+      setACC(map, existingHospitals);
+    }
+    else {
+      clearOverlays();
+    }
   });
 
   $("a#thumbs_up i").on('click', function(){
-    var icon = 'TH'
-    setThumbsUp(map, existingHospitals);
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'TH';
+      setThumbsUp(map, existingHospitals);
+    }
+    else {
+      clearOverlays();
+    }
   });
 
   $("a#thumbs_down i").on('click', function(){
-    var icon = 'th-down'
-    setThumbsDown(map, existingHospitals);
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'th-down';
+      setThumbsDown(map, existingHospitals);
+    }
+    else {
+      clearOverlays();
+    }
   });
 
   $("a#mortality i").on('click', function(){
-    var icon = 'frown'
-    setMortality(map, existingHospitals);
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+      var icon = 'frown';
+      setMortality(map, existingHospitals);
+    }
+    else {
+      clearOverlays();
+    }
   });
 
   google.maps.event.addDomListener(window, 'load', initialize);
