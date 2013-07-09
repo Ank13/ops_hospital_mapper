@@ -7,5 +7,6 @@ describe Hospital do
 	it { should have_one(:outcome) }
 	it { should have_one(:patient_survey) }
 	it { should have_one(:complication) }
+  it { should validate_presence_of(:provider_id)}
 
 end
