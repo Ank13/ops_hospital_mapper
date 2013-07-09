@@ -181,23 +181,31 @@ $(document).ready(function(){
           map: map,
           icon: iconBase + 'h_sign_32x32.png',
           title: hospital["provider_name"],
-          zIndex: 9
+          zIndex: 100
         });
         
-        marker.html = hospital["infobox_html"];
+        clickMarker(hospital, marker);
 
         var infowindow = new google.maps.InfoWindow({
           maxWidth: 500,
-          Height: 600
         });
-   
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(this.html);
-          infowindow.open(map, this);
-        });
-
       };
     };
+
+function clickMarker(hospital, marker){
+  marker.html = hospital["infobox_html"];
+
+  var infowindow = new google.maps.InfoWindow({
+    maxWidth: 500,
+    Height: 600
+  });
+  
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(this.html);
+    infowindow.open(map, this);
+  });
+
+};
 
     function getCircle(size, color, stroke_color) {
       var circle = {
@@ -216,6 +224,46 @@ $(document).ready(function(){
     var thumbsUp = [];
     var thumbsDown = [];
     var mortality = [];
+    var priceTags = [];
+
+
+    function setPriceTags(map, locations){
+
+      for (var i=0; i< priceTags.length; i++ ) {
+        priceTags[i].setMap(null);
+      }
+
+      for (var i = 0; i < locations.length; i++) { 
+         var hospital = $.parseJSON(locations[i]);
+         var latLng = new google.maps.LatLng(hospital.latitude, hospital.longitude);
+         var price = hospital.avg_cost
+         var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: new google.maps.MarkerImage(
+              "http://chart.googleapis.com/chart?chst=d_text_outline&chld=46E01B|14|h|000000|b|$"+price+" k",
+              null, null, new google.maps.Point(0, 42))
+          });
+       priceTags.push(marker);
+       bubbles.push(marker);
+      }
+    };
+
+    $('#procdropdown').change(function(event){
+      drgDescription = $('#procdropdown').val();
+      
+      var loadedIDs = []
+      for (var i = 0; i < existingHospitals.length; i++) {
+        loadedIDs.push(existingHospitals[i].provider_id)
+      };
+
+      var data = {'drg' : drgDescription, 'loadedIDs' : loadedIDs };
+      var urlPricing = 'procedures/prices'
+
+      $.post(urlPricing, data, function(response){
+        setPriceTags(map, response);
+      });
+    });
 
     function setACC(map, locations){
 
@@ -226,15 +274,16 @@ $(document).ready(function(){
         var color = '#236905';
         var stroke_color = '#236905';
 
-        var bubble = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           icon: getCircle(size, color, stroke_color),
           title: hospital["provider_name"],
           zIndex: 3
         });
-        bubbles.push(bubble);
-        acc.push(bubble);
+        bubbles.push(marker);
+        acc.push(marker);
+        clickMarker(hospital, marker);
       };
     };
 
@@ -246,15 +295,16 @@ $(document).ready(function(){
         var color = '#EEF000';
         var stroke_color = '#EEF000'
 
-        var bubble = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           icon: getCircle(size, color, stroke_color),
           title: hospital["provider_name"],
-          zIndex: 2
+          zIndex: 5
         });
-        bubbles.push(bubble);
-        thumbsUp.push(bubble);
+        bubbles.push(marker);
+        thumbsUp.push(marker);
+        clickMarker(hospital, marker);
       };
     };
 
@@ -266,15 +316,16 @@ $(document).ready(function(){
         var color = '#F04400';
         var stroke_color = '#F04400'
 
-        var bubble = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           icon: getCircle(size, color, stroke_color),
           title: hospital["provider_name"],
-          zIndex: 4
+          zIndex: 3
         });
-        bubbles.push(bubble);
-        thumbsDown.push(bubble);
+        bubbles.push(marker);
+        thumbsDown.push(marker);
+        clickMarker(hospital, marker);
       };
     };
 
@@ -286,15 +337,16 @@ $(document).ready(function(){
         var color = '#515151';
         var stroke_color = '#515151'
 
-        var bubble = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           icon: getCircle(size, color, stroke_color),
           title: hospital["provider_name"],
-          zIndex: 5
+          zIndex: 2
         });
-        bubbles.push(bubble);
-        mortality.push(bubble);
+        bubbles.push(marker);
+        mortality.push(marker);
+        clickMarker(hospital, marker);
       };
     };
 

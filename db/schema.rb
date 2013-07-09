@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709144757) do
+ActiveRecord::Schema.define(:version => 20130709153256) do
+
 
   create_table "complications", :force => true do |t|
     t.integer  "provider_id"
@@ -133,5 +134,15 @@ ActiveRecord::Schema.define(:version => 20130709144757) do
   end
 
   add_index "procedures", ["drg_id"], :name => "index_procedures_on_drg_id"
+
+  create_table "states_procedures", :force => true do |t|
+    t.integer  "drg_id"
+    t.string   "provider_state"
+    t.integer  "total_discharges"
+    t.float    "avg_covered_charges"
+    t.float    "avg_total_payments"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
 end
