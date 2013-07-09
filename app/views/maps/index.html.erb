@@ -5,8 +5,9 @@
 <%= render partial: "about" %>
 <%= render partial: "datasets" %>
 <%= render partial: "wtfacts" %>
-
+    
 <div class="panel">
+  <h1 id="logo"><img src="https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/hospitally-med-blue.png" width="200px"></h1>
   <h2>Top 100 most frequently billed medical procedures</h2> 
 
   <select id="procdropdown" data-placeholder="Choose a Procedure..." class="chzn-select" tabindex="1">
@@ -15,36 +16,47 @@
       <option value='<%=procedure.drg_def.titleize %>'><%=procedure.drg_def.titleize%></option> 
     <% end  %>
   </select>
-
+<!-- 
   <h3>Patient Surveys</h3>
 
-  <h3>Hospital Outcomes</h3>
+  <h3>Hospital Outcomes</h3> -->
 
 
   <h3>Map Visualizations</h3>
-  <div class="visualize"><a href="#" id="acc">Average Cost (all procedures)</a></div>
+  <div class="visualize"><a href="#" id="acc"><i class="icon-usd"></i></a> <span class="viz-label">Average cost (all procedures)</span></div>
+
+  <div class="visualize"><a href="#" id="thumbs_up"><i class="icon-thumbs-up"></a></i> <span class="viz-label">Recommended by patients</span></div>
+  <div class="visualize"><a href="#" id="thumbs_down"><i class="icon-thumbs-down"></a></i> <span class="viz-label">Not recommended by patients</span></div>
+  <div class="visualize"><a href="#" id="ambulance"><i class="icon-ambulance"></a></i> <span class="viz-label">30-day Readmission Rate</span></div>
+  <div class="visualize"><a href="#" id="mortality"><i class="icon-frown"></a></i> <span class="viz-label">30-day Mortality Rate</span></div>
+ 
+
+
+
   <div class="visualize"><a href="#" id="clear">Clear</a></div>
-    
+
+  <div class="static_links">
+    <div id="wtfacts"><h3><%= link_to "About this site", '#' %></h3></div>
+    <div id="datasets"><h3><%= link_to "About the data", '#' %></h3></div>
+    <div id="about"><h3><%= link_to "About us", '#' %></h3></div>
+  </div>
 
 </div>
 
-<div class="searchby">
-  <a class="trigger" href="#">search by</a>
-</div>
+    <div id="searchby">
+    <a class="trigger" href="#">search by</a>
+    </div>
 
-<div class="analytics">
-  <a class="trigger2" href="#">analytics</a>
-</div>
+    <div id="analytics">
+    <a class="trigger2" href="#">analytics</a>
+    </div>
 
-<div class="slidepanel">
-  <em>Good detailed info</em>
-</div>
-
-<div class="static">
-</div>
+    <div class="slidepanel">
+    <em>Good detailed info</em>
+    </div>
 
 <div id="search-box">
-      <input id="target" type="text" placeholder="Search hospital or location">
+<input id="target" type="text" placeholder="Search hospital or location">
 </div>
 
 <div id="map-canvas">
