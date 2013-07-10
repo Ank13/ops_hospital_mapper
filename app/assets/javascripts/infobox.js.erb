@@ -13,22 +13,33 @@ $(document).ready(function(){
     });
   };
 
-  function toggleSlidePanel() {
-    $('.trigger2').toggleClass("active");
-    if($('.trigger2').hasClass("active")) {
-      $('#analytics').animate({left: '+=250'}, 120);
-      $('.trigger2').animate({left: '+=240'}, 120);
-      $(".slidepanel").css('z-index', '3').show("fast");
-    } 
-    else {
-      $('#analytics').animate({left: '-=250'}, 120);
-      $('.trigger2').animate({left: '-=240'}, 120);
-      $(".slidepanel").hide("fast");
+  var counter = 0;
+
+  function tabTwo() {
+    $(".slidepanel").css('z-index', '3').show(240);
+
+    if(counter === 0) {
+      $('#analytics').animate({left: '+=250'}, 240);
+      $('.trigger2').addClass('active').animate({left: '+=240'}, 240);
+      $('.slidepanel').addClass('active')
+      counter++;
     }
-  };
+  };  
+
+  $(document).bind('click', function() {
+    if($('.trigger2').hasClass('active')) {
+      $('.trigger2').removeClass('active').animate({
+        left: "-=240"
+      }, 240);
+      $('#analytics').animate({left: '-=250'}, 240);
+      $('.slidepanel').removeClass('active').empty().hide(240);
+      counter = 0;
+    }
+  });
 
   function updateWhenNewProc() {
     $('#procdropdown').change(function(event){
+      $('#procdropdown').addClass('active');
       drgDescription = $('#procdropdown').val();
       var data = {'drg' : drgDescription };
       var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
@@ -36,7 +47,7 @@ $(document).ready(function(){
 
       $.get(urlSlidePanel, data, function(response) {
         $('.slidepanel').append(response);
-        toggleSlidePanel();
+        tabTwo();
       });
 
       if ($("#chart_div").is(':visible'))
