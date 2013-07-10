@@ -122,15 +122,17 @@ $(document).ready(function(){
   };
 
   function clickMarker(hospital, marker){
-    marker.html = hospital["infobox_html"];
-
     var infowindow = new google.maps.InfoWindow({
       maxWidth: 500,
       Height: 600
     });
     
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(this.html);
+      hospitalID = hospital['provider_id'];
+      var url =  '/hospitals/'+hospitalID; 
+      $.get(url, function(response){
+        infowindow.setContent(response);
+      });
       infowindow.open(map, this);
     });
   };
