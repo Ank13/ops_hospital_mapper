@@ -5,6 +5,8 @@ $(document).ready(function(){
     $('#popup').append(response);
   });
 
-
+  $(document).on('click', function(){
+    $('#popup').text("");
+  });
 
 });
