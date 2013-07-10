@@ -1,3 +1,5 @@
+// all of the javascript should be wrapped in object literal modules/namespaces
+
 var styles = [
   {
     stylers: [

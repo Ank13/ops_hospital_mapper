@@ -1,6 +1,8 @@
+// all of the javascript should be wrapped in object literal modules/namespaces
 
 $(document).ready(function(){
 
+  // what is this doing hardcoded here?
   var drgDescription = "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC"
   var hospitalID = 0 ;
 
@@ -33,7 +35,7 @@ $(document).ready(function(){
     hospitalID = (this.id);
     var that = $(this)
     var data = {'drg' : drgDescription };
-    var url =  '/hospitals/'+hospitalID+'/infobox' ; 
+    var url =  '/hospitals/'+hospitalID+'/infobox' ;
 
     $.get(url, data, function(response){
        $('#description').attr('id', 'chart_div');
@@ -78,9 +80,9 @@ google.load('visualization', '1.0', {'packages':['corechart']});
     var formatter = new google.visualization.TableNumberFormat(
           // {prefix: "$", suffix: "K", negativeColor: 'red', negativeParens: true}
           );
-      formatter.format(data, 1); 
-      formatter.format(data, 2); 
-      formatter.format(data, 3); 
+      formatter.format(data, 1);
+      formatter.format(data, 2);
+      formatter.format(data, 3);
 
     var options = {
       'title': title,
