@@ -76,7 +76,8 @@ $(document).ready(function(){
        var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"}
        drawChart(response, axisLabels);
     });
-    $(that).parent().parent().after("<p class='user-directions'>Select procedure from left nav bar to update chart</p>")
+    $('#infodirections').html('');
+    $(that).parent().parent().after("<p id='infodirections' class='user-directions'>Select procedure from left nav bar to update chart</p>");
   });
 
   $("#map-canvas").on('click', '.info-outcomes',function(event){
