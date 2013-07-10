@@ -5,6 +5,18 @@ class Procedure < ActiveRecord::Base
   has_many :hospitals_procedures, :foreign_key => :drg_id
 	has_many :hospitals, :through => :hospitals_procedures, :primary_key => :drg_id
   has_many :states_procedures, :foreign_key => :drg_id
+
+  def most_expensive_hospital
+    hospitals_procedures.order('avg_covered_charges DESC').limit(1).first.provider_name
+  end
+
+  def least_expensive_hospital
+    hospitals_procedures.order('avg_covered_charges ASC').limit(1).first.provider_name
+  end
+
+  def average_cost
+    hospitals_procedures.average('avg_covered_charges').to_i
+  end
 end
 
 
