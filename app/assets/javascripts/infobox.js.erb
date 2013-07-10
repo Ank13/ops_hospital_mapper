@@ -13,12 +13,21 @@ $(document).ready(function(){
     });
   };
 
-  function drawChartWhenNewProc() {
+  function updateWhenNewProc() {
     $('#procdropdown').change(function(event){
       drgDescription = $('#procdropdown').val();
-      alert(drgDescription);
       var data = {'drg' : drgDescription };
       var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
+      var urlSlidePanel = '/maps/analytics';
+
+      $.get(urlSlidePanel, data, function(response) {
+        $('.slidepanel').append(response);
+      });
+
+
+      $('#analytics').animate({left: "+=290"}, 120);
+      $('.slidepanel').css('z-index', '3').show("fast");
+      $('.trigger2').animate({left: '+=240'}, 120);
 
       if ($("#chart_div").is(':visible'))
       {
@@ -28,36 +37,11 @@ $(document).ready(function(){
            var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
            drawChart(response, axisLabels);
         });
-      }      
+      }
     });
   };
 
-  drawChartWhenNewProc();
-
-  // function slidePanelWhenNewProc() {
-    // $('.procdropdown').change(function(event) {
-      // drgDescription = $('.procdropdown').val();
-      // var data = {'drg' : drgDescription };
-      // var url = '/maps/analytics';
-
-      // $.get(url, data, function(response)) {
-      //   $('.slidepanel').append(response);
-      //   $('.slidepanel').text("");
-      //   $('#analytics').animate({left: "+=290"});
-      //   $('.slidepanel').css('z-index', '3').show("fast");
-      //   $('.trigger2').animate({left: '+=240'});
-      // };
-      
-      // where slide panel is hidden (doing first)
-      // if ($(""))
-      // $.get(url, data, function(response){
-      //   $('.slidepanel').empty();
-      //   var 
-      // });
-    // });
-  // };
-
-  // slidePanelWhenNewProc();
+  updateWhenNewProc();
 
   $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
