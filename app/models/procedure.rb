@@ -4,18 +4,17 @@ class Procedure < ActiveRecord::Base
 
   include Stats
 
-
 	self.primary_key = "drg_id"
   has_many :hospitals_procedures, :foreign_key => :drg_id
 	has_many :hospitals, :through => :hospitals_procedures, :primary_key => :drg_id
   has_many :states_procedures, :foreign_key => :drg_id
 
   def most_expensive_hospital
-    hospitals_procedures.order('avg_covered_charges DESC').limit(1).first.provider_name
+    hospitals_procedures.order('avg_covered_charges DESC').limit(1).first
   end
 
   def least_expensive_hospital
-    hospitals_procedures.order('avg_covered_charges ASC').limit(1).first.provider_name
+    hospitals_procedures.order('avg_covered_charges ASC').limit(1).first
   end
 
   def average_cost
@@ -27,7 +26,6 @@ class Procedure < ActiveRecord::Base
     hospitals_procedures.all.each{|hp| allhosp << hp.avg_covered_charges}
     allhosp.standard_deviation
   end
-
 
 
 
