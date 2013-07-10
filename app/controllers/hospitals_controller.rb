@@ -6,6 +6,7 @@ class HospitalsController < ApplicationController
 
   def show
     @hospital = Hospital.find(params[:id])
+    render :layout => false
   end
 
   def infobox
