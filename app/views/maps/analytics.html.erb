@@ -1,9 +1,15 @@
 <div id="analytics">
 <% if @procedure %>
 <div class="slidepanel">
-	<p>Procedure Definition: <%= @procedure.drg_def %></p>
 	<p>Clinical Category: <%= @procedure.clinical_category %></p>
-	<p>Description: <%= @procedure.description %></p>  
+	<p>Description: <%= @procedure.description %></p>
+  <p>The most expensive hospital is <%=@procedure.most_expensive_hospital.provider_name.titleize%>: $<%=((@procedure.most_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </p>
+  <p>The least expensive hospital is <%=@procedure.least_expensive_hospital.provider_name.titleize%>: $<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </p> 
+
+  <p>The average cost is $<%=(@procedure.average_cost/1000.0).round(2)%>K </p>
+  <p>The standard deviation of cost across hospitals is $<%=(@procedure.stand_dev/1000.0).round(2)%>K </p>   
+
+  <div id="procedure-chart"></div>
 </div>
 <% end %>
 </div>
