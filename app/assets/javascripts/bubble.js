@@ -1,8 +1,8 @@
-function Bubble(lat,lng, fill_color, stroke_color, hospital_name, size){
+function Bubble(lat,lng, fill_color, stroke_color, title, size){
   this.latlng = new google.maps.LatLng(lat, lng);
   this.fill_color = fill_color;
   this.stroke_color = stroke_color;
-  this.hospital_name = hospital_name;
+  this.title = title;
   this.size = size;
 }
 
@@ -12,7 +12,7 @@ Bubble.prototype = {
      	 position: this.latlng,
      	 map: map,
      	 icon: this.makeCircle(this.size, this.fill_color, this.stroke_color),
-     	 title: this.hospital_name,
+     	 title: this.title,
      	 zIndex: 100
      });
 	  return marker;

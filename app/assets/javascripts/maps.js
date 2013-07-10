@@ -186,7 +186,7 @@ $(document).ready(function(){
     for (var i = 0; i < locations.length; i++) {
       var hospital = locations[i];
       var size = hospital[icon];
-      var bubble = new Bubble(hospital["latitude"],hospital["longitude"], fill_color, stroke_color, hospital["provider_name"], size);
+      var bubble = new Bubble(hospital["latitude"],hospital["longitude"], fill_color, stroke_color, size+' score for '+icon+' at '+ hospital["provider_name"], size);
       var marker = bubble.addToMap(map);
       bubbles.push(marker);
       iconArray.push(marker);
