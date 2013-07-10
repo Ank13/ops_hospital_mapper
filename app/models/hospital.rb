@@ -1,8 +1,11 @@
 class Hospital < ActiveRecord::Base
-  attr_accessible :provider_id, :provider_name, :provider_street_address, :provider_city, :provider_state, :provider_zip_code, :hrr, :total_discharges, :count_drgs, :average_covered_charges, :average_total_payments, :latitude, :longitude
-  
+  attr_accessible :provider_id, :provider_name, :provider_street_address,
+                  :provider_city, :provider_state, :provider_zip_code, :hrr,
+                  :total_discharges, :count_drgs, :average_covered_charges,
+                  :average_total_payments, :latitude, :longitude
+
   geocoded_by :full_address
-  # after_validation :geocode 
+  # after_validation :geocode
 
   self.primary_key = "provider_id"
   has_many :hospitals_procedures, :foreign_key => 'provider_id'
@@ -28,7 +31,7 @@ class Hospital < ActiveRecord::Base
 
     state_charge = (StatesProcedure.where({"provider_state" => state, "drg_id" => procedure.drg_id }).first.avg_covered_charges)/1000
     natl_charge = (Procedure.find_by_drg_id(drg).natl_avg_total_payments/1000)
-    {y_axis:'Cost',first_col: hospital_charge, second_col: state_charge, third_col: natl_charge, 
+    {y_axis:'Cost',first_col: hospital_charge, second_col: state_charge, third_col: natl_charge,
       state: state, hospital_id: provider_id, title: drg_def}
   end
 
@@ -50,6 +53,8 @@ class Hospital < ActiveRecord::Base
         costbenefit = R.pull 'costbenefit'
   end
 
+  # REMOVE ALL OF THESE "p" statements! never merge debugging code like this into master
+  # unless its deliberate logging
   def outcomebox_on_click
     unless self.outcome.nil?
       p hosp_outcome_rate_p = self.outcome.mr_p.to_i
@@ -76,7 +81,7 @@ class Hospital < ActiveRecord::Base
       hospital_charge = 0
     end
     avg_complication_rate = Complication.average("R_D_S_T_C").to_i
-    
+
     {y_axis:'Mortality',first_col: hosp_complication_rate, second_col: avg_complication_rate, third_col: 0, title: '30 Day Mortality from Serious Treatable Complications (per 1000 admissions)'}
   end
 
@@ -85,23 +90,23 @@ class Hospital < ActiveRecord::Base
     hospitals.each do |hospital|
       acc = hospital.average_covered_charges/1600
       unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil?
-        thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40 
+        thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40
         thumbs_down = hospital.patient_survey.recommend_no*50
         mortality = (hospital.outcome.mr_h_a + hospital.outcome.mr_hf + hospital.outcome.mr_p)/2
-        all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
-        provider_id: hospital.provider_id, acc: acc, thumbs_up: thumbs_up, 
+        all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude,
+        provider_id: hospital.provider_id, acc: acc, thumbs_up: thumbs_up,
         thumbs_down: thumbs_down, mortality: mortality}
       else
-        all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
+        all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude,
         provider_id: hospital.provider_id, acc: acc}
       end
     end
-    return all_hospitals  
+    return all_hospitals
   end
 
 end
 
 
 
-  
+
 

@@ -1,3 +1,5 @@
+// all of the javascript should be wrapped in object literal modules/namespaces
+
 $(document).ready(function(){
   google.maps.visualRefresh = true;
 
@@ -31,7 +33,7 @@ $(document).ready(function(){
     function scheduleDelayedCallback() {
       lastEvent = new Date();
       setTimeout(fireIfLastEvent, 500);
-    };    
+    };
 
     function placeChanged() {
       var places = searchBox.getPlaces();
@@ -66,7 +68,7 @@ $(document).ready(function(){
       map.fitBounds(bounds);
     }
   };
-   
+
   function loadMoreMarkers(lat, lng, width) {
     var data = {'lat' : lat, 'lng' : lng, 'distance' : width};
     var url =  '/maps/more_markers';
@@ -100,11 +102,11 @@ $(document).ready(function(){
   function setMarkers(map, locations){
 
     var iconBase = 'https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/';
-      
-    for (var i = 0; i < locations.length; i++) {   
+
+    for (var i = 0; i < locations.length; i++) {
       var hospital = locations[i];
       var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
-      
+
       var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
@@ -112,7 +114,7 @@ $(document).ready(function(){
         title: hospital["provider_name"],
         zIndex: 100
       });
-      
+
       clickMarker(hospital, marker);
 
       var infowindow = new google.maps.InfoWindow({
@@ -126,10 +128,10 @@ $(document).ready(function(){
       maxWidth: 500,
       Height: 600
     });
-    
+
     google.maps.event.addListener(marker, 'click', function() {
       hospitalID = hospital['provider_id'];
-      var url =  '/hospitals/'+hospitalID; 
+      var url =  '/hospitals/'+hospitalID;
       $.get(url, function(response){
         infowindow.setContent(response);
       });
@@ -139,7 +141,7 @@ $(document).ready(function(){
 
   $('#procdropdown').change(function(event){
     drgDescription = $('#procdropdown').val();
-    
+
     var loadedIDs = []
     for (var i = 0; i < existingHospitals.length; i++) {
       loadedIDs.push(existingHospitals[i].provider_id)
@@ -165,7 +167,7 @@ $(document).ready(function(){
       priceTags[i].setMap(null);
     }
 
-    for (var i = 0; i < locations.length; i++) { 
+    for (var i = 0; i < locations.length; i++) {
       var hospital = $.parseJSON(locations[i]);
       var latLng = new google.maps.LatLng(hospital.latitude, hospital.longitude);
       var price = hospital.avg_cost
@@ -191,7 +193,7 @@ $(document).ready(function(){
       bubbles.push(marker);
       iconArray.push(marker);
       clickMarker(hospital, marker);
-    };  
+    };
   };
 
   function clearIcons(markerset) {
@@ -208,7 +210,7 @@ $(document).ready(function(){
     bubbles = [];
   };
 
-  function toggleIcons(cssSelector, givenType, givenColor, givenArray) {  
+  function toggleIcons(cssSelector, givenType, givenColor, givenArray) {
     $(cssSelector).on('click', function() {
       $(this).toggleClass('active');
       if($(this).hasClass('active')) {

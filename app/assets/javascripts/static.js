@@ -1,11 +1,14 @@
+// all of the javascript should be wrapped in object literal modules/namespaces
+
 $(document).ready(function(){
-	
+
+  // if youre hiding onload, why not just hide in CSS instead of displaying it and then hiding with JS?
 	$('.about').hide();
   $('.datasets').hide();
   $('.wtfacts').hide();
 
   $(document).on('click', '.trigger', function(){
-    $(".panel").slideToggle("fast"); 
+    $(".panel").slideToggle("fast");
     $(this).toggleClass("active");
     if($(this).hasClass("active")) {
       $(this).animate({left: '-=290'}, 300);
@@ -29,7 +32,7 @@ $(document).ready(function(){
       $('#analytics').animate({left: '+=250'}, 300);
       $(this).animate({left: '+=250'}, 300);
       $(".slidepanel").css('z-index', '3').show("fast");
-    } 
+    }
     else {
       $('#analytics').animate({left: '-=250'}, 300);
       $(this).animate({left: '-=250'}, 300);
