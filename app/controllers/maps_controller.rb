@@ -29,4 +29,10 @@ class MapsController < ApplicationController
     render :layout => false
   end
   
+  def analytics
+    id = params[:drg][0..2]
+    @procedure = Procedure.find_by_drg_id(id)
+
+    render :layout => false
+  end
 end

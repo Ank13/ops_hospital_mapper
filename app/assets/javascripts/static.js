@@ -5,52 +5,55 @@ $(document).ready(function(){
   $('.wtfacts').hide();
 
   $(document).on('click', '.trigger', function(){
-    $(".panel").slideToggle("fast"); 
+    $(".panel").slideToggle(240); 
     $(this).toggleClass("active");
     if($(this).hasClass("active")) {
-      $(this).animate({left: '-=290'}, 300);
+      $(this).animate({left: '-=290'}, 240);
       if($('.trigger2').hasClass('active')) {
-        $('.trigger2').animate({left: '-=250'}, 300).removeClass('active');
+        $('.trigger2').animate({left: '-=240'}, 240).removeClass('active');
       }
-      $('#analytics').hide();
-      $('.slidepanel').empty().hide();
+      $('#analytics').hide(240);
+      $('.slidepanel').empty().hide(240);
     }
     else {
-      $(this).animate({left: '+=290'}, 300);
-      $('#analytics').fadeIn(500);
+      $(this).animate({left: '+=290'}, 240);
+      $('#analytics').fadeIn(240);
       $('.slidepanel').css('z-index', '1');
     }
     return false;
   });
 
-  $(".trigger2").click(function(){
-    $(this).toggleClass("active");
-    if($(this).hasClass("active")) {
-      $('#analytics').animate({left: '+=250'}, 300);
-      $(this).animate({left: '+=250'}, 300);
-      $(".slidepanel").css('z-index', '3').show("fast");
+  function secondTab() {
+    $('.trigger2').toggleClass("active");
+    if($('.trigger2').hasClass("active")) {
+      $('#analytics').animate({left: '+=250'}, 240);
+      $('.trigger2').animate({left: '+=240'}, 240);
+      $(".slidepanel").css('z-index', '3').show(240);
     } 
     else {
-      $('#analytics').animate({left: '-=250'}, 300);
-      $(this).animate({left: '-=250'}, 300);
-      $(".slidepanel").hide("fast");
+      $('#analytics').animate({left: '-=250'}, 240);
+      $('.trigger2').animate({left: '-=240'}, 240);
+      $(".slidepanel").hide(240);
     }
     return false;
-  });
+  };
 
   function triggerStaticPages(link, page) {
     $(link).click(function(e) {
       if($(".trigger2").hasClass("active")) {
         $('.slidepanel').empty();
         $($(page).html()).appendTo('.slidepanel');
-        $('.slidepanel').css('z-index', '3').show("fast");
+        $('.slidepanel').css('z-index', '3').show(240);
         e.stopPropagation();
       }
       else {
+        $('.slidepanel').empty();
         $($(page).html()).appendTo('.slidepanel');
-        $('#analytics').animate({left: '+=250'}, 300);
-        $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
-        $('.slidepanel').css('z-index', '3').show("fast");
+        if(!$('.slidepanel').hasClass('active')) {
+          $('#analytics').animate({left: '+=250'}, 240);
+          $('.trigger2').addClass('active').animate({left: '+=240'}, 240);
+        }
+        $('.slidepanel').css('z-index', '3').show(240);
         e.stopPropagation();
       }
     });
@@ -60,15 +63,14 @@ $(document).ready(function(){
   triggerStaticPages('#datasets', '.datasets');
   triggerStaticPages('#about', '.about');
 
-  $(document).click(function() {
+  $(document).bind('click', function() {
     if($('.trigger2').hasClass('active')) {
       $('.trigger2').removeClass('active').animate({
-        left: "-=250"
-      });
-      $('.slidepanel').empty().hide();
+        left: "-=240"
+      }, 240);
+      $('.slidepanel').removeClass('active').empty().hide(240);
     }
   });
-
 });
 
 
