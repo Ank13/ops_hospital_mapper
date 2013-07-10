@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709153256) do
+ActiveRecord::Schema.define(:version => 20130710004219) do
 
   create_table "complications", :force => true do |t|
     t.integer  "provider_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130709153256) do
     t.integer "total_discharges"
     t.float   "avg_covered_charges"
     t.float   "avg_total_payments"
+    t.integer "cost_index"
   end
 
   create_table "outcomes", :force => true do |t|
