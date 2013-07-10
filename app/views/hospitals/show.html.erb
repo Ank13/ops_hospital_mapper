@@ -1,19 +1,25 @@
-<div class="go-back">
- <%= link_to "All hospitals", hospitals_path %>
-</div>
-<div class="all_container">
-  <div class="single_hospital">
-    <div class="name">
-      <h1> <%= @hospital.provider_name %> </h1>
-    </div>
-    <div class="data">
-      <span class="data-label">Average covered charges: </span>
-      <span class="data-content"><%= number_to_currency(@hospital.average_covered_charges) %></span>
-    </div>
-    <div class="data">
-      <span class="data-label">% of patients who recommend: </span>
-      <span class="data-content"><%= number_to_percentage(@hospital.patient_survey.recommend_y*100, precision:0) %></span>
-    </div>
-  </div>
-</div>
+<% unless (@hospital.patient_survey.nil? || @hospital.outcome.nil? || @hospital.patient_survey.recommend_y.nil? || @hospital.patient_survey.survey_response_rate.nil? || @hospital.outcome.readm_ha.nil? || @hospital.total_discharges.nil? || @hospital.average_covered_charges.nil? || @hospital.average_total_payments.nil?) %>
 
+    <div class='wrapper'>
+    <span class='inbox-tab'><a class='info-comparison' id='<%= @hospital.provider_id %>' href='#'>Procedure Cost Comparison</a></span>
+    <span class='inbox-tab'><a class='info-outcomes' id='<%= @hospital.provider_id %>' href='#'>Outcomes</a></span>
+    <span class='inbox-tab'><a class='info-complications' id='<%= @hospital.provider_id %>' href='#'>Complications</a></span>
+    
+    </div>
+    <div id='description'>
+    <div class='info-box'> <%= @hospital.provider_name %> </div>
+    <ul>
+      <li> <%= (@hospital.patient_survey.recommend_y * 100).round(0) %>% of patients recommend this hospital
+      <span class='note'>(<%= (@hospital.patient_survey.survey_response_rate * 100).round(0) %>% response rate)</span></li>
+      <li> Readmission rate from heart attack: <%= @hospital.outcome.readm_ha  %></li>
+      <li> Reported discharges (CMS): <%= @hospital.total_discharges %></li>
+      <li> Average Covered Charges (all procedures, CMS): $<%= (@hospital.average_covered_charges/1000).round(0) %>K</li>
+      <li> Average Total Payment (all procedures, CMS): $<%= (@hospital.average_total_payments/1000).round(0) %>K</li>
+    </ul></div>
+<% else %>
+      <div class='info-box'> <%= @hospital.provider_name %> </div>
+      <ul>
+        <li> Average Covered Charges (all procedures, CMS): $<%= (@hospital.average_covered_charges/1000).round(0) %>K</li>
+        <li> Average Total Payment (all procedures), CMS: $<%= (@hospital.average_total_payments/1000).round(0) %>K</li>
+      </ul>
+<% end %>
