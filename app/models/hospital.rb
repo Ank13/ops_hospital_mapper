@@ -83,7 +83,8 @@ class Hospital < ActiveRecord::Base
   def self.find_hospitals_for_map(hospitals)
     all_hospitals = []
     hospitals.each do |hospital|
-      acc = hospital.average_covered_charges/1600
+      # acc = hospital.average_covered_charges/1600
+      acc = hospital.scaled
       unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil?
         thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40 
         thumbs_down = hospital.patient_survey.recommend_no*50
@@ -97,6 +98,10 @@ class Hospital < ActiveRecord::Base
       end
     end
     return all_hospitals  
+  end
+
+  def scaled
+    (hospitals_procedures.average('cost_index').to_i + 100) / 5    
   end
 
 end
