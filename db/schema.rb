@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710005937) do
+ActiveRecord::Schema.define(:version => 20130710153846) do
 
   create_table "complications", :force => true do |t|
     t.integer  "provider_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130710005937) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "complications", ["provider_id"], :name => "index_complications_on_provider_id"
 
   create_table "hospitals", :id => false, :force => true do |t|
     t.integer  "provider_id"
@@ -60,6 +62,9 @@ ActiveRecord::Schema.define(:version => 20130710005937) do
     t.integer "cost_index"
   end
 
+  add_index "hospitals_procedures", ["drg_id"], :name => "index_hospitals_procedures_on_drg_id"
+  add_index "hospitals_procedures", ["provider_id"], :name => "index_hospitals_procedures_on_provider_id"
+
   create_table "outcomes", :force => true do |t|
     t.integer  "provider_id"
     t.float    "mr_h_a"
@@ -90,6 +95,8 @@ ActiveRecord::Schema.define(:version => 20130710005937) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "outcomes", ["provider_id"], :name => "index_outcomes_on_provider_id"
+
   create_table "patient_surveys", :force => true do |t|
     t.integer  "provider_id"
     t.float    "doc_comm_bad"
@@ -117,6 +124,8 @@ ActiveRecord::Schema.define(:version => 20130710005937) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end
+
+  add_index "patient_surveys", ["provider_id"], :name => "index_patient_surveys_on_provider_id"
 
   create_table "procedures", :id => false, :force => true do |t|
     t.integer  "drg_id"
@@ -154,5 +163,7 @@ ActiveRecord::Schema.define(:version => 20130710005937) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  add_index "states_procedures", ["drg_id"], :name => "index_states_procedures_on_drg_id"
 
 end

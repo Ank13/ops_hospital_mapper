@@ -17,7 +17,7 @@ $(document).ready(function(){
 
     function fireIfLastEvent()
      {
-      if (lastEvent.getTime() + 300 <= new Date().getTime()) {
+      if (lastEvent.getTime() + 500 <= new Date().getTime()) {
         var bounds = map.getBounds();
         // TODO: Length of a degree of longitude = cos(latitude) * 111.325 kilometers
         var width = (bounds.getNorthEast().kb - bounds.getSouthWest().kb) * 50;

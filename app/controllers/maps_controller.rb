@@ -13,7 +13,7 @@ class MapsController < ApplicationController
     lng = params[:lng]
     distance = params[:distance]
     box = Geocoder::Calculations.bounding_box([lat, lng], distance)
-    hospitals = Hospital.geocoded.within_bounding_box(box)
+    hospitals = Hospital.geocoded.within_bounding_box(box).includes(:outcome, :patient_survey)
     
     more_hospitals = []
     hospitals.each {|hospital| more_hospitals << hospital unless session[:hospital_ids].include?(hospital.provider_id)}
