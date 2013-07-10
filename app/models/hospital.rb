@@ -3,7 +3,7 @@ class Hospital < ActiveRecord::Base
 
   geocoded_by :full_address
 
-  # self.primary_key = "provider_id"
+  self.primary_key = "provider_id"
   has_many :hospitals_procedures, :foreign_key => 'provider_id'
   has_many :procedures, :through => :hospitals_procedures
   has_one  :patient_survey, :foreign_key => :provider_id, :primary_key => :provider_id
