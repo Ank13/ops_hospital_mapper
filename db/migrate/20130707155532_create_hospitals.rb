@@ -1,6 +1,6 @@
 class CreateHospitals < ActiveRecord::Migration
 	def change
-		create_table :hospitals, :id => false do |t|
+		create_table :hospitals do |t|
 			t.integer :provider_id
 	    t.string  :provider_name
 	    t.string  :provider_street_address
