@@ -46,53 +46,8 @@
     font: normal 12px/16px Helvetica, sans-serif;
 }
 
-.visualize .icon-tag {
+.icon-tag, .icon-thumbs-up, .icon-thumbs-down, .icon-ban-circle, .icon-ambulance, .icon-frown {
   font-size: 20px;
-  
-}
-
-.visualize .icon-tag:hover {
-  color: #236905;
-}
-
-
-.visualize .icon-thumbs-up {
-  font-size: 20px;
-}
-
-.visualize .icon-thumbs-up:hover {
-  color: #EEF000;
-}
-
-.visualize .icon-thumbs-down {
-  font-size: 20px;
-}
-
-.visualize .icon-ban-circle {
-  font-size: 20px;
-}
-
-.visualize .icon-thumbs-down:hover {
-  color: white;
-  color: #F04400;
-}
-
-.visualize .icon-ambulance {
-  font-size: 20px;
-  
-}
-
-.visualize .icon-ambulance:hover {
-  color: #70070A;
-}
-
-.visualize .icon-frown {
-  font-size: 20px;
-  
-}
-
-.visualize .icon-frown:hover {
-  color: #515151;
 }
 
 .visualize a {
