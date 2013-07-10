@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710153846) do
+ActiveRecord::Schema.define(:version => 20130710164648) do
 
   create_table "complications", :force => true do |t|
     t.integer  "provider_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130710153846) do
     t.float    "longitude"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.integer  "total_cost_index"
   end
 
   add_index "hospitals", ["provider_id"], :name => "index_hospitals_on_provider_id"

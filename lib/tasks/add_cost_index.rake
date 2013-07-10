@@ -11,6 +11,8 @@ namespace :db do
         hp.cost_index = index * 100
         hp.save
       end
+      h.total_cost_index = h.hospitals_procedures.average('cost_index').to_i
+      h.save
     end
   end
 
