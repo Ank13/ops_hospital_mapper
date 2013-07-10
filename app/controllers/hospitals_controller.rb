@@ -11,6 +11,7 @@ class HospitalsController < ApplicationController
 
   def infobox
     drg_description = params[:drg].upcase
+    p drg_description
     hospital = Hospital.find_by_provider_id(params[:id])
     data = hospital.infobox_on_click(drg_description).to_json
     respond_to do |format|
