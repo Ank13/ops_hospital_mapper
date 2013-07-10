@@ -11,11 +11,11 @@ class Procedure < ActiveRecord::Base
   has_many :states_procedures, :foreign_key => :drg_id
 
   def most_expensive_hospital
-    hospitals_procedures.order('avg_covered_charges DESC').limit(1).first
+    hospitals_procedures.order('avg_covered_charges DESC').limit(1).first.provider_name
   end
 
   def least_expensive_hospital
-    hospitals_procedures.order('avg_covered_charges ASC').limit(1).first
+    hospitals_procedures.order('avg_covered_charges ASC').limit(1).first.provider_name
   end
 
   def average_cost
@@ -28,6 +28,6 @@ class Procedure < ActiveRecord::Base
     allhosp.standard_deviation
   end
 
-end
+
 
 
