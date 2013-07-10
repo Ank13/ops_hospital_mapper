@@ -17,16 +17,47 @@ padding:8px 8px 8px 0;
 }*/
 
 .visualize {
+  display: block;
   color: #183152;
   text-decoration: none;
   margin-left: 12px;
   font-family: helvetica, arial, sans-serif;
   font-size: 12px;
-  width: 100%;
+  width: 80%;
+  padding: 5px;
   line-height:20px;
   margin-top: 15px;
+  text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+   
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+  box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -ms-transition: all 0.15s ease;
+  transition: all 0.15s ease;
 }
 
+.big {
+  padding: 0 10px;
+  padding-top: 10px;
+  height: 35px;
+  text-transform: uppercase;
+  font: bold 20px/22px Arial, sans-serif;
+}
+
+.big span {
+    display: block;
+    text-transform: none;
+    font: italic normal 12px/18px Georgia, sans-serif;
+    text-shadow: 1px 1px 1px rgba(255,255,255, .12);
+}
 
 .visualize .icon-usd {
   font-size: 20px;
@@ -77,6 +108,19 @@ padding:8px 8px 8px 0;
 .visualize a {
   color: #375D81;
 }
+
+.visualize:hover {
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+}
+
+.visualize:active {
+    -webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+    -moz-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+    box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+}
+
 
 .viz-label {
   float: right;
