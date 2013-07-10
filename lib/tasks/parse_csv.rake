@@ -2,32 +2,11 @@ require 'csv'
 
 namespace :db do
   desc "parse csv files for hospital database"
-  task :parse_csv_hospital  => :environment do
-    csv_hospital = File.open(File.join(Rails.root, "dataset", "hospitals_il.csv"),"r")
-    csv = CSV.parse(csv_hospital, :headers => true)
-    csv.each do |row|
+  task :parse_csv_hospitals  => :environment do
+    hospital_all = File.open(File.join(Rails.root, "dataset", "hospitals_all_geocoded.csv"),"r")
+    csv_hospital_all = CSV.parse(hospital_all, :headers => true)
+    csv_hospital_all.each do |row|
       Hospital.create!(row.to_hash)
-    end
-  end
-end
-
-# lib/tasks/reset_unimportant_models_task.rake
-namespace :db do
-  desc "Sequentially clears out a model"
-  task :reset_unimportant_models => :environment do
-    puts "Clearing out the StatesProcedureModel model"
-    StatesProcedure.destroy_all
-    puts "Finished."
-  end
-end
-
-namespace :db do
-  desc "parse csv files for procedure database"
-  task :parse_csv_procedure  => :environment do
-    csv_procedure = File.open(File.join(Rails.root, "dataset", "procedures.csv"),"r")
-    csv = CSV.parse(csv_procedure, :headers => true)
-    csv.each do |row|
-      Procedure.create!(row.to_hash)
     end
   end
 end
@@ -40,15 +19,29 @@ namespace :db do
     csv.each do |row|
       StatesProcedure.create!(row.to_hash)
     end
+  task :parse_usa_procedures  => :environment do
+    procedure_usa = File.open(File.join(Rails.root, "dataset", "procedures_usa_all.csv"),"r")
+    csv_procedure_usa = CSV.parse(procedure_usa, :headers => true)
+    csv_procedure_usa.each do |row|
+      Procedure.create!(row.to_hash)
+    end
   end
 end
 
 namespace :db do
   desc "parse csv files for hospitals_procedures database"
   task :parse_csv_hospitals_procedures  => :environment do
-    csv_hospital_procedure = File.open(File.join(Rails.root, "dataset", "cms_chargemaster_inpatient_2011.csv"),"r")
-    csv = CSV.parse(csv_hospital_procedure, :headers => true)
-    csv.each do |row|
+    hosp_procedure_il = File.open(File.join(Rails.root, "dataset", "cms_chargemaster_inpatient_2011_il.csv"),"r")
+    csv_hosp_procedure_il = CSV.parse(hosp_procedure_il, :headers => true)
+    csv_hosp_procedure_il.each do |row|
+      HospitalsProcedure.create!(row.to_hash)
+    end
+  end
+end
+
+    hosp_procedure_usa = File.open(File.join(Rails.root, "dataset", "cms_chargemaster_inpatient_2011_usa.csv"),"r")
+    csv_hosp_procedure_usa = CSV.parse(hosp_procedure_usa, :headers => true)
+    csv_hosp_procedure_usa.each do |row|
       HospitalsProcedure.create!(row.to_hash)
     end
   end
@@ -57,9 +50,15 @@ end
 namespace :db do
   desc "parse csv files for outcomes database"
   task :parse_csv_outcomes  => :environment do
-    csv_outcome = File.open(File.join(Rails.root, "dataset", "hospital_mortality.csv"),"r")
-    csv = CSV.parse(csv_outcome, :headers => true)
-    csv.each do |row|
+    outcome_il = File.open(File.join(Rails.root, "dataset", "hospital_mortality_il.csv"),"r")
+    csv_outcome_il = CSV.parse(outcome_il, :headers => true)
+    csv_outcome_il.each do |row|
+      Outcome.create!(row.to_hash)
+    end
+
+    outcome_usa = File.open(File.join(Rails.root, "dataset", "hospital_mortality_usa.csv"),"r")
+    csv_outcome_usa = CSV.parse(outcome_usa, :headers => true)
+    csv_outcome_usa.each do |row|
       Outcome.create!(row.to_hash)
     end
   end
@@ -68,9 +67,15 @@ end
 namespace :db do
   desc "parse csv files for complications database"
   task :parse_csv_complications  => :environment do
-    csv_complication = File.open(File.join(Rails.root, "dataset", "agency_for_healthcare_research_and_quality_measures.csv"),"r")
-    csv = CSV.parse(csv_complication, :headers => true)
-    csv.each do |row|
+    complications_il = File.open(File.join(Rails.root, "dataset", "agency_for_healthcare_research_and_quality_measures_il.csv"),"r")
+    csv_complications_il = CSV.parse(complications_il, :headers => true)
+    csv_complications_il.each do |row|
+      Complication.create!(row.to_hash)
+    end
+
+    complications_usa = File.open(File.join(Rails.root, "dataset", "agency_for_healthcare_research_and_quality_measures_usa.csv"),"r")
+    csv_complications_usa = CSV.parse(complications_usa, :headers => true)
+    csv_complications_usa.each do |row|
       Complication.create!(row.to_hash)
     end
   end
@@ -79,10 +84,27 @@ end
 namespace :db do
   desc "parse csv files for patient_surveys database"
   task :parse_csv_patient_surveys  => :environment do
-    csv_patient_survey = File.open(File.join(Rails.root, "dataset", "patient_survey_il.csv"),"r")
-    csv = CSV.parse(csv_patient_survey, :headers => true)
-    csv.each do |row|
+    surveys_il = File.open(File.join(Rails.root, "dataset", "patient_survey_il.csv"),"r")
+    csv_surveys_il = CSV.parse(surveys_il, :headers => true)
+    csv_surveys_il.each do |row|
       PatientSurvey.create!(row.to_hash)
+    end
+
+    surveys_usa = File.open(File.join(Rails.root, "dataset", "patient_survey_usa.csv"),"r")
+    csv_surveys_usa = CSV.parse(surveys_usa, :headers => true)
+    csv_surveys_usa.each do |row|
+      PatientSurvey.create!(row.to_hash)
+    end
+  end
+end
+
+namespace :db do
+  desc "parse csv files for procedure database"
+  task :parse_csv_stateprocedure  => :environment do
+    csv_state_procedure = File.open(File.join(Rails.root, "dataset", "procedures_state_avg_usa.csv"),"r")
+    csv = CSV.parse(csv_state_procedure, :headers => true)
+    csv.each do |row|
+      StatesProcedure.create!(row.to_hash)
     end
   end
 end
@@ -102,6 +124,13 @@ namespace :db do
   end
 end
 
-
-
+# lib/tasks/reset_unimportant_models_task.rake
+namespace :db do
+  desc "Sequentially clears out a model"
+  task :reset_unimportant_models => :environment do
+    puts "Clearing out the StatesProcedureModel model"
+    StatesProcedure.destroy_all
+    puts "Finished."
+  end
+end
 
