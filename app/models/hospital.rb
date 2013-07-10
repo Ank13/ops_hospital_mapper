@@ -84,7 +84,7 @@ class Hospital < ActiveRecord::Base
     all_hospitals = []
     hospitals.each do |hospital|
 
-      acc = hospital.scaled
+      acc = hospital.scaled_total_cost_index
       unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil? || hospital.outcome.readm_ha.nil? || hospital.outcome.readma_hf.nil? || hospital.outcome.readma_pn.nil?
         thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40 
         thumbs_down = hospital.patient_survey.recommend_no*50
@@ -101,8 +101,8 @@ class Hospital < ActiveRecord::Base
     return all_hospitals  
   end
 
-  def scaled
-    (hospitals_procedures.average('cost_index').to_i + 100) / 5    
+  def scaled_total_cost_index
+    (total_cost_index + 100) / 5
   end
 
 end
