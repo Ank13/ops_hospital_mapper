@@ -24,4 +24,9 @@ class MapsController < ApplicationController
       format.json { render :json => data }
     end
   end
+
+  def popup
+    render :layout => false
+  end
+  
 end
