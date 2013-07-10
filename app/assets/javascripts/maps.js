@@ -191,8 +191,6 @@ $(document).ready(function(){
     };
   };
 
-
-
   function clickMarker(hospital, marker){
     var infowindow = new google.maps.InfoWindow({
       maxWidth: 500,
