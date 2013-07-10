@@ -1,5 +1,7 @@
 class Procedure < ActiveRecord::Base
+
   include StatsHelper
+
 
   attr_accessible :drg_id, :drg_def, :total_discharges_IL, :avg_covered_charges_IL, :avg_total_payments_IL, :natl_total_discharges, :natl_avg_covered_charges, :natl_avg_total_payments, :description, :clinical_category
 

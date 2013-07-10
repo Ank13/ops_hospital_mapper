@@ -1,3 +1,4 @@
+
 module StatsHelper
 
   def sum
@@ -9,6 +10,7 @@ module StatsHelper
   end
  
   def sample_variance
+
     avg=self.avg
     sum=self.inject(0){|acc,i|acc +(i-avg)**2}
     return(1/self.length.to_f*sum)
@@ -22,4 +24,3 @@ module StatsHelper
 end
 
 Array.send :include, StatsHelper
-
