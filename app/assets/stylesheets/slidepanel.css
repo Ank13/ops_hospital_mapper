@@ -9,9 +9,11 @@
 	-moz-border-radius-bottomright: 20px;
 	-webkit-border-bottom-right-radius: 20px;
 	padding: 120px 25px 15px 15px;
-	left: 300px;
+	left: 290px;
 	top: 0;
-	opacity:.85;
-	background-color: #FAFFE4;
+	opacity:.80;
+	background-color: #C4DCF2;
+	font-family: arial, helvetica, sans-serif;
+	font: 14px/18px;
 }
 
