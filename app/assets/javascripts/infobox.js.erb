@@ -38,10 +38,10 @@ $(document).ready(function(){
     $.get(url, data, function(response){
        $('#description').attr('id', 'chart_div');
        var state = response.state;
-       // that.parent().parent().text(" ");
        var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"}
        drawChart(response, axisLabels);
     });
+    $(that).parent().parent().after("<p class='user-directions'>Select procedure from left nav bar to update chart</p>")
   });
 
   $("#map-canvas").on('click', '.info-outcomes',function(event){
