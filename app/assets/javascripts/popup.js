@@ -6,7 +6,7 @@ $(document).ready(function(){
   });
 
   $(document).on('click', function(){
-    $('#popup').text("");
+    $('#popup').css({'z-index': '1'});
   });
 
 });
