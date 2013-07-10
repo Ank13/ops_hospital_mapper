@@ -5,85 +5,35 @@ $(document).ready(function(){
   var existingHospitals = $.parseJSON($("#hospitals").attr('data-hospitals'));
 
   function initialize() {
-    var styles = [
-      {
-        stylers: [
-          { hue: "#375D81" }
-        ]
-      },{
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [
-          { lightness: 100 },
-          { visibility: "simplified" }
-        ]
-      },{
-        featureType: "road",
-        elementType: "labels",
-        stylers: [
-          { visibility: "off" }
-        ]
-      },{
-        featureType: "administrative.neighborhood",
-        elementType: "labels",
-        stylers: [
-          {visibility: "simplified"}
-        ]
-      },{
-        featureType: "landscape",
-        elementType: "all",
-        stylers: [
-          { visibility: "simplified" }
-        ]
-      },{
-        featureType: "poi",
-        elementType: "all",
-        stylers: [
-          { visibility: "off" }
-        ]
-      },{
-        featureType: "transit",
-        elementType: "all",
-        stylers: [
-          { visibility: "simplified" }
-        ]
-      }
-    ];
 
-    var styledMap = new google.maps.StyledMapType(styles,
-      {name: "Styled Map"});
-
-    var mapOptions = {
-        zoom: 11,
-        mapTypeId: google.maps.MapTypeId.TERRAIN,
-        panControl: false,
-        zoomControl: true,
-        zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL,
-        position: google.maps.ControlPosition.BOTTOM_RIGHT
-      },
-        scaleControl: true,
-        scaleControlOptions: {
-        position: google.maps.ControlPosition.BOTTOM_RIGHT
-      }
-    };
-
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
-
-    map.mapTypes.set('map_style', styledMap);
-    map.setMapTypeId('map_style');
-
-    var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(41.7700, -87.9000),
-      new google.maps.LatLng(41.9900, -87.5500));
-    map.fitBounds(defaultBounds);
+    map = createMap();
 
     var input = (document.getElementById('target'));
     var searchBox = new google.maps.places.SearchBox(input);
     var markers = [];
 
-    google.maps.event.addListener(searchBox, 'places_changed', function() {
+    google.maps.event.addListener(searchBox, 'places_changed', placeChanged);
+    google.maps.event.addListener(map, 'bounds_changed', scheduleDelayedCallback);
+
+    function fireIfLastEvent()
+     {
+      if (lastEvent.getTime() + 300 <= new Date().getTime()) {
+        var bounds = map.getBounds();
+        // TODO: Length of a degree of longitude = cos(latitude) * 111.325 kilometers
+        var width = (bounds.getNorthEast().kb - bounds.getSouthWest().kb) * 50;
+        searchBox.setBounds(bounds);
+        var lng = map.getCenter().lng();
+        var lat = map.getCenter().lat();
+        loadMoreMarkers(lat, lng, width);
+      }
+    };
+
+    function scheduleDelayedCallback() {
+      lastEvent = new Date();
+      setTimeout(fireIfLastEvent, 500);
+    };    
+
+    function placeChanged() {
       var places = searchBox.getPlaces();
 
       for (var i = 0, marker; marker = markers[i]; i++) {
@@ -114,27 +64,7 @@ $(document).ready(function(){
       }
 
       map.fitBounds(bounds);
-    });
-
-    google.maps.event.addListener(map, 'bounds_changed', scheduleDelayedCallback);
-
-    function fireIfLastEvent()
-     {
-      if (lastEvent.getTime() + 300 <= new Date().getTime()) {
-        var bounds = map.getBounds();
-        // TODO: Length of a degree of longitude = cos(latitude) * 111.325 kilometers
-        var width = (bounds.getNorthEast().kb - bounds.getSouthWest().kb) * 50;
-        searchBox.setBounds(bounds);
-        var lng = map.getCenter().lng();
-        var lat = map.getCenter().lat();
-        loadMoreMarkers(lat, lng, width);
-      }
-    };
-
-    function scheduleDelayedCallback() {
-      lastEvent = new Date();
-      setTimeout(fireIfLastEvent, 500);
-    };    
+    }
   };
    
   function loadMoreMarkers(lat, lng, width) {
@@ -205,18 +135,6 @@ $(document).ready(function(){
     });
   };
 
-  function getCircle(size, color, stroke_color) {
-    var circle = {
-      path: google.maps.SymbolPath.CIRCLE,
-      fillColor: color,
-      fillOpacity: .4,
-      scale: size,
-      strokeColor: stroke_color,
-      strokeWeight: 1
-    };
-    return circle;
-  };
-
   $('#procdropdown').change(function(event){
     drgDescription = $('#procdropdown').val();
     
@@ -261,19 +179,13 @@ $(document).ready(function(){
     }
   };
 
-  function setIcon(map, locations, icon, color, strokeColor, iconArray) {
+  function setIcons(map, locations, icon, fill_color, stroke_color, iconArray) {
     for (var i = 0; i < locations.length; i++) {
       var hospital = locations[i];
-      var myLatLng = new google.maps.LatLng(hospital["latitude"], hospital["longitude"]);
       var size = hospital[icon];
-
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        icon: getCircle(size, color, strokeColor),
-        title: hospital["provider_name"],
-        zIndex: 3
-      });
+      var bubble = new Bubble(hospital["latitude"],hospital["longitude"], fill_color, stroke_color, hospital["provider_name"], size);
+      console.log(bubble);
+      var marker = bubble.addToMap(map);
       bubbles.push(marker);
       iconArray.push(marker);
       clickMarker(hospital, marker);
@@ -300,7 +212,8 @@ $(document).ready(function(){
       if($(this).hasClass('active')) {
         var type = givenType;
         var color = strokecolor = givenColor;
-        setIcon(map, existingHospitals, type, color, strokecolor, givenArray);
+
+        setIcons(map, existingHospitals, type, color, strokecolor, givenArray);
       }
       else {
         clearIcons(givenArray);
