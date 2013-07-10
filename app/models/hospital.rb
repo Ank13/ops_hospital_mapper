@@ -83,6 +83,7 @@ class Hospital < ActiveRecord::Base
   def self.find_hospitals_for_map(hospitals)
     all_hospitals = []
     hospitals.each do |hospital|
+
       acc = hospital.scaled
       unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil? || hospital.outcome.readm_ha.nil? || hospital.outcome.readma_hf.nil? || hospital.outcome.readma_pn.nil?
         thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40 
