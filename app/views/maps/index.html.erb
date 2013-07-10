@@ -9,7 +9,8 @@
     
 <div class="panel">
   <h1 id="logo"><img src="https://googledrive.com/host/0B9bg70URlInBR00zUW9PYnBWLWM/hospitally-med-blue.png" width="200px"></h1>
-  <h2>Top 100 most frequently billed medical procedures</h2> 
+  <h2>Top Medical Procedures</h2> 
+  <p class="user-directions">Select from list</p>
 
   <select id="procdropdown" data-placeholder="Choose a Procedure..." class="chzn-select" tabindex="1">
     <option value=""></option>
@@ -17,13 +18,10 @@
       <option value='<%=procedure.drg_def.titleize %>'><%=procedure.drg_def.titleize%></option> 
     <% end  %>
   </select>
-<!-- 
-  <h3>Patient Surveys</h3>
-
-  <h3>Hospital Outcomes</h3> -->
 
 
   <h3>Map Visualizations</h3>
+  <p class="user-directions">Click an icon below</p>
   <div class="visualize"><a href="#" id="acc"><i class="icon-usd"></i></a> <span class="viz-label">Average cost (all procedures)</span></div>
 
   <div class="visualize"><a href="#" id="thumbs_up"><i class="icon-thumbs-up"></a></i> <span class="viz-label">Recommended by patients</span></div>
