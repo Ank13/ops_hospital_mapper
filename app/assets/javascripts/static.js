@@ -10,7 +10,7 @@ $(document).ready(function(){
     if($(this).hasClass("active")) {
       $(this).animate({left: '-=290'}, 300);
       if($('.trigger2').hasClass('active')) {
-        $('.trigger2').animate({left: '-=250'}, 300).removeClass('active');
+        $('.trigger2').animate({left: '-=240'}, 300).removeClass('active');
       }
       $('#analytics').hide();
       $('.slidepanel').empty().hide();
@@ -27,12 +27,12 @@ $(document).ready(function(){
     $(this).toggleClass("active");
     if($(this).hasClass("active")) {
       $('#analytics').animate({left: '+=250'}, 300);
-      $(this).animate({left: '+=250'}, 300);
+      $(this).animate({left: '+=240'}, 300);
       $(".slidepanel").css('z-index', '3').show("fast");
     } 
     else {
       $('#analytics').animate({left: '-=250'}, 300);
-      $(this).animate({left: '-=250'}, 300);
+      $(this).animate({left: '-=240'}, 300);
       $(".slidepanel").hide("fast");
     }
     return false;
@@ -49,7 +49,7 @@ $(document).ready(function(){
       else {
         $($(page).html()).appendTo('.slidepanel');
         $('#analytics').animate({left: '+=250'}, 300);
-        $('.trigger2').addClass('active').animate({left: '+=250'}, 300);
+        $('.trigger2').addClass('active').animate({left: '+=240'}, 300);
         $('.slidepanel').css('z-index', '3').show("fast");
         e.stopPropagation();
       }
@@ -63,7 +63,7 @@ $(document).ready(function(){
   $(document).click(function() {
     if($('.trigger2').hasClass('active')) {
       $('.trigger2').removeClass('active').animate({
-        left: "-=250"
+        left: "-=240"
       });
       $('.slidepanel').empty().hide();
     }
