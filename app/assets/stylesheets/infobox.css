@@ -1,0 +1,58 @@
+.wrapper{
+ margin: 0;
+ margin-bottom: 20px;
+ padding-bottom: 15px;
+ text-align: center;
+ width: 100%;
+}
+
+.wrapper a:link {
+  color: #375D81;
+}
+
+.wrapper a:hover {
+  color: #8C0800;
+}
+
+.info-comparison{
+
+}
+
+.info-outcomes {
+
+}
+
+.info-complications {
+
+}
+
+.info-box {
+  margin-left: 10px;
+}
+
+.description li {
+	margin-bottom: 10px;
+	font size: 14px;
+}
+
+#description{
+  /*background-color: green;*/
+  clear: both;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  min-height: 200px;
+}
+
+.inbox-tab {
+  float: left;
+  margin-left: 20px;
+  padding: 0;
+  display: block;
+  height: 20px;
+  border: solid, 1px, red;
+}
+
+.inbox-tab a{
+/*  width: 30%;*/
+  color: green;
+}
