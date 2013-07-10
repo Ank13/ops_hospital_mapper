@@ -83,15 +83,16 @@ class Hospital < ActiveRecord::Base
   def self.find_hospitals_for_map(hospitals)
     all_hospitals = []
     hospitals.each do |hospital|
-      # acc = hospital.average_covered_charges/1600
+
       acc = hospital.scaled
-      unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil?
+      unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil? || hospital.outcome.readm_ha.nil? || hospital.outcome.readma_hf.nil? || hospital.outcome.readma_pn.nil?
         thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40 
         thumbs_down = hospital.patient_survey.recommend_no*50
+        readmission = (hospital.outcome.readm_ha + hospital.outcome.readma_hf + hospital.outcome.readma_pn)/2
         mortality = (hospital.outcome.mr_h_a + hospital.outcome.mr_hf + hospital.outcome.mr_p)/2
         all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
         provider_id: hospital.provider_id, acc: acc, thumbs_up: thumbs_up, 
-        thumbs_down: thumbs_down, mortality: mortality}
+        thumbs_down: thumbs_down, mortality: mortality, readmission: readmission}
       else
         all_hospitals << {provider_name: hospital.provider_name, latitude: hospital.latitude, longitude: hospital.longitude, 
         provider_id: hospital.provider_id, acc: acc}
