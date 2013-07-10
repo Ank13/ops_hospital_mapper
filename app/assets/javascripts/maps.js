@@ -232,11 +232,11 @@ $(document).ready(function(){
   toggleIcons('a#mortality', 'mortality', '#515151', mortality);
 
   $("a#clear").on('click', function(){
-    $('a#acc i').removeClass('active');
-    $('a#thumbs_up i').removeClass('active');
-    $('a#thumbs_down i').removeClass('active');
-    $('a#readmission i').removeClass('active');
-    $('a#mortality i').removeClass('active');
+    $('a#acc').removeClass('active');
+    $('a#thumbs_up').removeClass('active');
+    $('a#thumbs_down').removeClass('active');
+    $('a#readmission').removeClass('active');
+    $('a#mortality').removeClass('active');
     clearOverlays();
   });
 
