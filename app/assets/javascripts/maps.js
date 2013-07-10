@@ -226,7 +226,7 @@ $(document).ready(function(){
   toggleIcons('a#acc i', 'acc', '#236905', acc);
   toggleIcons('a#thumbs_up i', 'thumbs_up', '#EEF000', thumbsUp);
   toggleIcons('a#thumbs_down i', 'thumbs_down', '#F04400', thumbsDown);
-  toggleIcons('a#readmission i', 'readmission', '#F04400', readmission);
+  toggleIcons('a#readmission i', 'readmission', '#50F0F2', readmission);
   toggleIcons('a#mortality i', 'mortality', '#515151', mortality);
 
   $("a#clear").on('click', function(){
