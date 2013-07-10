@@ -6,13 +6,6 @@ class Procedure < ActiveRecord::Base
 	has_many :hospitals, :through => :hospitals_procedures, :primary_key => :drg_id
   has_many :states_procedures, :foreign_key => :drg_id
 
-  def on_click
-  	drg_id = self.drg_id
-  	clinical_category = self.clinical_category
-  	description = self.description
-
-  	{drg_id: drg_id, clinical_category: clinical_category, description: description}
-  end
 end
 
 
