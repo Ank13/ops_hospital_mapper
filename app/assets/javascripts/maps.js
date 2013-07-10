@@ -114,20 +114,22 @@ $(document).ready(function(){
       });
       
       clickMarker(hospital, marker);
-
-      var infowindow = new google.maps.InfoWindow({
-        maxWidth: 500,
-      });
     };
   };
 
+  var infowindow = null;
+
   function clickMarker(hospital, marker){
-    var infowindow = new google.maps.InfoWindow({
-      maxWidth: 500,
-      Height: 600
-    });
-    
+
     google.maps.event.addListener(marker, 'click', function() {
+      if (infowindow) {
+        infowindow.close();
+      }
+      infowindow = new google.maps.InfoWindow({
+        maxWidth: 500,
+        Height: 600
+      });
+
       hospitalID = hospital['provider_id'];
       var url =  '/hospitals/'+hospitalID; 
       $.get(url, function(response){
