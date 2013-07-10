@@ -173,8 +173,8 @@ $(document).ready(function(){
         position: latLng,
         map: map,
         icon: new google.maps.MarkerImage(
-          "http://chart.googleapis.com/chart?chst=d_text_outline&chld=46E01B|14|h|000000|b|$"+price+" k",
-          null, null, new google.maps.Point(0, 42))
+          "http://chart.googleapis.com/chart?chst=d_text_outline&chld=FFF|22|h|8C0800|b|$"+price+" k",
+          null, null, new google.maps.Point(-17, 42))
       });
       priceTags.push(marker);
       bubbles.push(marker);

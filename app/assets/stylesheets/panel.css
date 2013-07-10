@@ -1,86 +1,124 @@
-h3 {
-font-size:14px;
-line-height: 19px;
-font-family: helvetica, arial, sans-serif;
-color:#fff;
-font-weight: 600;
-margin:0;
-margin-left: 8px;
-padding:8px 8px 8px 0;
-}
-
-/*p {
-  color:#cccccc;
-  line-height:22px;
-  padding: 0 0 10px;
-  margin: 20px 0 20px 0;
-}*/
-
 .visualize {
+  display: block;
   color: #183152;
   text-decoration: none;
   margin-left: 12px;
   font-family: helvetica, arial, sans-serif;
   font-size: 12px;
-  width: 100%;
+  width: 80%;
+  padding: 5px;
   line-height:20px;
   margin-top: 15px;
+  text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+   
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+  box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -ms-transition: all 0.15s ease;
+  transition: all 0.15s ease;
 }
 
+.user-directions {
+  font: italic 11px/15px Helvetica, sans-serif;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
 
-.visualize .icon-usd {
+.big {
+  padding: 0 10px;
+  padding-top: 10px;
+  height: 25px;
+  text-transform: uppercase;
+  font: bold 20px/22px Arial, sans-serif;
+}
+
+.big span {
+    display: block;
+    text-transform: none;
+    font: normal 12px/16px Helvetica, sans-serif;
+}
+
+.visualize .icon-tag {
   font-size: 20px;
-  color: #236905;
+  
 }
 
-.visualize .icon-usd:hover {
-  color: white;
+.visualize .icon-tag:hover {
+  color: #236905;
 }
 
 
 .visualize .icon-thumbs-up {
   font-size: 20px;
-  color: #EEF000;
 }
 
 .visualize .icon-thumbs-up:hover {
-  color: white;
+  color: #EEF000;
 }
 
 .visualize .icon-thumbs-down {
   font-size: 20px;
-  color: #F04400;
+}
+
+.visualize .icon-ban-circle {
+  font-size: 20px;
 }
 
 .visualize .icon-thumbs-down:hover {
   color: white;
+  color: #F04400;
 }
 
 .visualize .icon-ambulance {
   font-size: 20px;
-  color: #70070A;
+  
 }
 
 .visualize .icon-ambulance:hover {
-  color: white;
+  color: #70070A;
 }
 
 .visualize .icon-frown {
   font-size: 20px;
-  color: #515151;
+  
 }
 
 .visualize .icon-frown:hover {
-  color: white;
+  color: #515151;
 }
 
 .visualize a {
   color: #375D81;
 }
 
+.visualize:hover {
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+}
+
+.visualize:active {
+    -webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+    -moz-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+    box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+}
+
+.viz-icon {
+ float: left;
+ margin-top: 0;
+}
+
 .viz-label {
-  float: right;
-  margin-left:20px;
+  float:left;
+  margin-left: 15px;
 }
 
 .panel {
@@ -97,22 +135,39 @@ filter: alpha(opacity=95);
 opacity:.95;
 }
 
+.panel img {
+  width: 280px;
+}
+
+#logo {
+  margin-left:-15px;
+  margin-top: -10px;
+}
+
 .panel h2 {
-  font-size:18px;
-  line-height: 26px;
+  font-size:20px;
+  line-height: 24px;
   font-family: helvetica, arial, sans-serif;
   color: #183152;
   font-weight: 600;
   margin:0;
   margin-left: 8px;
-  padding:8px 8px 8px 0;
+  padding:4px 8px 4px 0;
 }
 
 .panel h3 {
   color: #183152;
-  margin-top: 20px;
+  margin-top: 25px;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  margin-left: 8px;
 }
 
+.panel h4 {
+  color: #183152;
+  margin-top: 10px;
+  margin-left: 15px;
+}
 /*.panel p{
 margin: 0 0 15px 0;
 padding: 0;
@@ -130,8 +185,8 @@ a.trigger2{
   color:#fff;
   padding-left: 12px;
   padding-top: 8px;
-  width: 100px;
-  height: 35px;
+  width: 90px;
+  height: 25px;
   font-weight: 400;
   background-color: #183152;
   -webkit-transform: rotate(90deg); 
@@ -148,31 +203,31 @@ a.trigger2{
 
 
 a.trigger{
-position: fixed;
-z-index: 3;
-text-decoration: none;
-left: 255px;
-top: 40px;
-font-size: 16px;
-letter-spacing:-1px;
-font-family: verdana, helvetica, arial, sans-serif;
-color:#fff;
-padding-left: 12px;
-padding-top: 8px;
-width: 100px;
-height: 35px;
-font-weight: 400;
-background-color:#375D81;
--webkit-transform: rotate(90deg); 
--moz-transform: rotate(90deg); 
--moz-border-radius-topright: 10px;
--webkit-border-top-right-radius: 10px;
--webkit-border-top-left-radius: 10px;
--moz-border-radius-bottomright: 0;
--webkit-border-bottom-right-radius: 0;
--moz-border-radius-bottomleft: 0;
--webkit-border-bottom-left-radius: 0;
-display: block;
+  position: fixed;
+  z-index: 3;
+  text-decoration: none;
+  left: 255px;
+  top: 40px;
+  font-size: 16px;
+  letter-spacing:-1px;
+  font-family: verdana, helvetica, arial, sans-serif;
+  color:#fff;
+  padding-left: 12px;
+  padding-top: 8px;
+  width: 90px;
+  height: 25px;
+  font-weight: 400;
+  background-color:#375D81;
+  -webkit-transform: rotate(90deg); 
+  -moz-transform: rotate(90deg); 
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  display: block;
 }
 
 a.trigger:hover{
@@ -183,11 +238,18 @@ a.active.trigger {
   background-color: #05484F;
 }
 
+.static_links {
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  margin-bottom: 10px;
+}
+
 .static_links a{
   color: #375D81;
   text-decoration: none;
   font-family: helvetica, arial, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   width: 100%;
 }
 
@@ -195,15 +257,16 @@ a.active.trigger {
   color: #8C0800;
   text-decoration: none;
   font-family: helvetica, arial, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   width: 100%;
 }
 
 #procdropdown {
    width: 225px;
    height: 18px;
-   margin-top: 4px;
+   margin-top: 20px;
+   margin-left: 15px;
    border: 1px solid #ccc;
    font-family: arial, helvetica, sans-serif;
-   margin-bottom: 20px;
+   margin-bottom: 30px;
 }
