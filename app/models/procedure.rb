@@ -5,6 +5,7 @@ class Procedure < ActiveRecord::Base
   has_many :hospitals_procedures, :foreign_key => :drg_id
 	has_many :hospitals, :through => :hospitals_procedures, :primary_key => :drg_id
   has_many :states_procedures, :foreign_key => :drg_id
+
 end
 
 
