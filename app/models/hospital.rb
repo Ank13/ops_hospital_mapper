@@ -1,8 +1,7 @@
 class Hospital < ActiveRecord::Base
   attr_accessible :provider_id, :provider_name, :provider_street_address, :provider_city, :provider_state, :provider_zip_code, :hrr, :total_discharges, :count_drgs, :average_covered_charges, :average_total_payments, :latitude, :longitude
-  
+
   geocoded_by :full_address
-  # after_validation :geocode 
 
   self.primary_key = "provider_id"
   has_many :hospitals_procedures, :foreign_key => 'provider_id'
@@ -83,10 +82,9 @@ class Hospital < ActiveRecord::Base
   def self.find_hospitals_for_map(hospitals)
     all_hospitals = []
     hospitals.each do |hospital|
-
       acc = hospital.scaled_total_cost_index
-      unless hospital.patient_survey.nil? || hospital.outcome.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil? || hospital.outcome.readm_ha.nil? || hospital.outcome.readma_hf.nil? || hospital.outcome.readma_pn.nil?
-        thumbs_up = (hospital.patient_survey.recommend_y)*40 
+      unless hospital.patient_survey.nil? || hospital.patient_survey.recommend_y.nil? || hospital.patient_survey.recommend_ok.nil? ||hospital.patient_survey.recommend_no.nil? || hospital.outcome.readm_ha.nil? || hospital.outcome.readma_hf.nil? || hospital.outcome.readma_pn.nil? || hospital.outcome.mr_h_a.nil? || hospital.outcome.mr_hf.nil? || hospital.outcome.mr_p.nil?
+        thumbs_up = (hospital.patient_survey.recommend_y + hospital.patient_survey.recommend_ok)*40 
         thumbs_down = hospital.patient_survey.recommend_no*50
         readmission = (hospital.outcome.readm_ha + hospital.outcome.readma_hf + hospital.outcome.readma_pn)/2
         mortality = (hospital.outcome.mr_h_a + hospital.outcome.mr_hf + hospital.outcome.mr_p)/2
@@ -106,6 +104,7 @@ class Hospital < ActiveRecord::Base
   end
 
 end
+
 
 
 
