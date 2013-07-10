@@ -13,11 +13,12 @@ $(document).ready(function(){
     });
   };
 
-  function drawChartWhenNewProc() {
+  // function drawChartWhenNewProc() {
     $('#procdropdown').change(function(event){
       drgDescription = $('#procdropdown').val();
       var data = {'drg' : drgDescription };
       var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
+      var urlSlidePanel = '/maps/analytics'
 
       if ($("#chart_div").is(':visible'))
       {
@@ -28,25 +29,43 @@ $(document).ready(function(){
            drawChart(response, axisLabels);
         });
       }
+      
+      $.get(url, data, function(response)) {
+        $('.slidepanel').append(response);
+        $('.slidepanel').text("");
+        $('#analytics').animate({left: "+=290"});
+        $('.slidepanel').css('z-index', '3').show("fast");
+        $('.trigger2').animate({left: '+=240'});
+      };
     });
-  };
+  // };
 
-  drawChartWhenNewProc();
+  // drawChartWhenNewProc();
 
   function slidePanelWhenNewProc() {
-    $('#procdropdown').change(function(event) {
-      drgDescription = $('#procdropdown').val();
-      var data = {'drg' : drgDescription };
-      var url = '/maps/analytics';
+    // $('.procdropdown').change(function(event) {
+      // drgDescription = $('.procdropdown').val();
+      // var data = {'drg' : drgDescription };
+      // var url = '/maps/analytics';
 
+      // $.get(url, data, function(response)) {
+      //   $('.slidepanel').append(response);
+      //   $('.slidepanel').text("");
+      //   $('#analytics').animate({left: "+=290"});
+      //   $('.slidepanel').css('z-index', '3').show("fast");
+      //   $('.trigger2').animate({left: '+=240'});
+      // };
+      
       // where slide panel is hidden (doing first)
-
-      $.get(url, data, function(response){
-        $('.slidepanel').empty();
-        var 
-      });
-    });
+      // if ($(""))
+      // $.get(url, data, function(response){
+      //   $('.slidepanel').empty();
+      //   var 
+      // });
+    // });
   };
+
+  // slidePanelWhenNewProc();
 
   $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
