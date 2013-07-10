@@ -13,21 +13,56 @@ $(document).ready(function(){
     });
   };
 
-  $('#procdropdown').change(function(event){
-    drgDescription = $('#procdropdown').val();
-    var data = {'drg' : drgDescription };
-    var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
+  var counter = 0;
 
-    if ($("#chart_div").is(':visible'))
-    {
-      $.get(urlInfobox, data, function(response){
-         $("#chart_div").text(" ");
-         var state = response.state;
-         var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
-         drawChart(response, axisLabels);
-      });
+  function tabTwo() {
+    $(".slidepanel").css('z-index', '3').show(240);
+
+    if(counter === 0) {
+      $('#analytics').animate({left: '+=250'}, 240);
+      $('.trigger2').addClass('active').animate({left: '+=240'}, 240);
+      $('.slidepanel').addClass('active')
+      counter++;
+    }
+  };  
+
+  $(document).bind('click', function() {
+    if($('.trigger2').hasClass('active')) {
+      $('.trigger2').removeClass('active').animate({
+        left: "-=240"
+      }, 240);
+      $('#analytics').animate({left: '-=250'}, 240);
+      $('.slidepanel').removeClass('active').empty().hide(240);
+      counter = 0;
     }
   });
+
+  function updateWhenNewProc() {
+    $('#procdropdown').change(function(event){
+      $('#procdropdown').addClass('active');
+      drgDescription = $('#procdropdown').val();
+      var data = {'drg' : drgDescription };
+      var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
+      var urlSlidePanel = '/maps/analytics';
+
+      $.get(urlSlidePanel, data, function(response) {
+        $('.slidepanel').append(response);
+        tabTwo();
+      });
+
+      if ($("#chart_div").is(':visible'))
+      {
+        $.get(urlInfobox, data, function(response){
+           $("#chart_div").text(" ");
+           var state = response.state;
+           var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
+           drawChart(response, axisLabels);
+        });
+      }
+    });
+  };
+
+  updateWhenNewProc();
 
   $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
