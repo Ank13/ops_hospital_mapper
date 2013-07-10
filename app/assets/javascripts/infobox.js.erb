@@ -1,4 +1,4 @@
- 
+
 $(document).ready(function(){
 
   var drgDescription = "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC"
@@ -13,12 +13,12 @@ $(document).ready(function(){
     });
   };
 
-  // function drawChartWhenNewProc() {
+  function drawChartWhenNewProc() {
     $('#procdropdown').change(function(event){
       drgDescription = $('#procdropdown').val();
+      alert(drgDescription);
       var data = {'drg' : drgDescription };
       var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
-      var urlSlidePanel = '/maps/analytics'
 
       if ($("#chart_div").is(':visible'))
       {
@@ -28,21 +28,13 @@ $(document).ready(function(){
            var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
            drawChart(response, axisLabels);
         });
-      }
-      
-      $.get(url, data, function(response)) {
-        $('.slidepanel').append(response);
-        $('.slidepanel').text("");
-        $('#analytics').animate({left: "+=290"});
-        $('.slidepanel').css('z-index', '3').show("fast");
-        $('.trigger2').animate({left: '+=240'});
-      };
+      }      
     });
-  // };
+  };
 
-  // drawChartWhenNewProc();
+  drawChartWhenNewProc();
 
-  function slidePanelWhenNewProc() {
+  // function slidePanelWhenNewProc() {
     // $('.procdropdown').change(function(event) {
       // drgDescription = $('.procdropdown').val();
       // var data = {'drg' : drgDescription };
@@ -63,7 +55,7 @@ $(document).ready(function(){
       //   var 
       // });
     // });
-  };
+  // };
 
   // slidePanelWhenNewProc();
 
