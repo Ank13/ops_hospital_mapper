@@ -1,11 +1,11 @@
 <% unless (@hospital.patient_survey.nil? || @hospital.outcome.nil? || @hospital.patient_survey.recommend_y.nil? || @hospital.patient_survey.survey_response_rate.nil? || @hospital.outcome.readm_ha.nil? || @hospital.total_discharges.nil? || @hospital.average_covered_charges.nil? || @hospital.average_total_payments.nil?) %>
 
     <div class='wrapper'>
-    <span class='inbox-tab'><a class='info-comparison' id='<%= @hospital.provider_id %>' href='#'>Procedure Cost Comparison</a></span>
-    <span class='inbox-tab'><a class='info-outcomes' id='<%= @hospital.provider_id %>' href='#'>Outcomes</a></span>
-    <span class='inbox-tab'><a class='info-complications' id='<%= @hospital.provider_id %>' href='#'>Complications</a></span>
-    
+      <span class='inbox-tab'><a class='info-comparison' id='<%= @hospital.provider_id %>' href='#'>Procedure Cost Comparison</a></span>
+      <span class='inbox-tab'><a class='info-outcomes' id='<%= @hospital.provider_id %>' href='#'>Outcomes</a></span>
+      <span class='inbox-tab'><a class='info-complications' id='<%= @hospital.provider_id %>' href='#'>Complications</a></span>
     </div>
+    
     <div id='description'>
     <div class='info-box'> <%= @hospital.provider_name %> </div>
     <ul>
