@@ -29,4 +29,13 @@ class MapsController < ApplicationController
     render :layout => false
   end
   
+  def analytics
+    definition = params[:drg].upcase
+    procedure = Procedure.find_by_drg_def(definition)
+    data = procedure.on_click.to_json
+
+    respond_to do |format|
+      format.json { render :json => data }
+    end
+  end
 end

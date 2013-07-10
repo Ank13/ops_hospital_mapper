@@ -1,4 +1,4 @@
-
+ 
 $(document).ready(function(){
 
   var drgDescription = "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC"
@@ -13,21 +13,40 @@ $(document).ready(function(){
     });
   };
 
-  $('#procdropdown').change(function(event){
-    drgDescription = $('#procdropdown').val();
-    var data = {'drg' : drgDescription };
-    var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
+  function drawChartWhenNewProc() {
+    $('#procdropdown').change(function(event){
+      drgDescription = $('#procdropdown').val();
+      var data = {'drg' : drgDescription };
+      var urlInfobox =  '/hospitals/'+hospitalID+'/infobox';
 
-    if ($("#chart_div").is(':visible'))
-    {
-      $.get(urlInfobox, data, function(response){
-         $("#chart_div").text(" ");
-         var state = response.state;
-         var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
-         drawChart(response, axisLabels);
+      if ($("#chart_div").is(':visible'))
+      {
+        $.get(urlInfobox, data, function(response){
+           $("#chart_div").text(" ");
+           var state = response.state;
+           var axisLabels = {colOne: "Here", colTwo: state, colThree: "National"};
+           drawChart(response, axisLabels);
+        });
+      }
+    });
+  };
+
+  drawChartWhenNewProc();
+
+  function slidePanelWhenNewProc() {
+    $('#procdropdown').change(function(event) {
+      drgDescription = $('#procdropdown').val();
+      var data = {'drg' : drgDescription };
+      var url = '/maps/analytics';
+
+      // where slide panel is hidden (doing first)
+
+      $.get(url, data, function(response){
+        $('.slidepanel').empty();
+        var 
       });
-    }
-  });
+    });
+  };
 
   $("#map-canvas").on('click', '.info-comparison',function(event){
     hospitalID = (this.id);
