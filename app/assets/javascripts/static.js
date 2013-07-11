@@ -7,6 +7,8 @@ $(document).ready(function(){
     triggerStaticPages('#datasets', '.datasets');
     triggerStaticPages('#about', '.about');
     clearSlidePanelOnClick();
+    $('.trigger2').hide();
+    $('#analytics').hide();
   };
 
   function hideStaticPagesOnLoad() {
@@ -24,7 +26,8 @@ $(document).ready(function(){
         if($('.trigger2').hasClass('active')) {
           $('.trigger2').animate({left: '-=240'}, 240).removeClass('active');
         }
-        $('#analytics').hide(240);
+        $('#analytics').hide();
+        $('.trigger2').hide();
         $('.slidepanel').empty().hide();
       }
       else {
@@ -49,8 +52,8 @@ $(document).ready(function(){
         $('.slidepanel').empty();
         $($(page).html()).appendTo('.slidepanel');
         if(!$('.slidepanel').hasClass('active')) {
-          $('#analytics').animate({left: '+=250'}, 240);
-          $('.trigger2').addClass('active').animate({left: '+=240'}, 240);
+          $('#analytics').show().animate({left: '+=250'}, 240);
+          $('.trigger2').addClass('active').show().animate({left: '+=240'}, 240);
         }
         $('.slidepanel').css('z-index', '3').show(240);
         e.stopPropagation();
