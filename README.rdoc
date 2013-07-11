@@ -1,4 +1,18 @@
-Project to combine US healthcare cost data, outcome & quality data, and other relevant data, and visualize with Google Maps API
+================================
+ho$pitally
+
+================================
+About
+
+Hospitals charge drastically different amounts for the same procedure. In order to make this data accessible to the public and promote a discussion of the burgeoning cost of healthcare in the US, we've combined the recently released Medicare chargemaster data with government measures of quality, such as patient survey results and outcomes of care, geocoded all addresses, and mapped on Google Maps.
+
+================================
+Team
+Avi Kaufman, Rod Levy, Anna-Marie Panlilio, Daniel Song
+
+
+================================
+Install
 
 Setup tasks:
 
@@ -22,4 +36,37 @@ Need to have R installed before you run rinruby:
 To push environment files to Heroku:
 
   rake figaro:heroku
-  
+
+
+================================
+Link to Production App
+  http://hospital-mapper.herokuapp.com/
+
+
+================================
+How to use our app
+
+1.  Select a procedure from the drop-down menu on the left.
+    Average prices charged to Medicate for the selected procedure appear next to 
+    each hospital and a panel with additional information appears
+2.  Click a hospital (H) icon to open an info box. Click the tabs for graphs on
+    cost comparison to state and national averages, complications, and outcomes.
+3.  Click a bubble visualization icon to overlay additional information on the map. 
+    Average price - larger circle is higher price
+    Recommended by patients - larger circle indicates positive responses
+    Not recommended by patients - larger circle indicates negative responses
+    30-day Readmission Rate - (per 1000 of certain criteria) - smaller circle is better
+    30-day Mortality Rate - (per 1000 of certain criteria) - smaller circle is better
+    Clear layers - removes all bubbles
+4.  Pan or zoom map, or type in the search box at the bottom of the page to 
+    change geography. Map initially loads centered on Chicago, IL. (our location)
+5.  Click the "About the data" tab to find links on the data sources and explore
+    more on your own. 
+
+
+================================
+Design 
+
+
+
+
