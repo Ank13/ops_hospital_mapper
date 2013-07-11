@@ -8,12 +8,37 @@
 	-webkit-border-top-right-radius: 20px;
 	-moz-border-radius-bottomright: 20px;
 	-webkit-border-bottom-right-radius: 20px;
-	padding: 120px 25px 15px 15px;
+	padding: 110px 25px 15px 15px;
 	left: 290px;
 	top: 0;
-	opacity:.80;
+	opacity:.90;
 	background-color: #C4DCF2;
 	font-family: arial, helvetica, sans-serif;
-	font: 14px/18px;
+	font-size: 12px;
 }
 
+.slidepanel h3, h2{
+	padding: 0;
+	margin: 0;
+	margin-top: 8px;
+}
+
+.slidepanel p{
+	padding: 3px 0 0 0;
+	margin: 0;
+}
+
+.slidepanel ol{
+	padding: 0, 0, 0, 0;
+	margin: 0;
+}
+
+.slidepanel ul{
+	padding: 0, 0, 3px, 0;
+	margin: 0;
+}
+
+.slidepanel li{
+	padding: 0, 0, 0, 0;
+	margin: 0;
+}
