@@ -1,8 +1,36 @@
 <div class="datasets">
-<p> Datasets used for this project include the following sources:</p>
-<ol>
-	<li><a href="cms.gov">CMS</a></li>
-	<li><a href="google.com">something else</a></li>
-</ol>
+
+  <p>We used publically available data from the
+  <%= link_to 'Centers for Medicare & Medicaid Services (CMS)', "http://www.cms.gov/", :target => "_blank" %>.
+  </p>
+
+  <p>
+  Below is a list of the data sets we used:
+  </p>
+
+    <ol>
+      <li><%= link_to "Medicare Provider Charge Data: Inpatient (aka 'chargemaster data')", 'http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient.html', :target => "_blank" %>. Average charge and actual payment for 100 most frequent diagnosis-related groups (DRG) at 3,337 US hospitals.</li>
+
+
+      <li><%= link_to 'Patient Survey Results', 'https://data.medicare.gov/data/hospital-compare/Patient%20Survey%20Results', :target => "_blank" %>. Results from a standardized survey of hospital patients about their experiences during a recent inpatient hospital stay.</li>
+
+      <li><%= link_to 'Complications: Agency For Healthcare Research And Quality Measures', 'https://data.medicare.gov/data/hospital-compare/Readmissions,%20Complications%20&%20Death', :target => "_blank" %>. Data on complications. </li>
+
+      <li><%= link_to 'Outcomes: Hospital Outcome Of Care Measures', 'https://data.medicare.gov/data/hospital-compare/Readmissions,%20Complications%20&%20Death', :target => "_blank" %>What happened after patients with certain conditions received hospital care.</li>
+
+    </ol>
+
+    <p>These newspapers made some nice graphics with just the chargemaster data:</p>
+    <ul>
+      <li><%= link_to 'New York Times', "http://www.nytimes.com/interactive/2013/05/08/business/how-much-hospitals-charge.html?ref=business&_r=1&", :target => "_blank" %></li>
+      <li><%= link_to 'Washington Post', "http://www.washingtonpost.com/blogs/wonkblog/wp/2013/05/08/one-hospital-charges-8000-another-38000/", :target => "_blank" %></li>
+    </ul>
+
+    <p>Some interesting articles we found on hospital costs:</p>
+    <ul>
+      <li><%= link_to 'Oklahoma City hospital creates bidding war', "http://kfor.com/2013/07/08/okc-hospital-posting-surgery-prices-online/", :target => "_blank" %></li>
+      <li><%= link_to 'New health data outs doctors whose patients die more often', "http://venturebeat.com/2013/07/05/health-care-consumers-are-in-the-dark-u-k-plan-gives-them-a-flashlight/", :target => "_blank" %></li>
+      <li><%= link_to 'Bitter Pill: Why Medical Bills Are Killing Us', "http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2YgaGmVu2", :target => "_blank" %></li>
+    </ul>
 
 </div>
