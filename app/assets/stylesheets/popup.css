@@ -67,15 +67,19 @@
 .pop-up-icon {
  float: left;
  font-size: 1.5em;
- margin-top: -5px;
+/* margin-top: -5px;*/
 }
 
 .instruction-text {
   float:left;
-  margin-left: 20px;
-  vertical-align: bottom;
+  margin-left: 8px;
+/*  vertical-align: bottom;*/
 }
 
+.poppity {
+  margin-top: -15px;
+  margin-left: 15px;
+}
 
 .begin {
   display: block;
