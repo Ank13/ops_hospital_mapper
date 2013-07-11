@@ -11,7 +11,7 @@
     <ul>
       <li> <%= (@hospital.patient_survey.recommend_y * 100).round(0) %>% of patients recommend this hospital
       <span class='note'>(<%= (@hospital.patient_survey.survey_response_rate * 100).round(0) %>% response rate)</span></li>
-      <li> Readmission rate from heart attack: <%= @hospital.outcome.readm_ha  %></li>
+      <li> Readmission rate from heart attack (per 1000 admissions): <%= @hospital.outcome.readm_ha  %></li>
       <li> Reported discharges (CMS): <%= @hospital.total_discharges %></li>
       <li> Average Covered Charges (all procedures, CMS): $<%= (@hospital.average_covered_charges/1000).round(0) %>K</li>
       <li> Average Total Payment (all procedures, CMS): $<%= (@hospital.average_total_payments/1000).round(0) %>K</li>
