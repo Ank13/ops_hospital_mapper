@@ -112,3 +112,32 @@
 .links a {
   font-weight: 700;
 }
+
+
+.slidepanel table{
+	margin-top: 10px;
+  margin-left: 20px;
+}
+
+.slidepanel table th {
+	color: #183152;
+	font-size: 1.5em;
+	font-weight: 600;
+	text-align: left;
+}
+
+tr {
+	margin-bottom: 20px;
+}
+
+.slidepanel td {
+	color: #183152;
+	vertical-align: bottom;
+}
+
+td .subhead {
+	color: #183152;
+	font-weight: 600;
+	font-size: 1.25em;
+	margin-top: 10px;
+}
