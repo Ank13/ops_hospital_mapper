@@ -6,6 +6,7 @@ function createMap() {
 	    zoom: 11,
 	    mapTypeId: google.maps.MapTypeId.TERRAIN,
 	    panControl: false,
+      mapTypeControl: false,
 	    zoomControl: true,
 	    zoomControlOptions: {
 		    style: google.maps.ZoomControlStyle.SMALL,
