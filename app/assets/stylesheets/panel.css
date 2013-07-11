@@ -91,7 +91,7 @@ opacity:.95;
 }
 
 .panel img {
-  width: 280px;
+  width: 260px;
 }
 
 #logo {
@@ -143,7 +143,7 @@ a.trigger2{
   width: 90px;
   height: 25px;
   font-weight: 400;
-  background-color: #183152;
+  background-color: #C4DCF2;
   -webkit-transform: rotate(90deg); 
   -moz-transform: rotate(90deg); 
   -moz-border-radius-topright: 10px;
@@ -172,7 +172,7 @@ a.trigger{
   width: 90px;
   height: 25px;
   font-weight: 400;
-  background-color:#375D81;
+  background-color:#ABC8E2;
   -webkit-transform: rotate(90deg); 
   -moz-transform: rotate(90deg); 
   -moz-border-radius-topright: 10px;
@@ -190,7 +190,7 @@ background-color:#375D81;
 }
 
 a.active.trigger {
-  background-color: #05484F;
+  background-color: #8C0800;
 }
 
 .static_links {

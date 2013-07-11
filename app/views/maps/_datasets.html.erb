@@ -1,36 +1,39 @@
 <div class="datasets">
 
-  <p>We used publically available data from the
+  <p>We used publicly available data from the
   <%= link_to 'Centers for Medicare & Medicaid Services (CMS)', "http://www.cms.gov/", :target => "_blank" %>.
   </p>
 
-  <p>
-  Below is a list of the data sets we used:
-  </p>
+  <h3>Data sets we used:</h3>
 
-    <ol>
-      <li><%= link_to "Medicare Provider Charge Data: Inpatient (aka 'chargemaster data')", 'http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient.html', :target => "_blank" %>. Average charge and actual payment for 100 most frequent diagnosis-related groups (DRG) at 3,337 US hospitals.</li>
+  <div class="links"><%= link_to'http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient.html', :target => "_blank" do %><i class="icon-external-link"></i>
+    Medicare Provider Charge Data: Inpatient (aka 'Chargemaster data')<% end %> <br/>Average charge and actual payment for 100 most frequent diagnosis-related groups (DRG) at 3,337 US hospitals.</div>
 
+  <div class="links"><%= link_to 'https://data.medicare.gov/data/hospital-compare/Patient%20Survey%20Results', :target => "_blank" do %>
+      <i class="icon-external-link"></i> Patient Survey Results <% end %> <br/>
+      Results from a standardized survey of hospital patients about their experiences during a recent inpatient hospital stay.</div>
 
-      <li><%= link_to 'Patient Survey Results', 'https://data.medicare.gov/data/hospital-compare/Patient%20Survey%20Results', :target => "_blank" %>. Results from a standardized survey of hospital patients about their experiences during a recent inpatient hospital stay.</li>
+  <div class="links"><%= link_to 'https://data.medicare.gov/data/hospital-compare/Readmissions,%20Complications%20&%20Death', :target => "_blank" do %>
+    <i class="icon-external-link"></i> Complications: Agency For Healthcare Research And Quality Measures'<% end %> <br/>
+    Data on complications. </div>
 
-      <li><%= link_to 'Complications: Agency For Healthcare Research And Quality Measures', 'https://data.medicare.gov/data/hospital-compare/Readmissions,%20Complications%20&%20Death', :target => "_blank" %>. Data on complications. </li>
+  <div class="links"><%= link_to 'https://data.medicare.gov/data/hospital-compare/Readmissions,%20Complications%20&%20Death', :target => "_blank" do %>
+    <i class="icon-external-link"></i> Outcomes: Hospital Outcome Of Care Measures <% end %><br/>
+    What happened after patients with certain conditions received hospital care.</div>
 
-      <li><%= link_to 'Outcomes: Hospital Outcome Of Care Measures', 'https://data.medicare.gov/data/hospital-compare/Readmissions,%20Complications%20&%20Death', :target => "_blank" %>What happened after patients with certain conditions received hospital care.</li>
+  <h3>Chargemaster data in the news:</h3>
+    <div class="links"><%= link_to "http://www.nytimes.com/interactive/2013/05/08/business/how-much-hospitals-charge.html?ref=business&_r=1&", :target => "_blank" do %>
+      <i class="icon-external-link"></i> New York Times<% end %></div>
+    <div class="links"><%= link_to "http://www.washingtonpost.com/blogs/wonkblog/wp/2013/05/08/one-hospital-charges-8000-another-38000/", :target => "_blank" do %>
+      <i class="icon-external-link"></i> Washington Post<% end %> </div>
 
-    </ol>
-
-    <p>These newspapers made some nice graphics with just the chargemaster data:</p>
-    <ul>
-      <li><%= link_to 'New York Times', "http://www.nytimes.com/interactive/2013/05/08/business/how-much-hospitals-charge.html?ref=business&_r=1&", :target => "_blank" %></li>
-      <li><%= link_to 'Washington Post', "http://www.washingtonpost.com/blogs/wonkblog/wp/2013/05/08/one-hospital-charges-8000-another-38000/", :target => "_blank" %></li>
-    </ul>
-
-    <p>Some interesting articles we found on hospital costs:</p>
-    <ul>
-      <li><%= link_to 'Oklahoma City hospital creates bidding war', "http://kfor.com/2013/07/08/okc-hospital-posting-surgery-prices-online/", :target => "_blank" %></li>
-      <li><%= link_to 'New health data outs doctors whose patients die more often', "http://venturebeat.com/2013/07/05/health-care-consumers-are-in-the-dark-u-k-plan-gives-them-a-flashlight/", :target => "_blank" %></li>
-      <li><%= link_to 'Bitter Pill: Why Medical Bills Are Killing Us', "http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2YgaGmVu2", :target => "_blank" %></li>
-    </ul>
+  <h3>Hospital cost discussions in the news:</h3>
+    <div class="links"><%= link_to "http://kfor.com/2013/07/08/okc-hospital-posting-surgery-prices-online/", :target => "_blank" do %>
+      <i class="icon-external-link"></i> Oklahoma City hospital creates bidding war <% end %>
+    </div>
+    <div class="links"><%= link_to "http://venturebeat.com/2013/07/05/health-care-consumers-are-in-the-dark-u-k-plan-gives-them-a-flashlight/", :target => "_blank" do %>
+      <i class="icon-external-link"></i> New health data outs doctors whose patients die more often<% end %></div>
+    <div class="links"><%= link_to "http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2YgaGmVu2", :target => "_blank" do%>
+      <i class="icon-external-link"></i> Bitter Pill: Why Medical Bills Are Killing Us<% end %></div>
 
 </div>

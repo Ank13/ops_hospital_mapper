@@ -1,43 +1,44 @@
 <div class="about">
 
-	<p> We built <em>hospitally</em> for our final project at <%= link_to 'Dev Bootcamp', 'http://devbootcamp.com/', :target => "_blank" %> in Chicago.<p>
-
-  <p>
-    Prior to Dev Bootcamp, none of us were web developers. Over the past nine weeks we learned technologies such as Ruby, Javascript, jQuery, HTML, CSS, and Ruby on Rails, as well as best practices such as pair programming, testing, and agile development. 
-  </p>
-
   <h2>Our Team</h2>
-  <img src="http://popculturemonster.com/wp-content/uploads/2011/12/Muppets_Wallpapers_1920x1200_5CharGroup.jpg" alt="Our Team" width='200px'>
 
+	<div class="team-text"> We built <span class="site-title">hospitally</span> in eight days for our final project at <%= link_to 'Dev Bootcamp', 'http://devbootcamp.com/', :target => "_blank" %> Chicago, an intense 9-week training.</div>
+
+  <img src="http://codesliced.com/images/hospitally_group2.gif" alt="Our Team" width='200px'>
+  <div class="user-directions">Bios below from left to right</div>
   
   <h3>Anna-Marie Panlilio</h3>
-  <p>With extensive photography and marketing experience, Anna-Marie is looking for a junior developer position in the San Francisco area.</p>
-  <ul>
-    <li><%= link_to 'Github', "https://github.com/codesliced", :target => "_blank"%></li>
-    <li><%= link_to 'LinkedIn', "http://www.linkedin.com/in/ampanlilio", :target => "_blank"%></li>
-    </ul>
+  <p>A San Francisco photographer looking for a junior developer position.</p>
+  
+    <div class="bio"><%= link_to "https://github.com/codesliced", :target => "_blank" do %>
+    <i class="icon-github-alt"></i> Github <% end %>   | 
+      <%= link_to "http://www.linkedin.com/in/ampanlilio", :target => "_blank" do %>
+    <i class="icon-linkedin-sign"></i> LinkedIn <% end %></div>
 
   <h3>Daniel Song</h3>
-  <p>A recent graduate from USC, Daniel is looking for junior developer positions in California.</p>
-  <ul>
-    <li><%= link_to 'Github', "https://github.com/danielx328", :target => "_blank"%></li>
-    <li><%= link_to 'LinkedIn', "http://www.linkedin.com/pub/daniel-song/17/188/7a", :target => "_blank"%></li>
-  </ul>
+  <p>A recent graduate from USC looking for junior developer positions in California.</p>
 
-  <h3>Rod Levy</h3>
-  <p>A former trader living in Chicago with his wife and three kids, Rod is looking for opportunities in the Chicago area.</p>
-  <ul>
-    <li><%= link_to 'Github', "https://github.com/rodlevy", :target => "_blank"%></li>
-    <li><%= link_to 'LinkedIn', "http://www.linkedin.com/pub/rod-levy/6/b25/283", :target => "_blank"%></li>
-  </ul>
+  <div class="bio"><%= link_to "https://github.com/danielx328", :target => "_blank" do %>
+    <i class="icon-github-alt"></i> Github <% end %> | <%= link_to "http://www.linkedin.com/pub/daniel-song/17/188/7a", :target => "_blank" do %>
+       <i class="icon-linkedin-sign"></i> LinkedIn 
+       <% end %>
+  </div>
   
   <h3>Avi Kaufman</h3>
-  <p>A US Army veteran and business school graduate, Avi is looking for vegetarian restaurant recommendations in Boston.</p>
-  <ul>
-    <li><%= link_to 'Github', "https://github.com/Ank13", :target => "_blank"%></li>
-    <li><%= link_to 'LinkedIn', "http://www.linkedin.com/in/avinkaufman", :target => "_blank"%></li>
-  </ul>
+  <p>A US Army veteran and business school graduate looking for vegetarian restaurant recommendations in Boston.</p>
 
+  <div class="bio"><%= link_to "https://github.com/Ank13", :target => "_blank" do %>
+  <i class="icon-github-alt"></i> Github <% end %> | <%= link_to "http://www.linkedin.com/in/avinkaufman", :target => "_blank" do %>    <i class="icon-linkedin-sign"></i> LinkedIn <% end %></div>
+
+  <h3>Rod Levy</h3>
+  <p>A former trader living in Chicago with his wife and three kids who is looking to deepen his knowledge of programming.</p>
+  <div class="bio"><%= link_to "https://github.com/rodlevy", :target => "_blank" do %>
+  <i class="icon-github-alt"></i> Github <% end %> |  <%= link_to "http://www.linkedin.com/pub/rod-levy/6/b25/283", :target => "_blank" do %>    <i class="icon-linkedin-sign"></i> LinkedIn <% end %></div>
+
+  <br/><div class="team-text">
+   With no prior programming experience, we learned Ruby, Javascript, jQuery, HTML, CSS, and Ruby on Rails, as well as best practices such as pair programming, testing, agile development, and engineering empathy. 
+  </div>
+  
 </div>
 
 
