@@ -120,7 +120,6 @@ $(document).ready(function(){
   var infowindow = null;
 
   function clickMarker(hospital, marker){
-
     google.maps.event.addListener(marker, 'click', function() {
       if (infowindow) {
         infowindow.close();
@@ -139,21 +138,25 @@ $(document).ready(function(){
     });
   };
 
-  $('#procdropdown').change(function(event){
-    drgDescription = $('#procdropdown').val();
-    
-    var loadedIDs = []
-    for (var i = 0; i < existingHospitals.length; i++) {
-      loadedIDs.push(existingHospitals[i].provider_id)
-    };
+  function postPriceTags() {
+    $('#procdropdown').change(function(event){
+      drgDescription = $('#procdropdown').val();
+      
+      var loadedIDs = []
+      for (var i = 0; i < existingHospitals.length; i++) {
+        loadedIDs.push(existingHospitals[i].provider_id)
+      };
 
-    var data = {'drg' : drgDescription, 'loadedIDs' : loadedIDs };
-    var urlPricing = 'procedures/prices'
+      var data = {'drg' : drgDescription, 'loadedIDs' : loadedIDs };
+      var urlPricing = 'procedures/prices'
 
-    $.post(urlPricing, data, function(response){
-      setPriceTags(map, response);
+      $.post(urlPricing, data, function(response){
+        setPriceTags(map, response);
+      });
     });
-  });
+  };
+
+  postPriceTags();
 
   var bubbles = [];
   var acc = [];
@@ -232,11 +235,11 @@ $(document).ready(function(){
   toggleIcons('a#mortality', 'mortality', '#515151', mortality);
 
   $("a#clear").on('click', function(){
-    $('a#acc i').removeClass('active');
-    $('a#thumbs_up i').removeClass('active');
-    $('a#thumbs_down i').removeClass('active');
-    $('a#readmission i').removeClass('active');
-    $('a#mortality i').removeClass('active');
+    $('a#acc').removeClass('active');
+    $('a#thumbs_up').removeClass('active');
+    $('a#thumbs_down').removeClass('active');
+    $('a#readmission').removeClass('active');
+    $('a#mortality').removeClass('active');
     clearOverlays();
   });
 
