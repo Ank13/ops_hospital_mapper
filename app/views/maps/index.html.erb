@@ -22,13 +22,21 @@
 </div>
 <div class="bubble-menu">
   <h3>Bubble Visualizations</h3>
+
   <div class="user-directions">Click below to compare hospitals on the map</div>
-  <a href="#" id="acc"><div class="visualize big acc"><span class="viz-icon"><i class="icon-tag"></i></span> <span class="viz-label">Average price (all procedures)</span></div></a>
-  <a href="#" id="thumbs_up"><div class="visualize big th-up"><span class="viz-icon"><i class="icon-thumbs-up"></i></span> <span class="viz-label">Recommended by patients</span></div></a>
-  <a href="#" id="thumbs_down"><div class="visualize big th-down"><span class="viz-icon"><i class="icon-thumbs-down"></i></span> <span class="viz-label">Not recommended by patients</span></div></a>
-  <a href="#" id="readmission"><div class="visualize big amb"><span class="viz-icon"><i class="icon-ambulance"></i></span> <span class="viz-label">30-day Readmission Rate</span></div></a>
-  <a href="#" id="mortality"><div class="visualize big ghost"><span class="viz-icon"><i class="icon-frown"></i></span> <span class="viz-label">30-day Mortality Rate</span></div></a>
-  <a href="#" id="clear"><div class="visualize big clearAll"><span class="viz-icon"><i class="icon-ban-circle"></i></span> <span class="viz-label">Clear layers</span></div></a>
+
+  <a href="#" id="acc"><div class="visualize big acc" title="Show average cost of care of all procedures by hospital. Larger cirlces are more expensive."><span class="viz-icon"><i class="icon-tag"></i></span> <span class="viz-label">Average price (all procedures)</span></div></a>
+
+  <a href="#" id="thumbs_up" title="Show % of responses who would recommend the hospital to any degree. Larger circles are better."><div class="visualize big th-up"><span class="viz-icon"><i class="icon-thumbs-up"></i></span> <span class="viz-label">Recommended by patients</span></div></a>
+
+  <a href="#" id="thumbs_down" title="Show % of responses who would not recommend the hospital. Smaller circles are better."><div class="visualize big th-down"><span class="viz-icon"><i class="icon-thumbs-down"></i></span> <span class="viz-label">Not recommended by patients</span></div></a>
+
+  <a href="#" id="readmission" title="Show rate of readmission for tracked population. Smaller bubbles are better."><div class="visualize big amb"><span class="viz-icon"><i class="icon-ambulance"></i></span> <span class="viz-label">30-day Readmission Rate</span></div></a>
+
+  <a href="#" id="mortality" title="Show rate of mortality for tracked population. Smaller bubbles are better."><div class="visualize big ghost"><span class="viz-icon"><i class="icon-frown"></i></span> <span class="viz-label">30-day Mortality Rate</span></div></a>
+
+  <a href="#" id="clear" title="Clear bubbles and prices from the map."><div class="visualize big clearAll"><span class="viz-icon"><i class="icon-ban-circle"></i></span> <span class="viz-label">Clear layers</span></div></a>
+
 </div>
   <div class="static_links">
     <div id="wtfacts"><h4><%= link_to "About this site", '#' %></h4></div>
