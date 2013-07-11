@@ -11,7 +11,7 @@
 	padding: 110px 25px 15px 15px;
 	left: 290px;
 	top: 0;
-	opacity:.90;
+/*	opacity:.90;*/
 	background-color: #C4DCF2;
 	font-family: arial, helvetica, sans-serif;
 	font-size: 12px;
@@ -25,7 +25,7 @@
 
 .slidepanel p{
 	padding: 3px 0 0 0;
-	margin: 0;
+	margin: 5px;
 }
 
 .slidepanel ol{
@@ -41,4 +41,75 @@
 .slidepanel li{
 	padding: 0, 0, 0, 0;
 	margin: 0;
+	list-style-type: none;
+
+}
+
+.slidepanel p {
+ color: #183152;
+ margin-left: 10px;
+}
+
+
+.slidepanel h2 {
+  font-size:18px;
+  line-height: 22px;
+  font-family: helvetica, arial, sans-serif;
+  color: #183152;
+  font-weight: 600;
+  margin:0;
+  margin-left: 8px;
+  padding:4px 8px 4px 0;
+}
+
+.slidepanel h3 {
+  color: #183152;
+  margin-top: 12px;
+  /*font-family: helvetica, arial, sans-serif;*/
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+.slidepanel h4 {
+  color: #183152;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.bio {
+	margin-left: 10px;
+}
+
+.slidepanel a:link {
+  color: #375D81;
+}
+
+.slidepanel a:hover {
+  color: #8C0800;
+}
+
+.slidepanel a:visited {
+  color: #375D81;
+}
+
+.team-text {
+ color: #183152;
+ margin-left: 10px;
+ margin-bottom: 10px;
+}
+
+.team-text .site-title {
+	color: #8C0800;
+	font-weight: 700;
+	text-transform: 
+}
+
+.links {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.links a {
+  font-weight: 700;
 }
