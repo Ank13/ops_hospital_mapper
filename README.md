@@ -26,7 +26,7 @@ Live demo: [http://hospital-mapper.herokuapp.com](http://hospital-mapper.herokua
     $ rake db:create && rake db:migrate
 ```
 
-4. Load CSV files into your local database. (This will take several minutes to run). After you should have 3337 hospitals and over 163,000 hospital_procedures:
+4. Load CSV files into your local database. (This will take several minutes to run). When it's done, you should have 3,337 hospitals and over 163,000 hospital_procedures:
 ```
     $ rake import:all
 ```
