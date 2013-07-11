@@ -1,10 +1,7 @@
 $(document).ready(function() {
-	changeColorWhenHover('.acc', '.icon-tag', '#236905');
-	changeColorWhenHover('.th-up', '.icon-thumbs-up', '#EEF000')
-	changeColorWhenHover('.th-down', '.icon-thumbs-down', '#F04400')
-	changeColorWhenHover('.amb', '.icon-ambulance', '#70070A')
-	changeColorWhenHover('.ghost', '.icon-frown', 'purple')
-	changeColorWhenHover('.clearAll', '.icon-ban-circle', '#444')
+	for(var i=0; i < collection.length; i++) {
+		changeColorWhenHover(collection[i]['div'], collection[i]['icon'], collection[i]['color']);
+	}
 });
 
 function changeColorWhenHover(div, icon, color) {
@@ -15,3 +12,12 @@ function changeColorWhenHover(div, icon, color) {
 		$(icon).css('color', '#183152');
 	});
 }
+
+var collection = [
+		{div: '.acc', icon: '.icon-tag', color: '#236905'},
+		{div: '.th-up', icon: '.icon-thumbs-up', color: '#EEF000'},
+		{div: '.th-down', icon: '.icon-thumbs-down', color: '#F04400'},
+		{div: '.amb', icon: '.icon-ambulance', color: '#70070A'},
+		{div: '.ghost', icon: '.icon-frown', color: 'purple'},
+		{div: '.clearAll', icon: '.icon-ban-circle', color: '#444'}
+];
