@@ -19,8 +19,8 @@ $(document).ready(function(){
     $(".slidepanel").css('z-index', '3').show(240);
 
     if(counter === 0) {
-      $('#analytics').animate({left: '+=250'}, 240);
-      $('.trigger2').addClass('active').animate({left: '+=240'}, 240);
+      $('#analytics').show().animate({left: '+=250'}, 240);
+      $('.trigger2').addClass('active').show().animate({left: '+=240'}, 240);
       $('.slidepanel').addClass('active')
       counter++;
     }
@@ -28,7 +28,7 @@ $(document).ready(function(){
 
   $(document).bind('click', function() {
     if($('.trigger2').hasClass('active')) {
-      $('.trigger2').removeClass('active').animate({
+      $('.trigger2').removeClass('active').hide(0).animate({
         left: "-=240"
       }, 240);
       $('#analytics').animate({left: '-=250'}, 240);
@@ -47,6 +47,7 @@ $(document).ready(function(){
 
       $.get(urlSlidePanel, data, function(response) {
         $('.slidepanel').append(response);
+        counter = 0;
         tabTwo();
       });
 
