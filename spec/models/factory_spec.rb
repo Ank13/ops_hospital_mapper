@@ -25,11 +25,7 @@ describe "Factory" do
 	it "should have a valid patient survey factory" do
 		FactoryGirl.create(:patient_survey).should be_valid
 	end
-
-	it "should have a valid session factory" do
-		FactoryGirl.create(:session).should be_valid
-	end
-
+	
 	it "should have a valid states_procedure factory" do
 		FactoryGirl.create(:states_procedure).should be_valid
 	end

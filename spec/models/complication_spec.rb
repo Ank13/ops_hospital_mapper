@@ -5,6 +5,4 @@ describe Complication do
 
   it { should belong_to(:hospital) }
 
-  it { should validate_presence_of(:hospital) }
-
 end
