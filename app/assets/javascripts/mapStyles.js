@@ -1,14 +1,14 @@
 var styles = [
   {
     stylers: [
-      { hue: "#375D81" }
+      { hue: "#375D81" },
+      { saturation: -50 }
     ]
   },{
     featureType: "road",
     elementType: "geometry",
     stylers: [
-      { lightness: 100 },
-      { visibility: "simplified" }
+      { visibility: "off" }
     ]
   },{
     featureType: "road",
@@ -26,7 +26,7 @@ var styles = [
     featureType: "landscape",
     elementType: "all",
     stylers: [
-      { visibility: "simplified" }
+      { visibility: "off" }
     ]
   },{
     featureType: "poi",

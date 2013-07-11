@@ -37,4 +37,3 @@ var collection = [
 	{div: '.amb', icon: '.icon-ambulance', color: '#70070A'},
 	{div: '.ghost', icon: '.icon-frown', color: 'purple'},
 ];
-

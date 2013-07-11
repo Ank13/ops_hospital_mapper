@@ -110,7 +110,7 @@ $(document).ready(function(){
         map: map,
         icon: iconBase + 'h_sign_32x32.png',
         title: hospital["provider_name"],
-        zIndex: 100
+        zIndex: 20
       });
       
       clickMarker(hospital, marker);
@@ -231,7 +231,7 @@ $(document).ready(function(){
   toggleIcons('a#acc', 'acc', '#236905', acc);
   toggleIcons('a#thumbs_up', 'thumbs_up', '#EEF000', thumbsUp);
   toggleIcons('a#thumbs_down', 'thumbs_down', '#F04400', thumbsDown);
-  toggleIcons('a#readmission', 'readmission', '#50F0F2', readmission);
+  toggleIcons('a#readmission', 'readmission', '#70070A', readmission);
   toggleIcons('a#mortality', 'mortality', '#515151', mortality);
 
   $("a#clear").on('click', function(){
