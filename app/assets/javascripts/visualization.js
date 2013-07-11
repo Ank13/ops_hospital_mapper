@@ -18,6 +18,6 @@ var collection = [
 		{div: '.th-up', icon: '.icon-thumbs-up', color: '#EEF000'},
 		{div: '.th-down', icon: '.icon-thumbs-down', color: '#F04400'},
 		{div: '.amb', icon: '.icon-ambulance', color: '#70070A'},
-		{div: '.ghost', icon: '.icon-frown', color: 'purple'},
-		{div: '.clearAll', icon: '.icon-ban-circle', color: '#444'}
+		{div: '.ghost', icon: '.icon-frown', color: '#515151'},
+		{div: '.clearAll', icon: '.icon-ban-circle', color: '#375D81'}
 ];

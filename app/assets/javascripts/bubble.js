@@ -24,7 +24,7 @@ Bubble.prototype = {
         fillOpacity: 0.4 * size/30,
         scale: size,
         strokeColor: stroke_color,
-        strokeWeight: 1
+        strokeWeight: 2
       };
       return circle;
 	  },
