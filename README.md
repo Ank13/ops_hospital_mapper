@@ -28,7 +28,7 @@ Live demo: [http://hospital-mapper.herokuapp.com](http://hospital-mapper.herokua
 
 4. Load CSV files into your local database. You should have 3337 hospitals and over 163,000 hospital_procedures:
 ```
-$ rake db:create && rake db:migrate && rake import:all
+    $ rake import:all
 ```
 
 5. Optional: Use the Figaro gem to set your Google Maps API key. (The app should run on your local machine without this step):
