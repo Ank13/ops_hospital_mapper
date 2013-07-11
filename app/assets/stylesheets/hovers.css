@@ -1,0 +1,15 @@
+.hoverhelper { 
+  width: 100%;
+  color: transparent;
+  z-index: -40;
+  font-size: 10px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.hoverhelper:hover { 
+  line-height: 133px;
+  color: #575858;
+  z-index: 4; 
+  margin: 0;
+  padding: 0;
+} 
