@@ -17,19 +17,20 @@ $(document).ready(function(){
 
   function firstTab() {
     $(document).on('click', '.trigger', function(){
-      $(".panel").slideToggle(240); 
       $(this).toggleClass("active");
       if($(this).hasClass("active")) {
         $(this).animate({left: '-=290'}, 240);
+        $('.panel').animate({left: '-=290'},240);
         if($('.trigger2').hasClass('active')) {
           $('.trigger2').animate({left: '-=240'}, 240).removeClass('active');
         }
         $('#analytics').hide(240);
-        $('.slidepanel').empty().hide(240);
+        $('.slidepanel').empty().hide();
       }
       else {
         $(this).animate({left: '+=290'}, 240);
-        $('#analytics').fadeIn(240);
+        $('.panel').animate({left: '+=290'}, 240);
+        $('#analytics').show(240);
         $('.slidepanel').css('z-index', '1');
       }
       return false;
