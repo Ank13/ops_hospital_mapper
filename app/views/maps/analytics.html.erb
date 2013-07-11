@@ -1,12 +1,41 @@
 <div id="analytics">
 <% if @procedure %>
 <div class="slidepanel">
-	<p>Clinical Category: <%= @procedure.clinical_category %></p>
-	<p>Description: <%= @procedure.description %></p>
-  <p>The most expensive hospital is <%=@procedure.most_expensive_hospital.provider_name.titleize%>: $<%=((@procedure.most_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </p>
-  <p>The least expensive hospital is <%=@procedure.least_expensive_hospital.provider_name.titleize%>: $<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </p> 
-  <p>The average cost is $<%=(@procedure.average_cost/1000.0).round(2)%>K </p>
-  <p>The standard deviation of cost across hospitals is $<%=(@procedure.stand_dev/1000.0).round(2)%>K </p>   
+	<table>
+		<th colspan="2">Clinical Category: <%= @procedure.clinical_category %></th>
+	<tr>
+		<td colspan="2">
+			<%= @procedure.description %></td>
+	</tr>
+  
+  <tr>
+  	<td colspan="2"><div class="subhead">Most expensive:</div></td></tr>
+  
+  <tr>
+  	<td><%=@procedure.most_expensive_hospital.provider_name.titleize%>:</td>
+  	<td>$<%=((@procedure.most_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K</td>
+  </tr>
+  
+  <tr>
+  	<td colspan="2"><div class="subhead">Most affordable:</div></td></tr>
+  
+  	<tr>
+  	<td><%=@procedure.least_expensive_hospital.provider_name.titleize%>:</td> <td>$<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </td> 
+  </tr>
+  
+  <tr>
+  	<td>Average cost:</td>
+  	<td> $<%=(@procedure.average_cost/1000.0).round(2)%>K </td>
+  </tr>
+  
+  <tr>
+  	<td colspan="2"><div class="subhead">Standard cost deviation</div></td></tr>
+
+  <tr>
+  	<td>across hospitals:</td>
+  	<td>$<%=(@procedure.stand_dev/1000.0).round(2)%>K </td>
+  	</tr>   
+</table>
 
   <div id="procedure-chart"></div>
 </div>
