@@ -110,14 +110,12 @@ class Hospital < ActiveRecord::Base
         all_hospitals[-1][:thumbs_down] = thumbs_down if thumbs_down
         all_hospitals[-1][:mortality] = mortality if mortality
         all_hospitals[-1][:readmission] = readmission if readmission
-      else
-
       end
     end
     return all_hospitals  
   end
 
-  def survey_and_outcome_data_missing?(hospital)
+  def self.survey_and_outcome_data_missing?(hospital)
     hospital.patient_survey.nil? || 
     hospital.patient_survey.recommend_y.nil? || 
     hospital.patient_survey.recommend_ok.nil? ||
