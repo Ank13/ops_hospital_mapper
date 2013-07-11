@@ -14,8 +14,8 @@ FactoryGirl.define do
 		quiet_no							12.23
 		quiet_usu							40.20
 		quiet_always					47.57
-		recover_info_yes			50.00
-		recover_info_no				50.00
+		recovery_info_yes			50.00
+		recovery_info_no			50.00
 		rating_low						12.23
 		rating_mid						40.20
 		rating_high						47.57
