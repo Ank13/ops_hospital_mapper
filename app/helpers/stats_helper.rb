@@ -18,7 +18,6 @@ module StatsHelper
     return Math.sqrt(self.sample_variance)
   end
  
-
 end
 
 Array.send :include, StatsHelper
