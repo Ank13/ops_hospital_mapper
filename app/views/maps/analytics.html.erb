@@ -12,7 +12,9 @@
   	<td colspan="2"><div class="subhead">Most expensive:</div></td></tr>
   
   <tr>
-  	<td><%=@procedure.most_expensive_hospital.provider_name.titleize%>:</td>
+    <td><%=@procedure.most_expensive_hospital.provider_name.titleize%>:</td>
+    <td><%=@procedure.most_expensive_hospital.hospital.provider_city.titleize%>,
+      <%=@procedure.most_expensive_hospital.hospital.provider_state %></td>
   	<td>$<%=((@procedure.most_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K</td>
   </tr>
   
@@ -20,7 +22,10 @@
   	<td colspan="2"><div class="subhead">Most affordable:</div></td></tr>
   
   	<tr>
-  	<td><%=@procedure.least_expensive_hospital.provider_name.titleize%>:</td> <td>$<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </td> 
+  	<td><%=@procedure.least_expensive_hospital.provider_name.titleize%>:</td> 
+    <td><%=@procedure.least_expensive_hospital.hospital.provider_city.titleize%>,
+      <%=@procedure.least_expensive_hospital.hospital.provider_state %></td>
+    <td>$<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </td> 
   </tr>
   
   <tr>
