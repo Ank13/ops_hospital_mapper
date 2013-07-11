@@ -128,9 +128,9 @@ class Hospital < ActiveRecord::Base
     hospital.outcome.mr_p.nil?
   end
 
-  def scaled_total_cost_index
-    (total_cost_index + 100) / 5
-  end
+  # def scaled_total_cost_index
+  #   (total_cost_index + 100) / 5
+  # end
 end
 
 
