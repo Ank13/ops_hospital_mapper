@@ -1,41 +1,12 @@
 ================================
 ho$pitally
 
-================================
-About
-
 Hospitals charge drastically different amounts for the same procedure. In order to make this data accessible to the public and promote a discussion of the burgeoning cost of healthcare in the US, we've combined the recently released Medicare chargemaster data with government measures of quality, such as patient survey results and outcomes of care, geocoded all addresses, and mapped on Google Maps.
+
 
 ================================
 Team
 Avi Kaufman, Rod Levy, Anna-Marie Panlilio, Daniel Song
-
-
-================================
-Install
-
-Setup tasks:
-
-Install all gems:
-   $ bundle install
-
-Setup the database:
-   $ rake db:create && rake db:migrate
-
-Load the data into your database from the CSV files:
-   $ rake db:parse_csv_complications && rake db:parse_csv_hospital && rake db:parse_csv_hospitals_procedures && rake db:parse_csv_outcomes && rake db:parse_csv_patient_surveys && rake db:parse_csv_procedure
-
-Geocode all Hospitals without coordinates:
-   $ rake geocode:all class=Hospital sleep=0.25
-
-Need to have R installed before you run rinruby:
-  brew install R
-  or
-  http://ftp.ussg.iu.edu/CRAN/
-
-To push environment files to Heroku:
-
-  rake figaro:heroku
 
 
 ================================
@@ -62,6 +33,23 @@ How to use our app
     change geography. Map initially loads centered on Chicago, IL. (our location)
 5.  Click the "About the data" tab to find links on the data sources and explore
     more on your own. 
+
+
+
+================================
+Install on your computer
+
+1. Fork and then clone to your computer
+2. Install all gems:
+    $ bundle install
+3. Setup the database:
+    $ rake db:create && rake db:migrate
+4. Load CSV files into your local database:
+    $ rake db:create && rake db:migrate && rake db:import_csv_complications && rake db:import_csv_hospitals && rake db:import_usa_procedures && rake db:import_csv_hospitals_procedures && rake db:import_csv_outcomes && rake db:import_csv_patient_surveys && rake db:import_csv_stateprocedure && rake db:import_csv_procedure_description && rake db:calc_cost_index
+5. Optional: Use the Figaro gem to set your Google Maps API key. (The app should 
+   run on your local machine without this step):
+    $ rails generate figaro:install
+    GOOGLE_API_DEV: <paste_your_google_maps_API_key_here>
 
 
 ================================
