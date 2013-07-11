@@ -84,7 +84,7 @@ class Hospital < ActiveRecord::Base
   def self.find_hospitals_for_map(hospitals)
     all_hospitals = []
     hospitals.each do |hospital|
-      acc = hospital.scaled_total_cost_index
+      acc = (hospital.total_cost_index + 100) / 5
 
       all_hospitals << {provider_name: hospital.provider_name, 
                         latitude: hospital.latitude, 
