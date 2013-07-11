@@ -21,7 +21,7 @@ Bubble.prototype = {
     var circle = {
         path: google.maps.SymbolPath.CIRCLE,
         fillColor: fill_color,
-        fillOpacity: 0.4,
+        fillOpacity: 0.4 * size/30,
         scale: size,
         strokeColor: stroke_color,
         strokeWeight: 1
