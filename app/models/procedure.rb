@@ -27,5 +27,7 @@ class Procedure < ActiveRecord::Base
     allhosp.standard_deviation
   end
 
+end
+
 
 
