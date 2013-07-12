@@ -14,6 +14,7 @@ FactoryGirl.define do
 		average_total_payments   120.20
 		latitude 								 83.2123
 		longitude 							 21.2432
+		total_cost_index				 20
 	end
 	
 end
