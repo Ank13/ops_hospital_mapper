@@ -76,7 +76,7 @@ class Hospital < ActiveRecord::Base
       hospital_charge = 0
     end
 
-    avg_complication_rate = Complication.average("R_D_S_T_C").to_i
+    avg_complication_rate = 113.4275585451  #Complication.average("R_D_S_T_C").to_i
     
     {y_axis:'Mortality', first_col: hosp_complication_rate, second_col: avg_complication_rate, third_col: 0, title: '30 Day Mortality from Serious Treatable Complications (per 1000 admissions)'}
   end
