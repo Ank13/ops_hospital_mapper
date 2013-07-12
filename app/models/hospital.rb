@@ -1,5 +1,5 @@
 class Hospital < ActiveRecord::Base
-  attr_accessible :provider_id, :provider_name, :provider_street_address, :provider_city, :provider_state, :provider_zip_code, :hrr, :total_discharges, :count_drgs, :average_covered_charges, :average_total_payments, :latitude, :longitude
+  attr_accessible :provider_id, :provider_name, :provider_street_address, :provider_city, :provider_state, :provider_zip_code, :hrr, :total_discharges, :count_drgs, :average_covered_charges, :average_total_payments, :latitude, :longitude, :total_cost_index
 
   geocoded_by :full_address
 
@@ -51,18 +51,18 @@ class Hospital < ActiveRecord::Base
 
   def outcomebox_on_click
     unless self.outcome.nil?
-      p hosp_outcome_rate_p = self.outcome.mr_p.to_i
-      p hosp_outcome_rate_h_a = self.outcome.mr_h_a.to_i
-      p hosp_outcome_rate_hf = self.outcome.mr_hf.to_i
+      hosp_outcome_rate_p = self.outcome.mr_p.to_i
+      hosp_outcome_rate_h_a = self.outcome.mr_h_a.to_i
+      hosp_outcome_rate_hf = self.outcome.mr_hf.to_i
     else
       hospital_charge = 0
-    end
-    
+    end 
+
     hosp_outcome_rate = hosp_outcome_rate_p + hosp_outcome_rate_h_a + hosp_outcome_rate_hf
 
-    p avg_outcome_rate_p = Outcome.average("mr_p").to_i
-    p avg_outcome_rate_h_a = Outcome.average("mr_h_a").to_i
-    p avg_outcome_rate_hf = Outcome.average("mr_hf").to_i
+    avg_outcome_rate_p = Outcome.average("mr_p").to_i
+    avg_outcome_rate_h_a = Outcome.average("mr_h_a").to_i
+    avg_outcome_rate_hf = Outcome.average("mr_hf").to_i
 
     avg_outcome_rate = avg_outcome_rate_p + avg_outcome_rate_h_a + avg_outcome_rate_hf
 
