@@ -11,21 +11,27 @@
   <tr>
   	<td colspan="2"><div class="subhead">Most expensive:</div></td></tr>
   
+    </tr>
+        
   <tr>
-    <td><%=@procedure.most_expensive_hospital.provider_name.titleize%>:</td>
-    <td><%=@procedure.most_expensive_hospital.hospital.provider_city.titleize%>,
-      <%=@procedure.most_expensive_hospital.hospital.provider_state %></td>
-  	<td>$<%=((@procedure.most_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K</td>
+    <td colspan="2"><em><%=@procedure.most_expensive_hospital.provider_name.titleize%></em></td>
+  </tr>
+  <tr>
+    <td><%=@procedure.most_expensive_hospital.hospital.provider_city.titleize%>, <%=@procedure.most_expensive_hospital.hospital.provider_state %></td>
+  	<td><div class="dollars">$<%=((@procedure.most_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K</div></td>
   </tr>
   
   <tr>
-  	<td colspan="2"><div class="subhead">Most affordable:</div></td></tr>
-  
-  	<tr>
-  	<td><%=@procedure.least_expensive_hospital.provider_name.titleize%>:</td> 
-    <td><%=@procedure.least_expensive_hospital.hospital.provider_city.titleize%>,
-      <%=@procedure.least_expensive_hospital.hospital.provider_state %></td>
-    <td>$<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K </td> 
+  	<td colspan="2"><div class="subhead">Most affordable:</div></td>
+  </tr>
+
+    <tr>
+      <td colspan="2"><em><%=@procedure.least_expensive_hospital.provider_name.titleize%></em></td>
+    </tr>
+
+  <tr>
+    <td><%=@procedure.least_expensive_hospital.hospital.provider_city.titleize%>, <%=@procedure.least_expensive_hospital.hospital.provider_state %></td>
+      <td><div class="dollars">$<%=((@procedure.least_expensive_hospital.avg_covered_charges.to_i)/1000).round(2)%>K</div></td>
   </tr>
   
   <tr>
@@ -33,7 +39,7 @@
     
   <tr>
   	<td>all hospitals:</td>
-  	<td> $<%=(@procedure.average_cost/1000.0).round(2)%>K </td>
+  	<td><div class="dollars"> $<%=(@procedure.average_cost/1000.0).round(2)%>K</div></td>
   </tr>
   
   <tr>
@@ -41,7 +47,7 @@
 
   <tr>
   	<td>across hospitals:</td>
-  	<td>$<%=(@procedure.stand_dev/1000.0).round(2)%>K </td>
+  	<td><div class="dollars">$<%=(@procedure.stand_dev/1000.0).round(2)%>K</div></td>
   	</tr>   
 </table>
 

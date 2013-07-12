@@ -127,7 +127,7 @@
 }
 
 tr {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .slidepanel td {
@@ -140,4 +140,8 @@ td .subhead {
 	font-weight: 600;
 	font-size: 1.25em;
 	margin-top: 10px;
+}
+
+.dollars {
+	text-align: right;
 }
