@@ -1,7 +1,7 @@
 #popup {
   z-index: 20;
   width: 600px;
-  height: 450px;
+  height: 475px;
   border-radius: 10px;
   background-color: #8C0800;
   color: #FFF;
@@ -11,6 +11,7 @@
   left: 400px;
   top: 120px;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 #popup h2 {
@@ -30,6 +31,7 @@
 
 .welcome-pop {
   margin-left: 15px;
+  margin-bottom: 20px;
 }
 
 .welcome-pop h3{
