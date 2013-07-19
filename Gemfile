@@ -39,6 +39,7 @@ end
 
 
 gem 'geocoder'
+gem 'newrelic_rpm'
 
 group :test do
 	gem 'factory_girl_rails'
