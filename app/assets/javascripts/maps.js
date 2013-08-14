@@ -20,7 +20,7 @@ $(document).ready(function(){
       if (lastEvent.getTime() + 500 <= new Date().getTime()) {
         var bounds = map.getBounds();
         // TODO: Length of a degree of longitude = cos(latitude) * 111.325 kilometers
-        var width = (bounds.getNorthEast().kb - bounds.getSouthWest().kb) * 50;
+        var width = (bounds.getNorthEast().lat() - bounds.getSouthWest().lng()) * 50;
         searchBox.setBounds(bounds);
         var lng = map.getCenter().lng();
         var lat = map.getCenter().lat();
