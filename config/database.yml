@@ -1,9 +1,9 @@
-# postgresql: &postgresql
-#   adapter: postgresql
-#   # username: postgres
-#   # password: test123
-#   database: ops_hospital_mapper_test
-#   min_messages: ERROR
+postgresql: &postgresql
+  adapter: postgresql
+  username: postgres
+  password: 
+  database: ops_hospital_mapper_test
+  min_messages: ERROR
   # pool: 5
   # timeout: 5000
   # host: localhost
@@ -28,13 +28,13 @@ test:
   database: ops_hospital_mapper_test
   host: localhost  
 
-production:
-  adapter: postgresql
-  encoding: utf8
-  reconnect: false
-  pool: 5
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  host: <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
-  port: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
-  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
+# production:
+#   adapter: postgresql
+#   encoding: utf8
+#   reconnect: false
+#   pool: 5
+#   database: <%=ENV['OPENSHIFT_APP_NAME']%>
+#   host: 127.10.214.1
+#   port: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
+#   username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
+#   password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
